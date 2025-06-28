@@ -1,0 +1,325 @@
+.fei-button {
+  --fei-button-font-weight: var(--fei-font-weight-primary);
+  --fei-button-border-color: var(--fei-border-color);
+  --fei-button-bg-color: var(--fei-fill-color-blank);
+  --fei-button-text-color: var(--fei-text-color-regular);
+  --fei-button-disabled-text-color: var(--fei-disabled-text-color);
+  --fei-button-disabled-bg-color: var(--fei-fill-color-blank);
+  --fei-button-disabled-border-color: var(--fei-border-color-light);
+  --fei-button-hover-text-color: var(--fei-color-primary);
+  --fei-button-hover-bg-color: var(--fei-color-primary-light-13);
+  --fei-button-hover-border-color: var(--fei-color-primary-light-11);
+  --fei-button-active-text-color: var(--fei-button-hover-text-color);
+  --fei-button-active-border-color: var(--fei-color-primary);
+  --fei-button-active-bg-color: var(--fei-button-hover-bg-color);
+  --fei-button-outline-color: var(--fei-color-primary-light-7);
+  --fei-button-active-color: var(--fei-text-color-primary);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  height: 32px;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  vertical-align: middle;
+  appearance: none;
+  padding: 8px 15px;
+  transition: all 0.3s ease-in-out;
+  font-size: var(--fei-font-size-base);
+  font-weight: var(--fei-button-font-weight);
+  border-radius: var(--fei-border-radius-base);
+  border: var(--fei-border);
+  color: var(--fei-button-text-color);
+  background-color: var(--fei-button-bg-color);
+
+  & + & {
+    margin-left: 12px;
+  }
+
+  /* 修复点1：确保悬停状态使用正确变量 */
+  &:hover,
+  &:focus {
+    outline: none;
+    color: var(--fei-button-hover-text-color);
+    background-color: var(--fei-button-hover-bg-color);
+    border-color: var(--fei-button-hover-border-color);
+    opacity: 0.8;
+  }
+
+  &:active {
+    color: var(--fei-button-active-text-color);
+    background-color: var(--fei-button-active-bg-color);
+    border-color: var(--fei-button-active-border-color);
+    outline: none;
+  }
+
+  /* 新增：点击后恢复状态 */
+  &:not(:active):not(:hover):focus {
+    color: var(--fei-button-text-color); /* 添加默认文本色变量 */
+    background-color: var(--fei-button-bg-color); /* 添加默认背景色变量 */
+    border-color: var(--fei-button-border-color); /* 添加默认边框色变量 */
+    opacity: 1;
+  }
+
+  /* 圆角按钮 */
+  &.is-round {
+    border-radius: var(--fei-border-radius-round);
+  }
+
+  /* 圆形按钮 */
+  &.is-circle {
+    border-radius: 50%;
+    padding: 8px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  &.is-disabled,
+  &[disabled] {
+    &,
+    &:hover,
+    &:focus {
+      color: var(--fei-button-disabled-text-color);
+      background-color: var(--fei-button-disabled-bg-color);
+      border-color: var(--fei-button-disabled-border-color);
+      opacity: 0.5;
+      user-select: none;
+      cursor: not-allowed;
+    }
+  }
+
+  /* loading */
+  &.is-loading {
+    position: relative;
+    cursor: not-allowed;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: transparent !important;
+    background-color: var(--fei-button-active-bg-color);
+    border-color: var(--fei-button-active-border-color);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1.2em;
+      height: 1.2em;
+      border: 2px solid var(--fei-button-active-text-color);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: fei-spin 0.8s linear infinite;
+      transform: translate(-50%, -50%);
+    }
+  }
+  [class*=fei-icon] {
+    margin-right: 8px;
+    font-size: 16px;
+    color: var(--fei-button-text-color);
+  }
+}
+
+/* 其他类型样式保持不变... */
+
+/* 大小样式 */
+.fei-button--large {
+  --fei-button-size: 40px;
+  height: var(--fei-button-size);
+  padding: 12px 19px;
+  font-size: var(--fei-font-size-base);
+  border-radius: var(--fei-border-radius-base);
+}
+
+.fei-button--small {
+  --fei-button-size: 24px;
+  height: var(--fei-button-size);
+  padding: 5px 11px;
+  font-size: 12px;
+  border-radius: calc(var(--fei-border-radius-base) - 1px);
+}
+
+/* 添加旋转动画 */
+@keyframes fei-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* primary 类型 */
+.fei-button--primary {
+  --fei-button-text-color: var(--fei-color-white);
+  --fei-button-bg-color: var(--fei-color-primary);
+  --fei-button-border-color: var(--fei-color-primary);
+  --fei-button-outline-color: var(--fei-color-primary-light-5);
+  --fei-button-active-color: var(--fei-color-primary-dark-2);
+  --fei-button-hover-text-color: var(--fei-color-white);
+  --fei-button-hover-bg-color: var(--fei-color-primary-light-3);
+  --fei-button-hover-border-color: var(--fei-color-primary-light-3);
+  --fei-button-active-bg-color: var(--fei-color-primary-dark-2);
+  --fei-button-active-border-color: var(--fei-color-primary-dark-2);
+  --fei-button-disabled-text-color: var(--fei-color-white);
+  --fei-button-disabled-bg-color: var(--fei-color-primary-light-5);
+  --fei-button-disabled-border-color: var(--fei-color-primary-light);
+}
+.fei-button--primary.is-plain {
+  --fei-button-text-color: var(--fei-color-primary);
+  --fei-button-bg-color: var(--fei-fill-color-blank);
+  --fei-button-border-color: var(--fei-color-primary);
+  --fei-button-hover-text-color: var(--fei-color-primary);
+  --fei-button-hover-bg-color: var(--fei-fill-color-blank);
+  --fei-button-hover-border-color: var(--fei-color-primary);
+  --fei-button-active-text-color: var(--fei-color-primary);
+  --fei-button-active-border-color: var(--fei-color-primary);
+  --fei-button-active-bg-color: var(--fei-fill-color-blank);
+  --fei-button-disabled-text-color: var(--fei-color-primary);
+  --fei-button-disabled-bg-color: var(--fei-fill-color-blank);
+  --fei-button-disabled-border-color: var(--fei-color-primary);
+}
+
+/* success 类型 */
+.fei-button--success {
+  --fei-button-text-color: var(--fei-color-white);
+  --fei-button-bg-color: var(--fei-color-success);
+  --fei-button-border-color: var(--fei-color-success);
+  --fei-button-outline-color: var(--fei-color-success-light-5);
+  --fei-button-active-color: var(--fei-color-success-dark-2);
+  --fei-button-hover-text-color: var(--fei-color-white);
+  --fei-button-hover-bg-color: var(--fei-color-success-light-3);
+  --fei-button-hover-border-color: var(--fei-color-success-light-3);
+  --fei-button-active-bg-color: var(--fei-color-success-dark-2);
+  --fei-button-active-border-color: var(--fei-color-success-dark-2);
+  --fei-button-disabled-text-color: var(--fei-color-white);
+  --fei-button-disabled-bg-color: var(--fei-color-success-light-5);
+  --fei-button-disabled-border-color: var(--fei-color-success-light);
+}
+.fei-button--success.is-plain {
+  --fei-button-text-color: var(--fei-color-success);
+  --fei-button-bg-color: var(--fei-fill-color-blank);
+  --fei-button-border-color: var(--fei-color-success);
+  --fei-button-hover-text-color: var(--fei-color-success);
+  --fei-button-hover-bg-color: var(--fei-fill-color-blank);
+  --fei-button-hover-border-color: var(--fei-color-success);
+  --fei-button-active-text-color: var(--fei-color-success);
+  --fei-button-active-border-color: var(--fei-color-success);
+  --fei-button-active-bg-color: var(--fei-fill-color-blank);
+  --fei-button-disabled-text-color: var(--fei-color-success);
+  --fei-button-disabled-bg-color: var(--fei-fill-color-blank);
+  --fei-button-disabled-border-color: var(--fei-color-success);
+}
+
+/* warning 类型 */
+.fei-button--warning {
+  --fei-button-text-color: var(--fei-color-white);
+  --fei-button-bg-color: var(--fei-color-warning);
+  --fei-button-border-color: var(--fei-color-warning);
+  --fei-button-outline-color: var(--fei-color-warning-light-5);
+  --fei-button-active-color: var(--fei-color-warning-dark-2);
+  --fei-button-hover-text-color: var(--fei-color-white);
+  --fei-button-hover-bg-color: var(--fei-color-warning-light-3);
+  --fei-button-hover-border-color: var(--fei-color-warning-light-3);
+  --fei-button-active-bg-color: var(--fei-color-warning-dark-2);
+  --fei-button-active-border-color: var(--fei-color-warning-dark-2);
+  --fei-button-disabled-text-color: var(--fei-color-white);
+  --fei-button-disabled-bg-color: var(--fei-color-warning-light-5);
+  --fei-button-disabled-border-color: var(--fei-color-warning-light);
+}
+.fei-button--warning.is-plain {
+  --fei-button-text-color: var(--fei-color-warning);
+  --fei-button-bg-color: var(--fei-fill-color-blank);
+  --fei-button-border-color: var(--fei-color-warning);
+  --fei-button-hover-text-color: var(--fei-color-warning);
+  --fei-button-hover-bg-color: var(--fei-fill-color-blank);
+  --fei-button-hover-border-color: var(--fei-color-warning);
+  --fei-button-active-text-color: var(--fei-color-warning);
+  --fei-button-active-border-color: var(--fei-color-warning);
+  --fei-button-active-bg-color: var(--fei-fill-color-blank);
+  --fei-button-disabled-text-color: var(--fei-color-warning);
+  --fei-button-disabled-bg-color: var(--fei-fill-color-blank);
+  --fei-button-disabled-border-color: var(--fei-color-warning);
+}
+
+/* info 类型 */
+.fei-button--info {
+  --fei-button-text-color: var(--fei-color-white);
+  --fei-button-bg-color: var(--fei-color-info);
+  --fei-button-border-color: var(--fei-color-info);
+  --fei-button-outline-color: var(--fei-color-info-light-5);
+  --fei-button-active-color: var(--fei-color-info-dark-2);
+  --fei-button-hover-text-color: var(--fei-color-white);
+  --fei-button-hover-bg-color: var(--fei-color-info-light-3);
+  --fei-button-hover-border-color: var(--fei-color-info-light-3);
+  --fei-button-active-bg-color: var(--fei-color-info-dark-2);
+  --fei-button-active-border-color: var(--fei-color-info-dark-2);
+  --fei-button-disabled-text-color: var(--fei-color-white);
+  --fei-button-disabled-bg-color: var(--fei-color-info-light-5);
+  --fei-button-disabled-border-color: var(--fei-color-info-light);
+}
+.fei-button--info.is-plain {
+  --fei-button-text-color: var(--fei-color-info);
+  --fei-button-bg-color: var(--fei-fill-color-blank);
+  --fei-button-border-color: var(--fei-color-info);
+  --fei-button-hover-text-color: var(--fei-color-info);
+  --fei-button-hover-bg-color: var(--fei-fill-color-blank);
+  --fei-button-hover-border-color: var(--fei-color-info);
+  --fei-button-active-text-color: var(--fei-color-info);
+  --fei-button-active-border-color: var(--fei-color-info);
+  --fei-button-active-bg-color: var(--fei-fill-color-blank);
+  --fei-button-disabled-text-color: var(--fei-color-info);
+  --fei-button-disabled-bg-color: var(--fei-fill-color-blank);
+  --fei-button-disabled-border-color: var(--fei-color-info);
+}
+
+/* danger 类型 */
+.fei-button--danger {
+  --fei-button-text-color: var(--fei-color-white);
+  --fei-button-bg-color: var(--fei-color-danger);
+  --fei-button-border-color: var(--fei-color-danger);
+  --fei-button-outline-color: var(--fei-color-danger-light-5);
+  --fei-button-active-color: var(--fei-color-danger-dark-2);
+  --fei-button-hover-text-color: var(--fei-color-white);
+  --fei-button-hover-bg-color: var(--fei-color-danger-light-3);
+  --fei-button-hover-border-color: var(--fei-color-danger-light-3);
+  --fei-button-active-bg-color: var(--fei-color-danger-dark-2);
+  --fei-button-active-border-color: var(--fei-color-danger-dark-2);
+  --fei-button-disabled-text-color: var(--fei-color-white);
+  --fei-button-disabled-bg-color: var(--fei-color-danger-light-5);
+  --fei-button-disabled-border-color: var(--fei-color-danger-light);
+}
+.fei-button--danger.is-plain {
+  --fei-button-text-color: var(--fei-color-danger);
+  --fei-button-bg-color: var(--fei-fill-color-blank);
+  --fei-button-border-color: var(--fei-color-danger);
+  --fei-button-hover-text-color: var(--fei-color-danger);
+  --fei-button-hover-bg-color: var(--fei-fill-color-blank);
+  --fei-button-hover-border-color: var(--fei-color-danger);
+  --fei-button-active-text-color: var(--fei-color-danger);
+  --fei-button-active-border-color: var(--fei-color-danger);
+  --fei-button-active-bg-color: var(--fei-fill-color-blank);
+  --fei-button-disabled-text-color: var(--fei-color-danger);
+  --fei-button-disabled-bg-color: var(--fei-fill-color-blank);
+  --fei-button-disabled-border-color: var(--fei-color-danger);
+}
+.fei-button--large {
+  --fei-button-size: 40px;
+  height: var(--fei-button-size);
+  padding: 12px 19px;
+  font-size: var(--fei-font-size-base);
+  border-radius: var(--fei-border-radius-base);
+}
+
+.fei-button--small {
+  --fei-button-size: 24px;
+  height: var(--fei-button-size);
+  padding: 5px 11px;
+  font-size: 12px;
+  border-radius: calc(var(--fei-border-radius-base) - 1px);
+}

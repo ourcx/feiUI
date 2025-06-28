@@ -1,0 +1,110 @@
+.fei-collapse {
+  --fei-collapse-border-color: var(--fei-border-color-light);
+  --fei-collapse-header-height: 48px;
+  --fei-collapse-header-bg-color: var(--fei-fill-color-blank);
+  --fei-collapse-header-text-color: var(--fei-text-color-primary);
+  --fei-collapse-header-font-size: 13px;
+  --fei-collapse-content-bg-color: var(--fei-fill-color-blank);
+  --fei-collapse-content-font-size: 13px;
+  --fei-collapse-content-text-color: var(--fei-text-color-primary);
+  --fei-collapse-disabled-text-color: var(--fei-disabled-text-color);
+  --fei-collapse-disabled-border-color: var(--fei-border-color-lighter);
+  border-top: 1px solid var(--fei-collapse-border-color);
+  border-bottom: 1px solid var(--fei-collapse-border-color);
+}
+
+.fei-collapse-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--fei-collapse-header-height);
+  line-height: var(--fei-collapse-header-height);
+  background-color: var(--fei-collapse-header-bg-color);
+  color: var(--fei-collapse-header-text-color);
+  cursor: pointer;
+  font-size: var(--fei-collapse-header-font-size);
+  font-weight: 500;
+  transition: border-bottom-color var(--fei-transition-duration);
+  outline: none;
+  border-bottom: 1px solid var(--fei-collapse-border-color);
+
+  &.is-disabled {
+    color: var(--fei-collapse-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+  }
+  &:is-active {
+    border-bottom-color: transparent;
+  }
+}
+/* 优化标题样式 */
+.fei-collapse-item__title {
+  flex: 1;
+  padding: 0 20px;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: 600; /* 使用标准权重值替代 bolder */
+  transition: color var(--fei-transition-duration);
+  /* 添加响应式优化 */
+  @media (max-width: 768px) {
+    padding: 0 16px;
+    font-size: calc(var(--fei-collapse-header-font-size) - 1px);
+  }
+}
+
+/* 优化内容区域样式 */
+.fei-collapse-item__content {
+  will-change: height;
+  background-color: var(--fei-collapse-content-bg-color);
+  overflow: hidden;
+  box-sizing: border-box;
+  font-size: var(--fei-collapse-content-font-size);
+  color: var(--fei-collapse-content-text-color);
+  border-bottom: 1px solid var(--fei-collapse-border-color);
+  padding: 0 20px 25px;
+  /* //这个东西会和transition冲突了 */
+
+  /* 添加上/左右内边距 */
+  line-height: 1.6;
+  @media (max-width: 768px) {
+    padding: 0 16px 20px;
+    font-size: calc(var(--fei-collapse-content-font-size) - 1px);
+  }
+  /* 内容包裹优化 */
+  > *:first-child {
+    margin-top: 15px; /* 首元素顶部间距 */
+  }
+  > *:last-child {
+    margin-bottom: 0; /* 尾元素底部间距 */
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: height 0.2s ease-in-out;
+}
+
+.fei-collapse-item__arrow {
+  font-family: 'iconfont';
+}
+
+.fei-collapse-item__arrow::before {
+  content: "\e610";
+  display: inline-block;
+  font-size: 20px;
+  color: #333;
+  text-align: right;
+  vertical-align: middle;
+  margin-left: auto;
+  transition: all var(--fei-transition-duration-fast) var(--fei-transition-timing-function);
+}
+.fei-change-arrow::before {
+  transform: rotate(90deg);
+  transition: all 0.2s ease-in-out;
+}
+/* arrow的动画效果 */
+
+
+

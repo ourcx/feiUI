@@ -1,0 +1,74 @@
+/* FeiDropdown 组件样式
+  这套样式提供了一个现代、简洁的外观，并处理了悬停、禁用和分割线等状态。
+*/
+
+/* 1. Dropdown 根容器 */
+/* 通常，这个容器只是为了包裹触发器（slot），使其成为一个定位的参考点。*/
+.fei-dropdown {
+  display: inline-block; /* 让容器尺寸适应其内容 */
+  position: relative;
+  font-size: 14px;
+  color: #303133; /* 默认文字颜色，可以根据您的主题调整 */
+}
+
+
+/* 2. 下拉菜单容器 (ul) */
+.fei-dropdown__menu {
+  /* -- 重置样式 -- */
+  list-style: none; /* 移除默认的列表项目符号 */
+  margin: 0;
+  padding: 6px 0; /* 在菜单上下添加一点内边距，让选项和边框有呼吸空间 */
+
+  /* -- 外观样式 -- */
+  background-color: #ffffff;
+  border-radius: 8px; /* 更现代化的圆角 */
+  /* 一个柔和的阴影，使其具有“浮动”感 */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  min-width: 140px; /* 保证菜单有一个合适的最小宽度 */
+  box-sizing: border-box; /* 确保 padding 和 border 不会增加元素的总宽度 */
+}
+
+
+/* 3. 下拉菜单项 (li) */
+.fei-dropdown__item {
+  padding: 8px 15px; /* 舒适的内边距 */
+  cursor: pointer;
+  white-space: nowrap; /* 防止菜单项文字换行 */
+
+  /* 为悬停效果添加平滑的过渡动画 */
+  transition: background-color 0.2s ease, color 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* 4. 菜单项的悬停状态 */
+.fei-dropdown__item:hover {
+  background-color: #f5f7fa; /* 悬停时一个淡淡的背景色 */
+  color: var(--fei-color-primary-dark-4); /* 文本颜色也可以随之改变，增加反馈 */
+}
+
+
+/* 5. 菜单项的禁用状态 */
+.fei-dropdown__item.is-disabled {
+  color: #c0c4cc; /* 禁用状态的文字颜色 */
+  cursor: not-allowed; /* 鼠标样式变为“不可用” */
+  background-color: transparent; /* 确保禁用项没有悬停背景色 */
+}
+
+/* --- 6. 分割线样式 --- */
+
+/* a) 为带有 .is-divided class 的菜单项在其上方添加分割线 */
+.fei-dropdown__item.is-divided {
+  /* 这是一个附加到普通菜单项上的 class，在其上方创建一条线 */
+  border-top: 1px solid #e4e7ed;
+  margin-top: 6px; /* 在分割线上方留出一些空间 */
+  padding-top: 10px; /* 增加上内边距，让文字离分割线远一些 */
+}
+
+/* b) 专用的分割线占位符 (li.divided-placeholder) */
+.divided-placeholder {
+  /* 这是一个独立的 li 元素，只作为一条分割线存在 */
+  height: 1px;
+  margin: 6px 0; /* 上下外边距，用于创建空间 */
+  background-color: #e4e7ed; /* 分割线的颜色 */
+  list-style: none;
+}

@@ -1,0 +1,304 @@
+.fei-tooltip {
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity var(--fei-transition-duration);
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+}
+
+.fei-tooltip {
+  --fei-popover-primary-color: var(--fei-color-primary);
+  --fei-popover-success-color: var(--fei-color-success);
+  --fei-popover-warning-color: var(--fei-color-warning);
+  --fei-popover-danger-color: var(--fei-color-danger);
+  --fei-popover-info-color: var(--fei-color-info);
+
+  --fei-popover-bg-color: var(--fei-bg-color-overlay);
+  --fei-popover-font-size: var(--fei-font-size-base);
+  --fei-popover-border-color: #c03e3e;
+  --fei-popover-padding: 12px;
+  --fei-popover-border-radius: 4px;
+  display: inline-block;
+  position: relative; /* 添加相对定位 */
+}
+
+.fei-tooltip {
+  .fei-tooltip__popper {
+    background: var(--fei-popover-bg-color);
+    border-radius: var(--fei-popover-border-radius);
+    border: 1px solid var(--fei-popover-border-color);
+    padding: var(--fei-popover-padding);
+    color: var(--fei-text-color-regular);
+    line-height: 1.4;
+    text-align: justify;
+    font-size: var(--fei-popover-font-size);
+    box-shadow: var(--fei-box-shadow-light);
+    word-break: break-all;
+    z-index: 1000;
+
+    #arrow,
+    #arrow::before {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--fei-popover-bg-color); /* 添加背景色 */
+      z-index: 1001;
+    }
+
+    #arrow {
+      visibility: hidden;
+    }
+
+    #arrow::before {
+      content: '';
+      visibility: visible;
+      transform: rotate(45deg);
+      border: 1px solid var(--fei-popover-border-color); /* 统一边框设置 */
+      box-sizing: border-box;
+    }
+
+    /* 调整箭头位置 */
+    &[data-popper-placement^='top'] > #arrow {
+      bottom: -5px; /* 微调位置 */
+    }
+
+    &[data-popper-placement^='bottom'] > #arrow {
+      top: -5px; /* 微调位置 */
+    }
+
+    &[data-popper-placement^='left'] > #arrow {
+      right: -5px; /* 微调位置 */
+    }
+
+    &[data-popper-placement^='right'] > #arrow {
+      left: -5px; /* 微调位置 */
+    }
+
+    /* 简化边框逻辑 */
+    &[data-popper-placement^='top'] > #arrow::before {
+      border-top: none;
+      border-left: none;
+    }
+
+    &[data-popper-placement^='bottom'] > #arrow::before {
+      border-bottom: none;
+      border-right: none;
+    }
+
+    &[data-popper-placement^='left'] > #arrow::before {
+      border-left: none;
+      border-bottom: none;
+    }
+
+    &[data-popper-placement^='right'] > #arrow::before {
+      border-right: none;
+      border-top: none;
+    }
+  }
+}
+
+/* 其他状态类型 - 使用相同模式 */
+.fei-tooltip--success {
+  border: 1px solid var(--fei-popover-success-color) !important;
+  background-color: var(--fei-color-success-light-13);
+
+  #arrow::before {
+    border-color: var(--fei-popover-success-color) !important;
+    background: var(--fei-color-success-light-13);
+  }
+
+  /* 调整箭头位置 */
+  &[data-popper-placement^='top'] > #arrow {
+    bottom: -5px; /* 微调位置 */
+  }
+
+  &[data-popper-placement^='bottom'] > #arrow {
+    top: -5px; /* 微调位置 */
+  }
+
+  &[data-popper-placement^='left'] > #arrow {
+    right: -5px; /* 微调位置 */
+  }
+
+  &[data-popper-placement^='right'] > #arrow {
+    left: -5px; /* 微调位置 */
+  }
+
+  /* 简化边框逻辑 */
+  &[data-popper-placement^='top'] > #arrow::before {
+    border-top: none;
+    border-left: none;
+  }
+
+  &[data-popper-placement^='bottom'] > #arrow::before {
+    border-bottom: none;
+    border-right: none;
+  }
+
+  &[data-popper-placement^='left'] > #arrow::before {
+    border-left: none;
+    border-bottom: none;
+  }
+
+  &[data-popper-placement^='right'] > #arrow::before {
+    border-right: none;
+    border-top: none;
+  }
+}
+.fei-tooltip--warning {
+  border: 1px solid var(--fei-popover-warning-color) !important;
+  background-color: var(--fei-color-warning-light-13);
+  #arrow::before {
+    border-color: var(--fei-popover-warning-color) !important;
+    background: var(--fei-color-warning-light-13);
+  }
+
+  /* 调整箭头位置 */
+  &[data-popper-placement^='top'] > #arrow {
+    bottom: -5px; /* 微调位置 */
+  }
+
+  &[data-popper-placement^='bottom'] > #arrow {
+    top: -5px; /* 微调位置 */
+  }
+
+  &[data-popper-placement^='left'] > #arrow {
+    right: -5px; /* 微调位置 */
+  }
+
+  &[data-popper-placement^='right'] > #arrow {
+    left: -5px; /* 微调位置 */
+  }
+
+  /* 简化边框逻辑 */
+  &[data-popper-placement^='top'] > #arrow::before {
+    border-top: none;
+    border-left: none;
+  }
+
+  &[data-popper-placement^='bottom'] > #arrow::before {
+    border-bottom: none;
+    border-right: none;
+  }
+
+  &[data-popper-placement^='left'] > #arrow::before {
+    border-left: none;
+    border-bottom: none;
+  }
+
+  &[data-popper-placement^='right'] > #arrow::before {
+    border-right: none;
+    border-top: none;
+  }
+}
+
+.fei-tooltip--error {
+  border: 1px solid var(--fei-popover-error-color) !important;
+  background-color: var(--fei-color-error-light-13);
+  #arrow::before {
+    border-color: var(--fei-popover-error-color) !important;
+    background: var(--fei-color-error-light-13) !important;
+  }
+  /* 调整箭头位置 */
+  &[data-popper-placement^='top'] > #arrow {
+    bottom: -5px; /* 微调位置 */
+  }
+
+  &[data-popper-placement^='bottom'] > #arrow {
+    top: -5px; /* 微调位置 */
+  }
+
+  &[data-popper-placement^='left'] > #arrow {
+    right: -5px; /* 微调位置 */
+  }
+
+  &[data-popper-placement^='right'] > #arrow {
+    left: -5px; /* 微调位置 */
+  }
+
+  /* 简化边框逻辑 */
+  &[data-popper-placement^='top'] > #arrow::before {
+    border-top: none;
+    border-left: none;
+  }
+
+  &[data-popper-placement^='bottom'] > #arrow::before {
+    border-bottom: none;
+    border-right: none;
+  }
+
+  &[data-popper-placement^='left'] > #arrow::before {
+    border-left: none;
+    border-bottom: none;
+  }
+
+  &[data-popper-placement^='right'] > #arrow::before {
+    border-right: none;
+    border-top: none;
+  }
+}
+
+.fei-tooltip--info {
+  border: 1px solid var(--fei-popover-info-color) !important;
+  background-color: var(--fei-color-info-light-13);
+  #arrow::before {
+    border-color: var(--fei-popover-info-color) !important;
+    background: var(--fei-popover-info-color) !important;
+  }
+  /* 调整箭头位置 */
+  &[data-popper-placement^='top'] > #arrow {
+    bottom: -5px; /* 微调位置 */
+  }
+
+  &[data-popper-placement^='bottom'] > #arrow {
+    top: -5px; /* 微调位置 */
+  }
+
+  &[data-popper-placement^='left'] > #arrow {
+    right: -5px; /* 微调位置 */
+  }
+
+  &[data-popper-placement^='right'] > #arrow {
+    left: -5px; /* 微调位置 */
+  }
+
+  /* 简化边框逻辑 */
+  &[data-popper-placement^='top'] > #arrow::before {
+    border-top: none;
+    border-left: none;
+  }
+
+  &[data-popper-placement^='bottom'] > #arrow::before {
+    border-bottom: none;
+    border-right: none;
+  }
+
+  &[data-popper-placement^='left'] > #arrow::before {
+    border-left: none;
+    border-bottom: none;
+  }
+
+  &[data-popper-placement^='right'] > #arrow::before {
+    border-right: none;
+    border-top: none;
+  }
+}
+
+/* 添加淡入动画 */
+@keyframes tooltip-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fei-tooltip {
+  animation: tooltip-fade 0.2s ease-out;
+}

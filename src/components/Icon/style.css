@@ -1,0 +1,39 @@
+.fei-icon {
+  --fei-icon-color: inherit;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  fill: currentColor;
+  color: var(--fei-icon-color);
+  font-size: inherit;
+  transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  &.is-active:hover {
+    color: var(--fei-icon-hover-color, currentColor);
+    transform: scale(1.05);
+  }
+
+  &.is-active:active {
+    transform: scale(0.95);
+  }
+  &.is-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.fei-icon--primary {
+  --fei-icon-color: var(--fei-color-primary);
+}
+.fei-icon--success {
+  --fei-icon-color: var(--fei-color-success);
+}
+.fei-icon--warning {
+  --fei-icon-color: var(--fei-color-warning);
+}
+.fei-icon--danger {
+  --fei-icon-color: var(--fei-color-danger);
+}
+.fei-icon--info {
+  --fei-icon-color: var(--fei-color-info);
+}

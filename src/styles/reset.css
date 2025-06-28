@@ -1,0 +1,72 @@
+body {
+    font-family: var(--fei-font-family);
+    font-weight: 400;
+    font-size: var(--fei-font-size-base);
+    color: var(--fei-text-color-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+}
+a {
+    color: var(--fei-color-primary);
+    text-decoration: none;
+    &:hover,
+    &:focus {
+        color: var(--fei-color-primary-light-3);
+    }
+    &:active {
+        color: var(--fei-color-primary-dark-2);
+    }
+}
+
+/* 标题基础样式 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fei-font-family);
+  font-weight: var(--fei-font-weight-primary);
+  line-height: 1.6;
+  margin: 0.8em 0 0.4em;
+  color: var(--fei-text-color-primary);
+}
+
+/* 层级定义 */
+h1 {
+  font-size: calc(var(--fei-font-size-extra-large) * 1.714);  /* 14px -> 24px */
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: calc(var(--fei-font-size-extra-large) * 1.429);  /* 14px -> 20px */
+  border-bottom: 1px solid var(--fei-border-color-light);
+  padding-bottom: 0.2em;
+}
+
+h3 {
+  font-size: calc(var(--fei-font-size-large) * 0.888);       /* 18px -> 16px */
+  color: var(--fei-text-color-regular);
+}
+
+h4 {
+  font-size: var(--fei-font-size-medium);                   /* 16px */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+h5 {
+  font-size: var(--fei-font-size-base);                     /* 14px */
+  color: var(--fei-text-color-secondary);
+  opacity: 0.9;
+}
+
+h6 {
+  font-size: var(--fei-font-size-small);                    /* 13px */
+  color: var(--fei-text-color-placeholder);
+  font-weight: 400;
+}
+
+/* 小屏适配 */
+@media (max-width: 768px) {
+  h1 { font-size: calc(var(--fei-font-size-extra-large) * 1.429); } /* 20px */
+  h2 { font-size: var(--fei-font-size-large); }                     /* 18px */
+  h4 { text-transform: none; }
+}

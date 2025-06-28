@@ -1,0 +1,265 @@
+.fei-alert {
+  --fei-alert-padding: 8px 16px; /* 内边距 */
+  --fei-alert-border-radius: 4px; /* 圆角 */
+  --fei-alert-font-size: 14px; /* 基础字体大小 */
+
+  --fei-alert-bg-color: var(--fei-fill-color-blank); /* 默认背景 */
+  --fei-alert-border-color: var(--fei-text-color-regular); /* 默认边框 */
+  --fei-alert-border: 1px solid var(--fei-alert-border-color); /* 边框样式 */
+
+  --fei-alert-text-color: var(--fei-text-color-primary); /* 主文本 */
+  --fei-alert-title-color: var(--fei-text-color-regular); /* 标题文本 */
+  --fei-alert-icon-color: var(--fei-text-color-secondary); /* 图标颜色 */
+
+  --fei-alert-success-bg-color: var(--fei-color-success-light-9);
+  --fei-alert-success-border-color: var(--fei-color-success-light-11);
+  --fei-alert-success-text-color: var(--fei-color-success-dark-2);
+  --fei-alert-success-icon-color: var(--fei-color-success-dark-2);
+
+  --fei-alert-warning-bg-color: var(--fei-color-warning-light-9);
+  --fei-alert-warning-border-color: var(--fei-color-warning-light-11);
+  --fei-alert-warning-text-color: var(--fei-color-warning-dark-2);
+  --fei-alert-warning-icon-color: var(--fei-color-warning-dark-2);
+
+  --fei-alert-error-bg-color: var(--fei-color-danger-light-9);
+  --fei-alert-error-border-color: var(--fei-color-danger-light-11);
+  --fei-alert-error-text-color: var(--fei-color-danger-dark-2);
+  --fei-alert-error-icon-color: var(--fei-color-danger-dark-2);
+
+  --fei-alert-info-bg-color: var(--fei-color-info-light-9);
+  --fei-alert-info-border-color: var(--fei-color-info-light-11);
+  --fei-alert-info-text-color: var(--fei-color-info-dark-2);
+  --fei-alert-info-icon-color: var(--fei-color-info-dark-2);
+
+  /* primary */
+  --fei-alert-primary-bg-color: var(--fei-color-primary-light-9);
+  --fei-alert-primary-border-color: var(--fei-color-primary-light-11);
+  --fei-alert-primary-text-color: var(--fei-color-primary-dark-2);
+  --fei-alert-primary-icon-color: var(--fei-color-primary-dark-2);
+
+  /* 关闭按钮 */
+  --fei-alert-close-size: 16px; /* 关闭按钮大小 */
+  --fei-alert-close-color: var(--fei-text-color-placeholder); /* 默认颜色 */
+  --fei-alert-close-hover-color: var(--fei-text-color-secondary); /* 悬停颜色 */
+
+  /* 禁用状态 */
+  --fei-alert-disabled-bg-color: var(--fei-disabled-bg-color);
+  --fei-alert-disabled-text-color: var(--fei-disabled-text-color);
+  --fei-alert-disabled-border-color: var(--fei-border-color-lighter);
+
+  /* light和bark */
+  --fei-alert-light-bg-color: var(--fei-fill-color-blank);
+  --fei-alert-light-text-color: var(--fei-text-color-primary);
+  --fei-alert-light-border-color: var(--fei-border-color-lighter);
+  --fei-alert-dark-bg-color: var(--fei-fill-color-dark);
+  --fei-alert-dark-text-color: var(--fei-text-color-primary);
+  --fei-alert-dark-border-color: var(--fei-border-color-darker);
+  /* ? */
+
+  /* 带图标 Alert 的特定变量 */
+  --fei-alert-icon-size: 20px; /* 图标大小 */
+  --fei-alert-icon-margin: 8px; /* 图标外边距 */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: var(--fei-alert-bg-color);
+  color: var(--fei-alert-title-color);
+  border: var(--fei-alert-border);
+}
+
+.fei-alert--success {
+  background-color: var(--fei-alert-success-bg-color);
+  border-color: var(--fei-alert-success-border-color);
+  color: var(--fei-alert-success-text-color);
+}
+
+.fei-alert--warning {
+  background-color: var(--fei-alert-warning-bg-color);
+  border-color: var(--fei-alert-warning-border-color);
+  color: var(--fei-alert-warning-text-color);
+}
+
+.fei-alert--error {
+  background-color: var(--fei-alert-error-bg-color);
+  border-color: var(--fei-alert-error-border-color);
+  color: var(--fei-alert-error-text-color);
+}
+
+.fei-alert--info {
+  background-color: var(--fei-alert-info-bg-color);
+  border-color: var(--fei-alert-info-border-color);
+  color: var(--fei-alert-info-text-color);
+}
+
+.fei-alert--primary {
+  background-color: var(--fei-alert-primary-bg-color);
+  border-color: var(--fei-alert-primary-border-color);
+  color: var(--fei-alert-primary-text-color);
+}
+
+.fei-alert-effect--light-primary {
+  background-color: var(--fei-color-primary-light-13);
+  color: var(--fei-color-primary-dark-4); /* 使用更深文字色增强对比 */
+  border: 1px solid var(--fei-color-primary-light-11);
+}
+
+.fei-alert-effect--light-success {
+  background-color: var(--fei-color-success-light-13);
+  color: var(--fei-color-success-dark-4);
+  border: 1px solid var(--fei-color-success-light-11);
+}
+
+.fei-alert-effect--light-warning {
+  background-color: var(--fei-color-warning-light-13);
+  color: var(--fei-color-warning-dark-4);
+  border: 1px solid var(--fei-color-warning-light-11);
+}
+
+.fei-alert-effect--light-danger {
+  background-color: var(--fei-color-danger-light-13);
+  color: var(--fei-color-danger-dark-4);
+  border: 1px solid var(--fei-color-danger-light-11);
+}
+
+.fei-alert-effect--light-info {
+  background-color: var(--fei-color-info-light-13);
+  color: var(--fei-color-info-dark-4);
+  border: 1px solid var(--fei-color-info-light-11);
+}
+
+/* Dark主题使用新的深色背景 */
+.fei-alert-effect--dark-primary {
+  background-color: var(--fei-color-primary-dark-3); /* 使用新的深色背景 */
+  color: #ffffff;
+  border: 1px solid var(--fei-color-primary-light-3);
+}
+
+.fei-alert-effect--dark-success {
+  background-color: var(--fei-color-success-dark-3);
+  color: #ffffff;
+  border: 1px solid var(--fei-color-success-light-3);
+}
+
+.fei-alert-effect--dark-warning {
+  background-color: var(--fei-color-warning-dark-3);
+  color: #ffffff;
+  border: 1px solid var(--fei-color-warning-light-3);
+}
+
+.fei-alert-effect--dark-danger {
+  background-color: var(--fei-color-danger-dark-3);
+  color: #ffffff;
+  border: 1px solid var(--fei-color-danger-light-3);
+}
+
+.fei-alert-effect--dark-info {
+  background-color: var(--fei-color-info-dark-3);
+  color: #ffffff;
+  border: 1px solid var(--fei-color-info-light-3);
+}
+
+/* 新增超深色主题 */
+.fei-alert-effect--xdark-primary {
+  background-color: var(--fei-color-primary-dark-4);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--fei-color-primary-dark-3);
+}
+
+.fei-alert-effect--xdark-success {
+  background-color: var(--fei-color-success-dark-4);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--fei-color-success-dark-3);
+}
+
+.fei-alert-effect--xdark-warning {
+  background-color: var(--fei-color-warning-dark-4);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--fei-color-warning-dark-3);
+}
+
+.fei-alert-effect--xdark-danger {
+  background-color: var(--fei-color-danger-dark-4);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--fei-color-danger-dark-3);
+}
+
+.fei-alert-effect--xdark-info {
+  background-color: var(--fei-color-info-dark-4);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--fei-color-info-dark-3);
+}
+
+.fei-alert__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.fei-alert__actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 10px;
+  width: auto;
+}
+.fei-alert__close {
+  cursor: pointer;
+  display: inline-flex; /* 关键：保持内容在一行 */
+  width: auto;
+  &:hover {
+    color: var(--fei-alert-close-hover-color);
+    transition: color 0.3s;
+  }
+  width: var(--fei-alert-close-size);
+  height: var(--fei-alert-close-size);
+  align-items: center;
+  justify-content: center;
+  transform-origin: right center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.close-text {
+  white-space: nowrap; /* 防止文本换行 */
+  font-size: 0.9em; /* 比主文本稍小 */
+  margin-right: 15px;
+}
+
+.fei-alert--disIcon{
+  .icon-close{
+    display: none; /* 隐藏默认的关闭图标 */
+  }
+  .close-text{
+    display: none;
+  }
+  .fei-alert__close {
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+  }
+    &,
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+      user-select: none;
+      cursor: not-allowed;
+    }
+}
+
+/* 定义过渡动画 */
+.expand-width-enter-active,
+.expand-width-leave-active {
+  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.expand-width-enter-from,
+.expand-width-leave-to {
+  width: 0 !important;
+  opacity: 0;
+}
