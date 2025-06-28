@@ -1,68 +1,107 @@
-import type { MessageProps } from './type'
-import { render, h,shallowReactive } from 'vue'
-import MessageConstructor from './Messaage.vue'
-// import { create } from 'some-module' // Uncomment and specify the module if needed, or remove this line if not used
-import type { CreateMessageProps, MessageContext } from './type'
-import useZindex from '@/hook/useZindex'
+import { render, h, shallowReactive, nextTick } from 'vue';
+import MessageConstructor from './Messaage.vue';
+import type { CreateMessageProps, MessageContext } from './type';
+import useZindex from '@/hook/useZindex';
 
+const instances: MessageContext[] = shallowReactive([]);
+let seed = 1;
 
-const instances: MessageContext[] =shallowReactive([])
-//优化性能，浅层响应式对象
-let seed = 1
-export const createMessage = (props: CreateMessageProps) => {
-  const {nextZIndex} = useZindex()
-  const id = `message_${seed++}`
-  const container = document.createElement('div')
+// 全局消息位置更新函数
+const updateMessagePositions = async () => {
+  await nextTick();
 
-  //要清除组件什么的用render(null, container)
-  const destory = () => {
-    const idx = instances.findIndex(item => item.id === id)
-    if (idx === -1) return
-    instances.splice(idx, 1)
-    render(null, container)
-  }
-  const manualDestroy = () => {
-    //手动删除，其实就是手动调节expose传出来的值
-    const  instance = instances.find(item => item.id === id)
-    if(instance){
-      instance.vm.exposed!.visible.value = false
+  // 按顺序计算每个消息框的位置
+  let cumulativeOffset = 0;
+
+  for (const instance of instances) {
+    if (instance.vm.exposed) {
+      try {
+        // 更新当前消息框的顶部位置
+        instance.vm.exposed.topOffset.value = cumulativeOffset;
+
+        // 累积偏移量（高度 + 间隔）
+        cumulativeOffset += (instance.vm.exposed.height.value || 0) + 80;
+      } catch (error) {
+        console.error(`更新消息位置时出错:`, error);
+      }
     }
   }
+};
+
+export const createMessage = (props: CreateMessageProps) => {
+  const { nextZIndex } = useZindex();
+  const id = `message_${seed++}`;
+  const container = document.createElement('div');
+
+  const destroy = async () => {
+    const idx = instances.findIndex(item => item.id === id);
+    if (idx === -1) return;
+
+    try {
+      // 1. 从实例数组中移除当前实例
+      instances.splice(idx, 1);
+
+      // 2. 更新剩余消息框的位置（等待 DOM 更新完成）
+      await nextTick();
+      await updateMessagePositions();
+
+      // 3. 从 DOM 中移除元素
+      if (container.firstElementChild && document.body.contains(container.firstElementChild)) {
+        document.body.removeChild(container.firstElementChild);
+      }
+
+      // 4. 卸载组件
+      render(null, container);
+    } catch (error) {
+      console.error(`销毁消息框 ${id} 时出错:`, error);
+    }
+  };
+
+  const manualDestroy = async () => {
+    const instance = instances.find(item => item.id === id);
+    if (instance && instance.vm.exposed) {
+      try {
+        // 隐藏消息框
+        instance.vm.exposed.visible.value = false;
+
+        // 等待动画完成后再完全销毁
+        setTimeout(() => destroy(), 300);
+      } catch (error) {
+        console.error(`手动销毁消息框 ${id} 时出错:`, error);
+      }
+    }
+  };
+
   const newProps = {
     ...props,
     id,
-    zIndex:nextZIndex(),
-    onDestoty: destory,
+    zIndex: nextZIndex(),
+    onDestory: destroy
+  };
 
-  }
-  const vnode = h(MessageConstructor, newProps)
-  render(vnode, container)
-  document.body.appendChild(container.firstElementChild!)
-  const vm = vnode.component!
+  // 创建虚拟节点并渲染
+  const vnode = h(MessageConstructor, newProps);
+  render(vnode, container);
+
+  // 添加到 DOM
+  document.body.appendChild(container.firstElementChild!);
+
+  const vm = vnode.component!;
   const instance = {
-    id: id,
+    id,
     vnode,
     props: newProps,
     vm,
-    destory:manualDestroy
-  }
+    destroy: manualDestroy
+  };
 
-  instances.push(instance)
-  //非空标识符
-  return instance
-}
+  // 添加到实例数组
+  instances.push(instance);
 
-export const getLastInstance = () => {
-  return instances.at(-1)
-  //返回最后一个参数
-}
+  // 更新所有消息框的位置
+  updateMessagePositions();
 
-export const getLastBottomOffset = (id: string) => {
-  const idx = instances.findIndex(item => item.id === id)
-  if (idx <= 0) {
-    return 0
-  } else {
-    const prev = instances[idx - 1]
-    return prev.vm.exposed!.bottomOffset.value
-  }
-}
+  return instance;
+};
+
+// 其他辅助函数保持不变...

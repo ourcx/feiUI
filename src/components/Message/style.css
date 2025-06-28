@@ -1,0 +1,93 @@
+.fei-message {
+    --fei-message-bg-color: var(--fei-fill-color-lighter);
+    --fei-message-border-color: var(--fei-border-color-lighter);
+    --fei-message-padding: 15px 19px;
+    --fei-message-Close-size: 16px;
+    --fei-message-Close-icon-color: var(--fei-text-color-placeholder);
+    --fei-message-Close-hover-color: var(--fei-text-color-secondary);
+}
+
+.fei-message {
+    width: fit-content;
+    max-width: calc(100% - 32px);
+    box-sizing: border-box;
+    border-radius: var(--fei-border-radius-base);
+    border-width: var(--fei-border-width);
+    border-style: var(--fei-border-style);
+    border-color: var(--fei-message-border-color);
+    position: fixed;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    background-color: var(--fei-message-bg-color);
+    padding: var(--fei-message-padding);
+    display: flex;
+    align-items: center;
+    transition: top var( --fei-transition-duration);
+    .fei-message__content{
+      color:var(--fei-message-text-color);
+      overflow-wrap: anywhere;
+    }
+    &.is-close .fei-message__content{
+      padding-right:30px;
+    }
+    .fei-message__close{
+      display: flex;
+      align-items: center;
+    }
+    .fei-message__close svg{
+      cursor: pointer;
+    }
+}
+
+/* 添加定位样式 */
+
+.fei-message__close {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.fei-message__close svg {
+  color: var(--fei-message-Close-icon-color);
+  transition: color 0.3s;
+  font-size: var(--fei-message-Close-size);
+}
+
+.fei-message__close svg:hover {
+  color: var(--fei-message-Close-hover-color);
+}
+
+
+
+/* 成功类型样式 */
+.fei-message--success {
+  --fei-message-bg-color: var(--fei-color-success-light-9);
+  --fei-message-border-color: var(--fei-color-success-light-8);
+  --fei-message-text-color: var(--fei-color-success);
+}
+.fei-message--success .fei-message__close {
+  --fei-icon-color: var(--fei-color-success);
+}
+
+/* 警告类型样式 */
+.fei-message--warning {
+  --fei-message-bg-color: var(--fei-color-warning-light-9);
+  --fei-message-border-color: var(--fei-color-warning-light-8);
+  --fei-message-text-color: var(--fei-color-warning);
+}
+.fei-message--warning .fei-message__close {
+  --fei-icon-color: var(--fei-color-warning);
+}
+
+/* 危险类型样式 */
+.fei-message--danger {
+  --fei-message-bg-color: var(--fei-color-danger-light-9);
+  --fei-message-border-color: var(--fei-color-danger-light-8);
+  --fei-message-text-color: var(--fei-color-danger);
+}
+.fei-message--danger .fei-message__close {
+  --fei-icon-color: var(--fei-color-danger);
+}

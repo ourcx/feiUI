@@ -52,7 +52,7 @@ onMounted(()=>{
 
 
   setTimeout(()=>{
-    instance.destory()
+    instance.destroy()
   },2000)
 })
 
