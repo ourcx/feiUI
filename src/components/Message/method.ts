@@ -20,7 +20,7 @@ const updateMessagePositions = async () => {
         instance.vm.exposed.topOffset.value = cumulativeOffset;
 
         // 累积偏移量（高度 + 间隔）
-        cumulativeOffset += (instance.vm.exposed.height.value || 0) + 80;
+        cumulativeOffset += (instance.vm.exposed.height.value || 10) + 70;
       } catch (error) {
         console.error(`更新消息位置时出错:`, error);
       }

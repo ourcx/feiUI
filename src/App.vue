@@ -43,11 +43,13 @@ onMounted(()=>{
   })
     createMessage({
     message: "hello worlaaaaaaaaaaaaaaaaaaad",
-    duration:0
+    duration:0,
+    type:'success'
   })
   createMessage({
     message: "hello world aadfavfbdvd",
     duration:0,
+    type:'danger'
   })
 
 

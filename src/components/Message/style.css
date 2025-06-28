@@ -23,7 +23,7 @@
     padding: var(--fei-message-padding);
     display: flex;
     align-items: center;
-    transition: top var( --fei-transition-duration);
+    transition: top var( --fei-transition-duration),opacity var( --fei-transition-duration),transform var(--fei-transition-duration);
     .fei-message__content{
       color:var(--fei-message-text-color);
       overflow-wrap: anywhere;
@@ -90,4 +90,24 @@
 }
 .fei-message--danger .fei-message__close {
   --fei-icon-color: var(--fei-color-danger);
+}
+
+
+
+
+
+.fei-message .fade-up-enter-from,
+.fei-message .fade-up-leave-to {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.fei-message .fade-up-enter-active,
+.fei-message .fade-up-leave-active {
+  transition: all var(--fei-transition-duration) ease;
+}
+.fei-message .fade-up-enter-to,
+.fei-message .fade-up-leave-from {
+  opacity: 1;
+  transform: translateY(0);
 }

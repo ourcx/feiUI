@@ -9,12 +9,13 @@ export interface MessageProps{
   message?: string|VNode;
   duration?: number;
   showClose?: boolean;
-  type?:'success'|'warning'|'info'|'error';
+  type?:'success'|'warning'|'info'|'danger';
   onDestory?: () => void;
   id:string;
   offset?: number;
   zIndex?: number;
   destory?: () => void;
+  transitionName?: string;
 }
 
 export interface MessageContext {
