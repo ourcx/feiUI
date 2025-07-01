@@ -4,7 +4,7 @@ import Collapse from "./components/Collapse/Collapse.vue";
 import Item from "./components/Collapse/CollapseItem.vue";
 import Icon from "./components/Icon/Icon.vue";
 import Alert from "./components/Alert/Alert.vue";
-import { ref,onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import Tooltip from "./components/Tooltip/Tooltip.vue";
 import type { TooltipInstance } from "./components/Tooltip/types";
 import type { Options } from "@popperjs/core";
@@ -12,8 +12,7 @@ import Dropdown from "./components/Dropdown/Dropdown.vue";
 import type { MenuOption } from "./components/Dropdown/types";
 import { createMessage } from "./components/Message/method";
 import Input from "./components/Input/Input.vue";
-
-
+import Code from "./components/Code/Code.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -38,44 +37,32 @@ const inlineConsole = (label: string, key: MenuOption) => {
   console.log(label, key);
 };
 
-
-
-onMounted(()=>{
+onMounted(() => {
   const instance = createMessage({
     message: "hello world",
-    duration:0
-  })
-    createMessage({
+    duration: 0,
+  });
+  createMessage({
     message: "hello worlaaaaaaaaaaaaaaaaaaad",
-    duration:0,
-    type:'success'
-  })
+    duration: 0,
+    type: "success",
+  });
   createMessage({
     message: "hello world aadfavfbdvd",
-    duration:0,
-    type:'danger'
-  })
+    duration: 0,
+    type: "danger",
+  });
 
+  setTimeout(() => {
+    instance.destroy();
+  }, 2000);
+});
 
-  setTimeout(()=>{
-    instance.destroy()
-  },2000)
-})
+const input = ref("xxxxxxxxxxxxx");
 
-
-
-const input = ref('xxxxxxxxxxxxx')
-
-const change = (e:any) => {
-  console.log(e)
-}
-
-
-
-
-
-
-
+const change = (e: any) => {
+  console.log(e);
+};
 </script>
 
 <template>
@@ -211,19 +198,30 @@ const change = (e:any) => {
       placement="bottom"
       :trigger="trigger"
       @visible-change="(key:boolean) => inlineConsole('ssss', key as any)"
-      @select="key => inlineConsole('ssss1111', key)"
+      @select="(key) => inlineConsole('ssss1111', key)"
     >
       <div>
         <Button type="primary" @click="trigger = 'click'" width="100px">click</Button>
       </div>
     </Dropdown>
-    <Input type="text" v-model="input" clearable/>
-    <Input type="text" v-model="input" show-password @change="change($event)"/>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <Input type="text" v-model="input" clearable />
+    <Input type="text" v-model="input" show-password @change="change($event)" />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div contenteditable="true">
+      这是一个可编辑的区域。使用contenteditable属性来启用编辑框。
+    </div>
+    <br />
+    <Code code="javascript"  initialCode="const = 1;" editable :copyable="false" />
+    <br />
+    <br />
+    <br />
+    <Code code="javascript"  initialCode="const = 1;" editable theme="vitesse-light" type="primary"/>
+    <br />
+    <br />
   </main>
 </template>
 

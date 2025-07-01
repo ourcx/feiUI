@@ -1,0 +1,124 @@
+.fei-code {
+  --code-font-size: var(--fei-font-size-base); /* 默认字体大小 */
+  --code-padding: 1rem; /* 默认内边距 */
+  --code-radius: var(--fei-border-radius-base); /* 默认圆角 */
+  --code-bg-color: var(--fei-fill-color-darker);
+  --code-text-color: var(--fei-text-color-primary);
+  --code-border-color: var(--fei-border-color-lighter);
+  --code-header-bg-color: var(--fei-fill-color-dark);
+  --code-header-text-color: var(--fei-text-color-regular);
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: var(--code-bg-color);
+  color: var(--code-text-color);
+  border-radius: 4px;
+  position: relative;
+
+  .fei-code__header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline; /* 基线对齐 */
+    justify-content: space-between; /* 子项两端对齐并间隔开 */
+    width: 100%;
+    height: 22px;
+    background-color: var(--code-header-bg-color);
+    border-radius: 4px 4px 0 0;
+    user-select: none;
+
+    .fei-code__header_left,
+    .fei-code__header_center,
+    .fei-code__header_right {
+      font-size: 12px;
+      color: var(--code-header-text-color);
+      padding: 0 8px;
+      line-height: 22px;
+      font-weight: 500;
+    }
+  }
+
+  .actions {
+    position: absolute;
+    right: 3%;
+    top: 25%;
+  }
+
+  .fei-code__body {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    .edit-mode {
+      min-height: 100px;
+      .code-textarea {
+        /* --- 基础样式 --- */
+        width: 100%;
+        min-height: 100px;
+        border: 1px solid var(--fei-border-color);
+        border-radius: var(--fei-border-radius-base);
+        padding: 1rem;
+        box-sizing: border-box;
+        outline: none;
+        font-family: monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        transition: border-color var(--fei-transition-duration-fast),
+          background-color var(--fei-transition-duration-fast);
+        resize: none;
+        background-color: var(--textarea-bg-color, var(--fei-fill-color-light));
+        color: var(--fei-text-color-primary); /* 默认文字颜色 */
+      }
+
+      /* 聚焦时的样式 */
+      .code-textarea:focus {
+        border-color: var(--fei-color-primary);
+      }
+
+      .code-textarea--dark {
+        --textarea-bg-color: #222; /* 深色背景 */
+        color: #eee; /* 亮色文字 */
+        caret-color: var(--fei-color-primary); /* 亮色光标 */
+        border-color: #444; /* 深色边框 */
+        padding: 0;
+      }
+      .code-textarea--dark:focus {
+        border-color: var(--fei-color-primary);
+      }
+
+      .code-textarea--light {
+        --textarea-bg-color: transparent;
+        color: #000;
+        caret-color: var(--fei-text-color-primary);
+        border: none; /* 透明模式通常不需要边框 */
+        padding: 0; /* 内边距也可能需要与底层同步 */
+      }
+    }
+  }
+}
+
+.shiki {
+  min-height: 100px;
+}
+
+.icon-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.fei-code.fei-code--primary {
+  --code-bg-color-primary: var(--fei-color-primary-light-13);
+  --code-text-color-primary: var(--fei-color-primary-dark-2);
+  --code-header-bg-color-primary: var(--fei-color-primary-light-11);
+  --code-header-text-color-primary: var(--fei-color-primary);
+
+  background-color: var(--code-bg-color-primary);
+  color: var(--code-text-color-primary);
+
+  & .fei-code__header {
+    background-color: var(--code-header-bg-color-primary);
+    color: var(--code-header-text-color-primary);
+  }
+}

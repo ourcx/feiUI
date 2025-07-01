@@ -7,6 +7,7 @@
   fill: currentColor;
   color: var(--fei-icon-color);
   font-size: inherit;
+  margin: 0 !important;
   transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
   &.is-active:hover {
     color: var(--fei-icon-hover-color, currentColor);
