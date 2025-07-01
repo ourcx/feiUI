@@ -11,6 +11,10 @@ import type { Options } from "@popperjs/core";
 import Dropdown from "./components/Dropdown/Dropdown.vue";
 import type { MenuOption } from "./components/Dropdown/types";
 import { createMessage } from "./components/Message/method";
+import Input from "./components/Input/Input.vue";
+
+
+
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
 const trigger = ref<any>("click");
@@ -60,9 +64,11 @@ onMounted(()=>{
 
 
 
+const input = ref('xxxxxxxxxxxxx')
 
-
-
+const change = (e:any) => {
+  console.log(e)
+}
 
 
 
@@ -211,6 +217,13 @@ onMounted(()=>{
         <Button type="primary" @click="trigger = 'click'" width="100px">click</Button>
       </div>
     </Dropdown>
+    <Input type="text" v-model="input" clearable/>
+    <Input type="text" v-model="input" show-password @change="change($event)"/>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
   </main>
 </template>
 

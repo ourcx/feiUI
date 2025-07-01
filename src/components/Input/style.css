@@ -1,0 +1,221 @@
+/* 导入你的变量文件，如果它是单独的文件 */
+/* @import 'path/to/your/variables.css'; */
+
+/* --- 通用样式 --- */
+.fei-input,
+.fei-input__wrapper,
+.fei-textarea__wrapper {
+  font-size: var(--fei-font-size-base);
+  font-family: var(--fei-font-family);
+}
+
+/* --- 容器基础样式 --- */
+.fei-input {
+  --fei-input-text-color: var(--fei-text-color-regular);
+  --fei-input-border-color: var(--fei-border-color);
+  --fei-input-bg-color: var(--fei-bg-color);
+  --fei-input-placeholder-color: var(--fei-text-color-placeholder);
+
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  line-height: 1;
+  color: var(--fei-input-text-color);
+  background-color: var(--fei-input-bg-color);
+  box-sizing: border-box;
+
+  // 悬浮状态
+  &:hover {
+    --fei-input-border-color: var(--fei-border-color-hover);
+  }
+
+  // 聚焦状态
+  &.is-focus {
+    --fei-input-border-color: var(--fei-color-primary);
+  }
+
+  // 禁用状态
+  &.is-disabled {
+    cursor: not-allowed;
+    --fei-input-bg-color: var(--fei-disabled-bg-color);
+    --fei-input-border-color: var(--fei-disabled-border-color);
+    --fei-input-text-color: var(--fei-disabled-text-color);
+    --fei-input-placeholder-color: var(--fei-text-color-disabled);
+  }
+}
+
+/* --- Input 和 Textarea 的包装器 --- */
+.fei-input__wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 11px;
+  background-color: var(--fei-input-bg-color);
+  border-radius: var(--fei-border-radius-base);
+  transition: background-color var(--fei-transition-duration) var(--fei-transition-timing-function),
+              box-shadow var(--fei-transition-duration) var(--fei-transition-timing-function);
+  box-shadow: 0 0 0 1px var(--fei-input-border-color) inset;
+
+  .fei-input.is-focus & {
+    box-shadow: 0 0 0 1px var(--fei-color-primary) inset;
+  }
+
+  .fei-input.is-disabled & {
+    background-color: var(--fei-disabled-bg-color);
+    box-shadow: 0 0 0 1px var(--fei-disabled-border-color) inset;
+  }
+}
+
+/* --- 核心输入框 --- */
+.fei-input__inner {
+  width: 100%;
+  flex-grow: 1;
+  -webkit-appearance: none;
+  color: var(--fei-input-text-color);
+  font-size: inherit;
+  height: 2rem; /* 根据需要调整 */
+  line-height: inherit;
+  padding: 0;
+  outline: none;
+  border: none;
+  background: none;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: var(--fei-input-placeholder-color);
+  }
+
+  &:disabled {
+    color: var(--fei-disabled-text-color);
+    cursor: not-allowed;
+  }
+}
+
+/* --- Textarea 样式 --- */
+.fei-textarea__wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 5px 11px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  color: var(--fei-input-text-color);
+  background-color: var(--fei-input-bg-color);
+  border: var(--fei-border-width) var(--fei-border-style) var(--fei-input-border-color);
+  border-radius: var(--fei-border-radius-base);
+  transition: border-color var(--fei-transition-duration-fast) var(--fei-transition-timing-function);
+  resize: vertical;
+
+  &::placeholder {
+    color: var(--fei-input-placeholder-color);
+  }
+
+  &:hover {
+    border-color: var(--fei-border-color-hover);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--fei-color-primary);
+  }
+
+  &[disabled] {
+    background-color: var(--fei-disabled-bg-color);
+    border-color: var(--fei-disabled-border-color);
+    color: var(--fei-disabled-text-color);
+    cursor: not-allowed;
+  }
+}
+
+/* --- 前置和后置插槽 --- */
+.fei-input__prepend,
+.fei-input__append {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--fei-fill-color-light);
+  color: var(--fei-text-color-secondary);
+  border: var(--fei-border);
+  padding: 0 20px;
+  white-space: nowrap;
+}
+
+.fei-input.is-prepend .fei-input__wrapper {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.fei-input__prepend {
+  border-right: none;
+  border-top-left-radius: var(--fei-border-radius-base);
+  border-bottom-left-radius: var(--fei-border-radius-base);
+}
+
+.fei-input.is-append .fei-input__wrapper {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.fei-input__append {
+  border-left: none;
+  border-top-right-radius: var(--fei-border-radius-base);
+  border-bottom-right-radius: var(--fei-border-radius-base);
+}
+
+/* --- 前缀和后缀 --- */
+.fei-input__prefix,
+.fei-input__suffix {
+  display: inline-flex;
+  align-items: center;
+  color: var(--fei-input-text-color);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.fei-input__prefix {
+  margin-right: 5px;
+}
+
+.fei-input__suffix {
+  margin-left: 5px;
+}
+
+/* --- 后缀中的图标 --- */
+.fei-input__suffix .fei-icon {
+  cursor: pointer;
+  color: var(--fei-text-color-placeholder);
+  transition: color var(--fei-transition-duration-fast);
+
+  &:hover {
+    color: var(--fei-text-color-secondary);
+  }
+}
+
+.fei-input__clear,
+.fei-input__password {
+  font-size: 1.2em; /* 图标稍大一些 */
+}
+
+/* 清除按钮：仅在有内容且非禁用时显示 */
+.fei-input__clear {
+  display: none;
+}
+.fei-input:not(.is-disabled):hover .fei-input__clear {
+  display: inline-flex;
+}
+
+
+/* --- 尺寸变体 --- */
+.fei-input--large {
+  font-size: var(--fei-font-size-large);
+  .fei-input__inner {
+    height: 2.5rem;
+  }
+}
+
+.fei-input--small {
+  font-size: var(--fei-font-size-small);
+  .fei-input__inner {
+    height: 1.75rem;
+  }
+}
