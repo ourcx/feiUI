@@ -1,0 +1,35 @@
+/* Shiki 的魔法！
+  因为 Shiki 生成的是带内联 style 的 HTML (`<span style="color: #...">`)，
+  所以我们不再需要为代码高亮引入任何 CSS 主题文件了！
+  只需要保留 Markdown 的基础排版样式即可。
+*/
+
+.fei-markdown{
+  height: auto;
+  overflow: auto;
+}
+
+
+/* Shiki 生成的 <pre> 标签会自带 class="shiki" 和背景色，非常方便 */
+.fei-markdown-body :deep(pre.shiki) {
+  padding: 1em;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.fei-markdown-body {
+  line-height: 1.6;
+}
+
+.fei-markdown-body h1,
+.fei-markdown-body h2 {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 0.3em;
+}
+
+.fei-markdown-body blockquote {
+  color: #666;
+  border-left: 0.25em solid #dfe2e5;
+  padding: 0 1em;
+  margin-left: 0;
+}

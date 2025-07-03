@@ -1,34 +1,81 @@
-.fei-divider{
-  --divider-color: var(--fei-text-color-secondary);
 
+.fei-divider {
+  --divider-color: #d9d9d9;
+}
 
+.fei-divider:not(.is-vertical) {
+  display: flex;
+  align-items: center;
   width: 100%;
-  height: 2px;
-  border-bottom: 1px solid var(--divider-color);
-  margin: 20px 0;
+  margin: 24px 0;
+  color: #262626;
+  font-size: 16px;
+  line-height: 1.5715;
+}
 
-
-  .fei-divider-line--dashed{
-    border-bottom: 1px dashed var(--divider-color);
-    margin: 0;
-    height: auto;
-    width: 100%;
-    text-align: center;
-  }
-
-  .fei-divider-vertical{
-    /* 垂直 */
-    border-bottom: none;
-    border-left: 1px solid var(--divider-color);
-    height: 100%;
-    width: 2px;
-    margin: 0 20px;
-    text-align: center;
-    line-height: 1;
-    vertical-align: middle;
-    display: inline-block;
-    transform: translateY(-50%);
-  }
+.fei-divider:not(.is-vertical)::before,
+.fei-divider:not(.is-vertical)::after {
+  content: '';
+  flex-grow: 1; /* flex-grow 是实现此效果的关键 */
+  border-top: 1px solid var(--divider-color);
+  transform: translateY(50%); /* 确保线条在垂直方向居中 */
 }
 
 
+.fei-divider__text {
+  flex-shrink: 0;
+  padding: 0 1em;
+}
+
+
+.fei-divider:not(:has(.fei-divider__text))::before {
+  margin-right: -1em;
+}
+.fei-divider:not(:has(.fei-divider__text))::after {
+  margin-left: -1em;
+}
+
+
+/* 居中 (默认) */
+.fei-divider--center::before,
+.fei-divider--center::after {
+  flex-grow: 1;
+}
+
+/* 靠左 */
+.fei-divider--left::before {
+  flex-grow: 0.05 !important; /* 左侧线条长度比例 */
+}
+.fei-divider--left::after {
+  flex-grow: 1 !important;
+}
+
+/* 靠右 */
+.fei-divider--right::before {
+  flex-grow: 1 !important;
+}
+.fei-divider--right::after {
+  flex-grow: 0.05 !important; /* 右侧线条长度比例 */
+}
+
+
+/* --- 虚线样式 --- */
+.fei-divider.is-dashed::before,
+.fei-divider.is-dashed::after {
+  border-style: dashed;
+}
+
+
+/* --- 垂直分割线样式 --- */
+.fei-divider.is-vertical {
+  display: inline-block;
+  width: 1px;
+  height: 0.9em;
+  margin: 0 8px;
+  vertical-align: middle;
+  border-left: 1px solid var(--divider-color);
+}
+
+.fei-divider.is-vertical.is-dashed {
+    border-style: dashed;
+}

@@ -15,7 +15,7 @@ import Input from "./components/Input/Input.vue";
 import Code from "./components/Code/Code.vue";
 import Switch from "./components/Switch/Switch.vue";
 import Divider from "./components/Divider/Divider.vue";
-
+import Markdown from "./components/Markdown/Markdown.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -230,7 +230,15 @@ const change = (e: any) => {
     <br>
     <br>
     <br>
-    <Divider></Divider>
+    <Divider orientation="right">你好</Divider>
+    <Divider orientation="left">fei组件库</Divider>
+    <Divider vertical></Divider>
+
+    <br>
+    <br>
+    <Markdown
+      src="../README.md"
+    />  
   </main>
 </template>
 

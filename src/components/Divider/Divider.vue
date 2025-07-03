@@ -1,15 +1,19 @@
 <template>
-  <div class="fei-divider">
-    <div class="fei-divider-line" v-if="!vertical" :class="{'fei-divider-line--dashed': dashed}">
-      <div :class="{ [`fei-divider-line--${orientation}`]: orientation,  }">
-        <slot></slot>
-      </div>
-    </div>
-    <div class="fei-divider-vertical" v-if="vertical"></div>
+  <div
+    :class="[
+      'fei-divider',
+      `fei-divider--${orientation}`,
+      { 'is-dashed': dashed },
+      { 'is-vertical': vertical }
+    ]"
+    @click="handleClick"
+  >
+    <span v-if="!vertical && $slots.default" class="fei-divider__text">
+      <slot></slot>
+    </span>
   </div>
 </template>
 <script setup lang="ts">
-import { computed, defineComponent, toRefs } from "vue";
 import type { DividerProps, DividerEmits } from "./types";
 
 defineExpose({
@@ -21,4 +25,10 @@ const props = withDefaults(defineProps<DividerProps>(), {
   orientation: "center",
   vertical: false,
 });
+
+const emit = defineEmits<DividerEmits>();
+
+const handleClick = (event: MouseEvent) => {
+  emit("click", event);
+}
 </script>
