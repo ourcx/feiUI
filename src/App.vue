@@ -13,6 +13,9 @@ import type { MenuOption } from "./components/Dropdown/types";
 import { createMessage } from "./components/Message/method";
 import Input from "./components/Input/Input.vue";
 import Code from "./components/Code/Code.vue";
+import Switch from "./components/Switch/Switch.vue";
+import Divider from "./components/Divider/Divider.vue";
+
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -219,9 +222,15 @@ const change = (e: any) => {
     <br />
     <br />
     <br />
-    <Code code="javascript"  initialCode="const = 1;" editable theme="vitesse-light" type="primary"/>
+    <Code code="javascript"  initialCode="const = 1;" editable theme="github-light" type="primary"/>
     <br />
     <br />
+    <Switch />
+    <br>
+    <br>
+    <br>
+    <br>
+    <Divider></Divider>
   </main>
 </template>
 

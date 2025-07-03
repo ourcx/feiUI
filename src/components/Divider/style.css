@@ -1,0 +1,34 @@
+.fei-divider{
+  --divider-color: var(--fei-text-color-secondary);
+
+
+  width: 100%;
+  height: 2px;
+  border-bottom: 1px solid var(--divider-color);
+  margin: 20px 0;
+
+
+  .fei-divider-line--dashed{
+    border-bottom: 1px dashed var(--divider-color);
+    margin: 0;
+    height: auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  .fei-divider-vertical{
+    /* 垂直 */
+    border-bottom: none;
+    border-left: 1px solid var(--divider-color);
+    height: 100%;
+    width: 2px;
+    margin: 0 20px;
+    text-align: center;
+    line-height: 1;
+    vertical-align: middle;
+    display: inline-block;
+    transform: translateY(-50%);
+  }
+}
+
+

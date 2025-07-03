@@ -23,6 +23,7 @@
     <div class="fei-code__body">
       <div v-if="isEditing" class="edit-mode">
         <textarea
+          ref="codeTextarea"
           v-model="sourceCode"
           class="code-textarea"
           :class="{ [`code-textarea--${textareType}`]: textareType }"
@@ -56,6 +57,7 @@ const sourceCode = ref(props.initialCode);
 const isEditing = ref(false);
 const codeHtml = ref("");
 const emits = defineEmits<CodeEmits>();
+const codeTextarea = ref<HTMLTextAreaElement | null>(null);
 watch(
   () => props.initialCode,
   async (newCode) => {
@@ -76,10 +78,24 @@ watch(
   }
 );
 
+watch(
+  () => codeTextarea.value ? codeTextarea.value.scrollHeight : 0,
+  (newCode) => {
+    if (codeTextarea.value) {
+      codeTextarea.value.style.height = codeTextarea.value.scrollHeight + "px";
+    }
+  }
+);
+watch( () => sourceCode.value, (newCode) => {
+   if (codeTextarea.value) {
+      codeTextarea.value.style.height = codeTextarea.value.scrollHeight + "px";
+    }
+})
+
 function toggleEdit(state: boolean) {
   isEditing.value = !state;
   emits("edit", state);
-  if (!state) {
+  if (state) {
     codeToHtml(sourceCode.value, {
       lang: props.code,
       theme: props.theme,

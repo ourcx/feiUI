@@ -47,6 +47,7 @@
           @mousedown.prevent="clear"
           @click="togglePasswordVisible"
         >
+        <!-- 阻止了默认事件的发生 -->
           <slot name="suffix"></slot>
           <Icon icon="circle-xmark" v-if="showClear" class="fei-input__clear" />
           <Icon
@@ -90,7 +91,7 @@
 
 <script setup lang="ts">
 import type { InputProps, InputEmits } from "./types";
-import { ref, watch, computed, useAttrs } from "vue";
+import { ref, watch, computed, useAttrs,nextTick } from "vue";
 import Icon from "../Icon/Icon.vue";
 import type {Ref} from 'vue';
 defineOptions({
@@ -104,6 +105,7 @@ defineOptions({
 const props = withDefaults(defineProps<InputProps>(), {
   type: "text",
   autocomplete: "off",
+
 });
 const innerValue = ref(props.modelValue);
 
@@ -133,6 +135,7 @@ const showPasswordArea = computed(() => {
   return props.showPassword && !props.disabled && !!innerValue.value;
 });
 const togglePasswordVisible = () => {
+  keepFocus();
   if (showClear.value) return;
   passwordVisible.value = !passwordVisible.value;
 };
@@ -159,4 +162,9 @@ const inputRef = ref() as Ref<HTMLInputElement>;
 defineExpose({
    ref:inputRef,
 })
+
+const keepFocus = async() => {
+  await nextTick();
+  inputRef.value.focus();
+}
 </script>

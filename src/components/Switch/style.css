@@ -1,0 +1,66 @@
+.fei-Switch {
+  --fei-switch-on-color: var(--fei-color-primary);
+  --fei-switch-off-color: var(--fei-border-color);
+  --fei-switch-on-border-color: var(--fei-color-primary);
+  --fei-switch-off-border-color: var(--fei-border-color);
+  /* 处理开关的颜色 */
+}
+
+.fei-switch {
+  display: inline-block;
+  align-items: center;
+  font-size: 14px;
+  line-height: 20px;
+  height: 32px;
+  border: 1px solid var(--fei-switch-off-border-color);
+}
+
+.fei-switch__core {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  height: 20px;
+  min-width: 40px;
+  border: 1px solid var(--fei-switch-off-border-color);
+  outline: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background-color: var(--fei-switch-off-color);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  .fei-switch__core-action {
+    position: absolute;
+    border-radius: var(--fei-border-radius-circle);
+    left: 1px;
+    width: 16px;
+    height: 16px;
+    background-color: var(--fei-bg-color);
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+.is-checked {
+  .fei-switch__core {
+    background-color: var(--fei-switch-on-color);
+    border-color: var(--fei-switch-on-border-color);
+    .fei-switch__core-action {
+      left: calc(100% - 17px);
+      box-shadow: 0 0 0 1px var(--fei-switch-on-color);
+    }
+  }
+}
+
+.fei-switch__input{
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  margin: 0;
+
+  &:focus-visible {
+    & ~ .fei-switch__core {
+      outline: 2px solid var(--fei-switch-on-color);
+      outline-offset: 1px;
+    }
+  }
+}
