@@ -4,7 +4,7 @@ import Collapse from "./components/Collapse/Collapse.vue";
 import Item from "./components/Collapse/CollapseItem.vue";
 import Icon from "./components/Icon/Icon.vue";
 import Alert from "./components/Alert/Alert.vue";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, h, reactive } from "vue";
 import Tooltip from "./components/Tooltip/Tooltip.vue";
 import type { TooltipInstance } from "./components/Tooltip/types";
 import type { Options } from "@popperjs/core";
@@ -16,6 +16,11 @@ import Code from "./components/Code/Code.vue";
 import Switch from "./components/Switch/Switch.vue";
 import Divider from "./components/Divider/Divider.vue";
 import Markdown from "./components/Markdown/Markdown.vue";
+import Select from "./components/Select/Select.vue";
+import Form from "./components/Form/Form.vue";
+import FormItem from "./components/Form/FormItem.vue";
+import type { FormRules,FormModel } from '@/components/Form/types';
+
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -66,11 +71,58 @@ const input = ref("xxxxxxxxxxxxx");
 const change = (e: any) => {
   console.log(e);
 };
+const model: FormModel = reactive({
+  email: '',
+  password: ''
+});
+
+
+const rules: FormRules = reactive({
+  email: [{
+    type: 'email', // 使用专门的 email 类型
+    required: true,
+    message: '请输入有效的邮箱地址',
+    trigger: 'blur'
+  }],
+  password: [{
+    required: true,
+    message: '请输入密码',
+    trigger: 'blur',
+  }, {
+    min: 6,
+    max: 20,
+    message: '密码长度需在6-20个字符之间',
+    trigger: 'blur'
+  }]
+});
 </script>
 
 <template>
   <main>
     <header>
+      <Select
+        :options="[
+          { label: '选项一', value: '1' },
+          { label: '选项二', value: '2' },
+          { label: '选项三', value: '3', disabled: true },
+        ]"
+        model-value="1"
+        placeholder="请选择"
+        :render-label="(option) => h('span', option.label)"
+      />
+      <Select
+        :options="[
+          { label: '选项一', value: '1' },
+          { label: '选项二', value: '2' },
+          {
+            label: '选项三',
+            value: '3',
+            disabled: true,
+          },
+        ]"
+        clearable
+        filterable
+      />
       <Tooltip
         content="动态提示"
         :popperOptions="options"
@@ -218,27 +270,69 @@ const change = (e: any) => {
       这是一个可编辑的区域。使用contenteditable属性来启用编辑框。
     </div>
     <br />
-    <Code code="javascript"  initialCode="const = 1;" editable :copyable="false" />
+    <Code code="javascript" initialCode="const = 1;" editable :copyable="false" />
     <br />
     <br />
     <br />
-    <Code code="javascript"  initialCode="const = 1;" editable theme="github-light" type="primary"/>
+    <Code
+      code="javascript"
+      initialCode="const = 1;"
+      editable
+      theme="github-light"
+      type="primary"
+    />
     <br />
     <br />
-    <Switch />
-    <br>
-    <br>
-    <br>
-    <br>
+    <Switch
+      @change="
+        (value) => {
+          console.log(value);
+        }
+      "
+      active-text="ON"
+      inactive-text="OFF"
+    />
+    <br />
+    <br />
+    <br />
+    <br />
     <Divider orientation="right">你好</Divider>
     <Divider orientation="left">fei组件库</Divider>
     <Divider vertical></Divider>
 
-    <br>
-    <br>
-    <Markdown
-      src="../README.md"
-    />  
+    <br />
+    <br />
+    <Markdown src="../README.md" />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <Form :model="model" :rules="rules">
+      <FormItem label="用户名" prop="username">
+        <Input type="text" v-model="model.email"></Input>
+      </FormItem>
+      <FormItem label="密码" prop="password">
+        <template #label="{ label }">
+          <Button>{{ label }}</Button>
+        </template>
+        <Input type="password" v-model="model.password"></Input>
+      </FormItem>
+      <div>
+        <Button type="primary">Submit</Button>
+        <Button>Cancel</Button>
+      </div>
+    </Form>
+    <p>
+    form:
+    <pre>{{ model }}</pre>
+    </p>
   </main>
 </template>
 

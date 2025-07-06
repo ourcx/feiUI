@@ -12,9 +12,6 @@
     max-width: calc(100% - 32px);
     box-sizing: border-box;
     border-radius: var(--fei-border-radius-base);
-    border-width: var(--fei-border-width);
-    border-style: var(--fei-border-style);
-    border-color: var(--fei-message-border-color);
     position: fixed;
     left: 50%;
     height: 20px;

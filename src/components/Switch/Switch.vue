@@ -16,7 +16,12 @@
       :name="name"
       :disabled="disabled"
     />
-    <div class="fei-switch__core">
+    <div class="fei-switch__core" >
+      <div class="fei-switch__core-inner">
+      <span v-if="activeText||inactiveText" class="fei-switch__core-inner-text">
+      {{ checked ? activeText : inactiveText }}
+      </span>
+      </div>
       <div class="fei-switch__core-action"></div>
     </div>
   </div>
@@ -44,9 +49,10 @@ const input = ref<HTMLInputElement>();
 const checked = computed(() => innerValue.value===props.activeValue);
 const switchValue = ()=>{
   if(props.disabled)return
-  innerValue.value = !innerValue.value
+  const newValue = !checked.value
+  innerValue.value = newValue
   emits('update:modelValue', innerValue.value)
-  emits('change', innerValue.value)
+  emits('change', newValue)
 }
 
 onMounted(()=>{

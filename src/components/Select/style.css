@@ -1,0 +1,86 @@
+.fei-select {
+  /* 定义 CSS 变量 */
+  --fei-select-item-hover-bg-color: var(--fei-fill-color-light);
+  --fei-select-item-font-size: var(--fei-font-size-base);
+  --fei-select-item-font-color: var(--fei-text-color-regular);
+  --fei-select-item-selected-font-color: var(--fei-color-primary);
+  --fei-select-item-disabled-font-color: var(--fei-text-color-placeholder);
+  --fei-select-input-focus-border-color: var(--fei-color-primary);
+
+  /* 组件基础样式 */
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+.fei-input {
+  .header-angle {
+    transition: transform 0.3s;
+    &.is-active {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.fei-select__inner {
+  cursor: pointer;
+}
+
+/* 针对禁用状态的样式 */
+.fei-select.is-disabled {
+  cursor: not-allowed;
+}
+
+/* 假设 Input 组件内部有一个 .el-input__wrapper 类用于控制焦点样式 */
+/* 如果您的 Input 组件结构不同，请修改此选择器 */
+.fei-select .el-input__wrapper:focus-within {
+  box-shadow: 0 0 0 1px var(--fei-select-input-focus-border-color) inset;
+}
+
+/* 下拉菜单容器样式 */
+.fei-select__menu {
+  list-style: none;
+  padding: 6px 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* 下拉菜单中的每个选项 */
+.fei-select__item {
+  font-size: var(--fei-select-item-font-size);
+  padding: 0 32px 0 20px;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--fei-select-item-font-color);
+  height: 34px;
+  line-height: 34px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* 选项悬停时的样式，但排除禁用状态 */
+.fei-select__item:not(.is-disabled):hover {
+  background-color: var(--fei-select-item-hover-bg-color);
+}
+
+/* 选项被禁用时的样式 */
+.fei-select__item.is-disabled {
+  color: var(--fei-select-item-disabled-font-color);
+  cursor: not-allowed;
+}
+
+/* 选项被选中时的样式 */
+.fei-select__item.is-selected {
+  color: var(--fei-select-item-selected-font-color);
+  font-weight: 700;
+}
+
+/* Tooltip/Popper 的内容区域样式（可选，但推荐）*/
+/* 这会给你的下拉菜单添加圆角和阴影 */
+.fel-popper {
+  border-radius: var(--fei-border-radius-base);
+  box-shadow: var(--fei-box-shadow-light);
+  border: 1px solid #e4e7ed;
+}

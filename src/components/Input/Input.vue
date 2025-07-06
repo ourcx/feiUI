@@ -91,7 +91,7 @@
 
 <script setup lang="ts">
 import type { InputProps, InputEmits } from "./types";
-import { ref, watch, computed, useAttrs,nextTick } from "vue";
+import { ref, watch, computed, useAttrs,nextTick,inject } from "vue";
 import Icon from "../Icon/Icon.vue";
 import type {Ref} from 'vue';
 defineOptions({
@@ -100,7 +100,7 @@ defineOptions({
   modelValue: "",
   inheritAttrs: false,
 });
-
+import { formItemContextKey } from '../Form/types';
 
 const props = withDefaults(defineProps<InputProps>(), {
   type: "text",
@@ -125,6 +125,7 @@ const handleFocus = (event: FocusEvent) => {
 const handleBlur = (event: FocusEvent) => {
   isFocus.value = false;
   emit("blur", event);
+  runValidate()
 };
 const attrs= useAttrs();
 const isFocus = ref(false);
@@ -167,4 +168,13 @@ const keepFocus = async() => {
   await nextTick();
   inputRef.value.focus();
 }
+
+
+const formItemContext = inject(formItemContextKey)
+const runValidate = () => {
+  formItemContext?.validate()
+}
+
+//自动进行校验数据正确性
+
 </script>

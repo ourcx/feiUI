@@ -2,7 +2,8 @@ export interface SwitchProps {
   modelValue?: boolean
   disabled?: boolean
   activeText?: string
-  inactiveText?: string
+  inactiveText?: string 
+  inactiveValue?: SwitchValueType
   activeValue?: SwitchValueType
   name?: string
   id?: string

@@ -1,3 +1,4 @@
+import { ref } from 'vue';
 export interface InputProps {
   type: string
   size?: 'large' | 'samll'
@@ -23,3 +24,8 @@ export interface InputEmits {
   (e: 'focus', value: FocusEvent): void
   (e: 'clear'): void
 }
+
+export interface InputInstance {
+  ref: HTMLAnchorElement | HTMLTextAreaElement
+}
+

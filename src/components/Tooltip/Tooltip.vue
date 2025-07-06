@@ -1,10 +1,15 @@
 <template>
-  <div class="fei-tooltip" v-on="outerEvent" ref="poppperContainerNode" >
-    <div class="fei-tooltip__trigger" ref="triggerNode" v-on="event" >
+  <div class="fei-tooltip" v-on="outerEvent" ref="poppperContainerNode">
+    <div class="fei-tooltip__trigger" ref="triggerNode" v-on="event">
       <slot />
     </div>
     <transition :name="transition">
-      <div class="fei-tooltip__popper" ref="popperNode" v-if="isOpen" :class="{ ['fei-tooltip--' + ColorType]: ColorType }">
+      <div
+        class="fei-tooltip__popper"
+        ref="popperNode"
+        v-show="isOpen"
+        :class="{ ['fei-tooltip--' + ColorType]: ColorType }"
+      >
         <slot name="content">
           {{ content }}
         </slot>
@@ -15,7 +20,7 @@
 </template>
 <script setup lang="ts">
 import type { TooltipProps, TooltipEmits, TooltipInstance } from "./types";
-import { watch, ref, reactive, onUnmounted, computed, nextTick } from "vue";
+import { watch, ref, reactive, onMounted, onUnmounted, computed, nextTick } from "vue";
 import type { Instance } from "@popperjs/core";
 import { createPopper } from "@popperjs/core";
 import { debounce } from "lodash-es";
@@ -23,8 +28,6 @@ import useClickOutside from "@/hook/useClickOutside";
 defineOptions({
   name: "FeiTooltip",
 })
-
-
 
 const props = withDefaults(defineProps<TooltipProps>(), {
   placement: "right",
@@ -42,21 +45,7 @@ const poppperContainerNode = ref<HTMLElement>();
 let popperInstance: Instance | null = null;
 let event: Record<string, any> = reactive({});
 let outerEvent: Record<string, any> = reactive({});
-const popperOptions = computed(() => {
-  return {
-    placement: props.placement,
-    modifiers: [
-      {
-        name: "offset",
-        Options: {
-          offset: [0, 9],
-        },
-      },
-    ],
-    ...props.popperOptions,
-  };
-});
-//选项
+
 
 const open = () => {
   //延时
@@ -78,7 +67,33 @@ const closeFinal = () => {
   openDebounce.cancel();
   closeDebounce();
 };
-
+const popperOptions = computed(() => {
+  return {
+    placement: props.placement,
+    modifiers: [
+      {
+        name: "offset",
+        options: {  // 修正为小写 options
+          offset: [0, 9],
+        },
+      },
+      {
+        name: 'preventOverflow',
+        options: {
+          padding: 8,
+        },
+      },
+      {
+        name: 'computeStyles',
+        options: {
+          adaptive: false,
+          gpuAcceleration: false,
+        },
+      }
+    ],
+    ...props.popperOptions,
+  };
+});
 const togglePopper = () => {
   if (isOpen.value) {
     closeFinal();
@@ -90,6 +105,9 @@ const togglePopper = () => {
 useClickOutside(poppperContainerNode, () => {
   if (props.trigger === "click" && isOpen.value && !props.manual) {
     closeFinal();
+  }
+  if(isOpen.value){
+    emit("click-outside", true);
   }
 });
 
@@ -161,9 +179,61 @@ watch(
   { deep: true }
 );
 
+
+
+// 初始化 Popper 实例
+onMounted(() => {
+  nextTick(() => {
+    if (triggerNode.value && popperNode.value) {
+      popperInstance = createPopper(
+        triggerNode.value,
+        popperNode.value,
+        popperOptions.value
+      );
+
+      // 初始隐藏
+      popperInstance.update().then(() => {
+        if (popperNode.value) {
+          popperNode.value.style.visibility = 'hidden';
+          //还有隐藏::before
+        }
+      });
+
+    }
+  });
+});
+
+// 监听打开状态
+watch(isOpen, (val) => {
+  if (val) {
+    nextTick(() => {
+      if (popperInstance && popperNode.value) {
+        popperNode.value.style.visibility = 'visible';
+        popperInstance.update();
+      }
+    });
+  } else {
+    if (popperNode.value) {
+      popperNode.value.style.visibility = 'hidden';
+    }
+  }
+});
+
+// 监听配置变化
+watch(
+  popperOptions,
+  (newOptions) => {
+    if (popperInstance) {
+      popperInstance.setOptions(newOptions);
+    }
+  },
+  { deep: true }
+);
+
 onUnmounted(() => {
   popperInstance?.destroy();
 });
+
 
 defineExpose<TooltipInstance>({
   show: openFinal,
