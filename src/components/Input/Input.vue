@@ -105,7 +105,6 @@ import { formItemContextKey } from '../Form/types';
 const props = withDefaults(defineProps<InputProps>(), {
   type: "text",
   autocomplete: "off",
-
 });
 const innerValue = ref(props.modelValue);
 
@@ -113,9 +112,11 @@ const emit = defineEmits<InputEmits>();
 const handleInput = () => {
   emit("update:modelValue", innerValue.value ?? "");
   emit("input", innerValue.value ?? "");
+  runValidate("input")
 };
 const handleChange = () => {
   emit("change", innerValue.value ?? "");
+  runValidate("change")
 };
 const handleFocus = (event: FocusEvent) => {
   isFocus.value = true;
@@ -125,10 +126,13 @@ const handleFocus = (event: FocusEvent) => {
 const handleBlur = (event: FocusEvent) => {
   isFocus.value = false;
   emit("blur", event);
-  runValidate()
+  runValidate("blur")
 };
 const attrs= useAttrs();
 const isFocus = ref(false);
+
+
+
 const showClear = computed(
   () => props.clearable && !props.disabled && !!innerValue.value && isFocus.value
 );
@@ -171,8 +175,10 @@ const keepFocus = async() => {
 
 
 const formItemContext = inject(formItemContextKey)
-const runValidate = () => {
-  formItemContext?.validate()
+const runValidate = (trigger?: string) => {
+  formItemContext?.validate(trigger).catch((e) => {
+    console.log(e.error)
+  })
 }
 
 //自动进行校验数据正确性

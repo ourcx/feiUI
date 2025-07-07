@@ -1,0 +1,96 @@
+/* form-item.css */
+
+/* Base styles for the form item container */
+.fei-form-item {
+  display: flex;
+  align-items: flex-start; /* Align items to the start for better control over label and content alignment */
+  margin-bottom: 22px; /* Space between form items */
+  font-family: var(--fei-font-family);
+  font-size: var(--fei-font-size-base);
+}
+
+/* Label specific styles */
+.fei-form-item_label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+  width: 80px; /* Example fixed width, adjust as needed */
+  margin-right: 12px;
+  color: var(--fei-text-color-primary);
+  line-height: 1.5; /* Adjust line-height for better vertical alignment with input */
+  padding-top: 5px; /* Adjust padding to vertically align with the input */
+  box-sizing: border-box;
+}
+
+/* Add asterisk for required fields */
+.fei-form-item.is-required > .fei-form-item_label::before {
+  content: '*';
+  color: var(--fei-color-danger-dark-2);
+  margin-right: 4px;
+}
+
+/* Content area styles, which holds the input and validation message */
+.fei-form-item_content {
+  flex: 1; /* Allows the content to take up the remaining space */
+  position: relative;
+}
+
+/* Error message styling */
+.fei-form-item_error-msg {
+  color: var(--fei-color-danger-dark-2);
+  font-size: var(--fei-font-size-extra-small);
+  position: absolute;
+  top: 100%; /* Position it right below the content */
+  left: 0;
+  padding-top: 4px;
+  line-height: 1; /* Keep it compact */
+}
+
+/* Styles for different validation states */
+
+/* Style for loading state if needed, e.g., showing a spinner */
+.fei-form-item.is-loading .fei-form-item_content::after {
+  /* Example of a simple loading indicator */
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--fei-color-primary);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+.fei-form-item.is-success .fei-input__wrapper {
+  border-color: var(--fei-color-success-dark-2) inset; /* 将边框颜色设置为绿色 */
+  transition: border-color var(--fei-transition-duration) ;
+}
+
+/* 可选：为了更好的用户体验，
+  当成功的输入框再次被聚焦时，也显示绿色的辉光效果。
+*/
+.fei-form-item.is-success .fei-input.is-focus .fei-input__wrapper {
+  box-shadow: 0 0 0 2px var(--fei-color-success-light-11) inset; /* 设置聚焦时的阴影颜色 */
+  transition: border-color var(--fei-transition-duration) ;
+}
+
+/* 同样为 Textarea 添加成功状态的样式 */
+.fei-form-item.is-success .fei-textarea__wrapper {
+  border-color: var(--fei-color-success-dark-2) inset;
+  transition: border-color var(--fei-transition-duration) ;
+}
+
+.fei-form-item.is-success .fei-textarea__wrapper:focus {
+  box-shadow: 0 0 0 2px var(--fei-color-success-light-11) inset;
+  transition: border-color var(--fei-transition-duration);
+}

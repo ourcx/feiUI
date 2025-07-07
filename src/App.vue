@@ -72,7 +72,7 @@ const change = (e: any) => {
   console.log(e);
 };
 const model: FormModel = reactive({
-  email: '',
+  email: '@qq.com',
   password: ''
 });
 
@@ -93,8 +93,31 @@ const rules: FormRules = reactive({
     max: 20,
     message: '密码长度需在6-20个字符之间',
     trigger: 'blur'
+  }],
+  confirmPwd: [{
+    required: true,
+    message: '请输入确认密码',
+    trigger: 'blur'
   }]
 });
+
+//缺少一个自定义规则，确定两个输入的内容相同等等
+
+
+const formRef = ref();
+const submit = async () => {
+  try {
+    await formRef.value.validate();
+    //那到表单的整体校验
+    console.log('提交成功');
+  }catch (e: any) {
+    console.log(e);
+  }
+}
+
+const reset = () => {
+  formRef.value.resetFields();
+}
 </script>
 
 <template>
@@ -314,8 +337,8 @@ const rules: FormRules = reactive({
     <br />
     <br />
     <br />
-    <Form :model="model" :rules="rules">
-      <FormItem label="用户名" prop="username">
+    <Form :model="model" :rules="rules" ref="formRef">
+      <FormItem label="用户名" prop="email">
         <Input type="text" v-model="model.email"></Input>
       </FormItem>
       <FormItem label="密码" prop="password">
@@ -324,10 +347,10 @@ const rules: FormRules = reactive({
         </template>
         <Input type="password" v-model="model.password"></Input>
       </FormItem>
-      <div>
-        <Button type="primary">Submit</Button>
-        <Button>Cancel</Button>
-      </div>
+      <FormItem label="确认密码" prop="confirmPassword">
+        <Button type="primary" @click="submit">Submit</Button>
+        <Button @click.prevent="reset">Cancel</Button>
+      </FormItem>
     </Form>
     <p>
     form:
