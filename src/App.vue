@@ -20,7 +20,7 @@ import Select from "./components/Select/Select.vue";
 import Form from "./components/Form/Form.vue";
 import FormItem from "./components/Form/FormItem.vue";
 import type { FormRules,FormModel } from '@/components/Form/types';
-
+import StatuesBar from "./page/bar/StatuesBar.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -118,10 +118,33 @@ const submit = async () => {
 const reset = () => {
   formRef.value.resetFields();
 }
+
+const myStatusBar = ref<InstanceType<typeof StatuesBar> | null>(null);
+const closeStatusBar = () => {
+  myStatusBar.value?.scrollPinch()
+}
+
+
 </script>
 
 <template>
   <main>
+  <StatuesBar status="info" title="表单" description="feiUI" ref="myStatusBar" @click="closeStatusBar">
+  <template #befor>
+  <Select
+        :options="[
+          { label: '选项一', value: '1' },
+          { label: '选项二', value: '2' },
+          {
+            label: '选项三',
+            value: '3',
+            disabled: true,
+          },
+        ]"
+        clearable
+        filterable
+      /></template>
+  </StatuesBar>
     <header>
       <Select
         :options="[

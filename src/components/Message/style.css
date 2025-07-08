@@ -35,6 +35,7 @@
     .fei-message__close svg{
       cursor: pointer;
     }
+    transition: all var(--fei-transition-duration) ease !important;
 }
 
 /* 添加定位样式 */

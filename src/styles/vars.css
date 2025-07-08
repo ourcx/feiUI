@@ -116,4 +116,6 @@
   --fei-transition-duration: 0.3s;
   --fei-transition-duration-fast: 0.2s;
   --fei-transition-timing-function: ease-in-out;
+
+  --fei-z-index-bar: 1000;
 }
