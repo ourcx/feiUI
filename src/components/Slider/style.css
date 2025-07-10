@@ -1,0 +1,107 @@
+/* 基础滑块容器样式 */
+.fei-Slider {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* 基础滑块输入样式重置 */
+.fei-Slider input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px; /* 滑道高度 */
+  border-radius: 3px;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+
+  /* 关键：使用渐变来模拟填充效果 */
+  --fei-slider-fill-percent: 0%; /* JS需要更新这个变量，默认为0% */
+  --fei-slider-track-color: var(--fei-color-primary); /* 默认填充颜色 */
+  --fei-slider-track-background: var(--fei-color-info-light-9); /* 轨道背景色 */
+  background: linear-gradient(to right,
+    var(--fei-slider-track-color) var(--fei-slider-fill-percent),
+    var(--fei-slider-track-background) var(--fei-slider-fill-percent)
+  );
+}
+
+/* 滑块 thumb (滑块上的可拖动部分) 样式 */
+.fei-Slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px; /* thumb 宽度 */
+  height: 18px; /* thumb 高度 */
+  border-radius: 50%;
+  /* thumb 的颜色现在也由 --fei-slider-track-color 控制，以保持一致 */
+  background: var(--fei-slider-track-color);
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.fei-Slider input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--fei-slider-track-color);
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+/* 激活和悬停状态下的 thumb 样式 */
+.fei-Slider input[type="range"]:active::-webkit-slider-thumb,
+.fei-Slider input[type="range"]:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+}
+
+.fei-Slider input[type="range"]:active::-moz-range-thumb,
+.fei-Slider input[type="range"]:hover::-moz-range-thumb {
+  transform: scale(1.2);
+}
+
+/* 不同类型的颜色变体 (现在只需要修改 --fei-slider-track-color) */
+.fei-Slider--primary input[type="range"] {
+  --fei-slider-track-color: var(--fei-color-primary);
+}
+.fei-Slider--success input[type="range"] {
+  --fei-slider-track-color: var(--fei-color-success);
+}
+.fei-Slider--warning input[type="range"] {
+  --fei-slider-track-color: var(--fei-color-warning);
+}
+.fei-Slider--danger input[type="range"] {
+  --fei-slider-track-color: var(--fei-color-danger-dark-2);
+}
+.fei-Slider--info input[type="range"] {
+  --fei-slider-track-color: var(--fei-color-info);
+}
+
+/* 显示值的 div 样式 */
+.slider-value {
+  margin-left: 15px;
+  font-size: 14px;
+  color: #606266;
+  min-width: 30px; /* 保证数字显示宽度 */
+  text-align: center;
+}
+
+.content-Slider{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 100%;
+  flex-direction: row;
+}
+.slider-value{
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 12px;
+  color: var(--fei-color-info);
+  text-align: center;
+  width: 100%;
+}

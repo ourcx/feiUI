@@ -22,6 +22,9 @@ import FormItem from "./components/Form/FormItem.vue";
 import type { FormRules,FormModel } from '@/components/Form/types';
 import StatuesBar from "./page/bar/StatuesBar.vue";
 import Dialog from "./components/Dialog/Dialog.vue";
+import Slider from "./components/Slider/Slider.vue";
+
+
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
 const trigger = ref<any>("click");
@@ -145,7 +148,7 @@ const closeStatusBar = () => {
         filterable
       /></template>
   </StatuesBar>
-  <Dialog title="测试-你好世界" type="success" exist>
+  <Dialog title="测试-你好世界" type="success" :exist="false">
   <template #body>
   <p>你好世界</p>
   </template>
@@ -384,6 +387,10 @@ const closeStatusBar = () => {
     form:
     <pre>{{ model }}</pre>
     </p>
+    <Slider type="success" show-stops ShowValue />
+    <br>
+    <br>
+    <br>
   </main>
 </template>
 
