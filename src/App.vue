@@ -21,7 +21,7 @@ import Form from "./components/Form/Form.vue";
 import FormItem from "./components/Form/FormItem.vue";
 import type { FormRules,FormModel } from '@/components/Form/types';
 import StatuesBar from "./page/bar/StatuesBar.vue";
-
+import Dialog from "./components/Dialog/Dialog.vue";
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
 const trigger = ref<any>("click");
@@ -129,7 +129,7 @@ const closeStatusBar = () => {
 
 <template>
   <main>
-  <StatuesBar status="info" title="表单" description="feiUI" ref="myStatusBar" @click="closeStatusBar">
+  <StatuesBar status="success" title="表单" description="feiUI" ref="myStatusBar" @click="closeStatusBar">
   <template #befor>
   <Select
         :options="[
@@ -145,6 +145,11 @@ const closeStatusBar = () => {
         filterable
       /></template>
   </StatuesBar>
+  <Dialog title="测试-你好世界" type="success" exist>
+  <template #body>
+  <p>你好世界</p>
+  </template>
+  </Dialog>
     <header>
       <Select
         :options="[

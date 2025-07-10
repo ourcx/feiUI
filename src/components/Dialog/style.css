@@ -1,0 +1,131 @@
+.fei-Dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: var(--fei-z-index-dialog);
+  background-color: var(--fei-color-white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.fei-Dialog__up {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  color: var(--fei-text-color-regular);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+
+  .fei-Dialog__title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .fei-Dialog__body {
+    font-size: 16px;
+    color: var(--fei-text-color-regular);
+    line-height: 1.5;
+    word-break: break-all;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-y: auto;
+    min-height: 100px;
+  }
+}
+.fei-Dialog__footer {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 8px; /* 使用 px 替代 rem */
+  gap: 8px; /* 使用 px 替代 rem */
+}
+
+.is-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: var(--fei-z-index-dialog);
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+.is-primary .fei-Dialog__up {
+  background-color: var(--fei-color-primary-dark-2);
+  color: var(--fei-color-primary-light-11);
+}
+
+/* Success 状态 */
+.is-success .fei-Dialog__up {
+  background-color: var(--fei-color-success-dark-2);
+  color: var(--fei-color-success-light-11);
+}
+
+/* Warning 状态 */
+.is-warning .fei-Dialog__up {
+  background-color: var(--fei-color-warning-dark-2);
+  color: var(--fei-color-warning-light-11);
+}
+
+/* Danger 状态 */
+.is-danger .fei-Dialog__up {
+  background-color: var(--fei-color-danger-dark-2);
+  color: var(--fei-color-danger-light-11);
+}
+
+/* Info 状态 */
+.is-info .fei-Dialog__up {
+  background-color: var(--fei-color-info-dark-2);
+  color: var(--fei-color-info-light-11);
+}
+
+
+.fei-Dialog__body{
+  padding: 0.5rem;
+  font-size: 16px;
+  color: var(--fei-text-color-regular);
+  line-height: 1.5;
+  word-break: break-all;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-y: auto;
+  min-height: 100px;
+}
+
+
+/* 定义进入和离开动画的公共样式 */
+.dialog-transition-enter-active,
+.dialog-transition-leave-active {
+  transition: all 0.3s ease;
+}
+
+/* 进入起点、离开终点的样式 */
+.dialog-transition-enter-from,
+.dialog-transition-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* 可选：定义进入的中点样式 */
+.dialog-transition-enter-active .dialog-content {
+  animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

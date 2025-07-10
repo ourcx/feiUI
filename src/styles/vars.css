@@ -118,4 +118,5 @@
   --fei-transition-timing-function: ease-in-out;
 
   --fei-z-index-bar: 1000;
+  --fei-z-index-dialog: 10001;
 }
