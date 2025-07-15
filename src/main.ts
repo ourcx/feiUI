@@ -11,4 +11,5 @@ library.add(fas);
 
 createApp(App)
 .mount('#app')
+
 //注册全局组件

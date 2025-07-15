@@ -23,7 +23,8 @@ import type { FormRules,FormModel } from '@/components/Form/types';
 import StatuesBar from "./page/bar/StatuesBar.vue";
 import Dialog from "./components/Dialog/Dialog.vue";
 import Slider from "./components/Slider/Slider.vue";
-
+import Image from "./components/Image/Image.vue";
+import { title } from 'process';
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -387,10 +388,12 @@ const closeStatusBar = () => {
     form:
     <pre>{{ model }}</pre>
     </p>
-    <Slider type="success" show-stops ShowValue />
+    <Slider type="success" show-stops ShowValue/>
+    <Slider type="success" show-stops ShowValue progress :value="12"/>
     <br>
     <br>
     <br>
+    <Image src="https://picsum.photos/200/300" mode="aspectFill" shape="square" title="title"  footer="footer"/>
   </main>
 </template>
 

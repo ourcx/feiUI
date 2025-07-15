@@ -1,0 +1,180 @@
+.fei-image {
+  --image-text-color: var(--fei-text-color-primary, #333);
+  --image-text-font-size: var(--fei-font-size-base, 1rem);
+  --image-text-font-size-large: var(--fei-font-size-extra-large, 1.25rem);
+  --image-text-family: var(--fei-font-family, sans-serif);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.fei-image__placeholder {
+  color: var(--image-text-color);
+  font-size: var(--image-text-font-size-large);
+  font-family: var(--image-text-family);
+  padding: 3px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.fei-image__img {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fei-image__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* New styles for the loading container */
+.fei-image__img .loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9); /* Optional: Adds a semi-transparent overlay */
+  color: var(--image-text-color);
+  font-family: var(--image-text-family);
+  text-align: center;
+  user-select: none;
+}
+
+/* Adjusted for the new structure, no longer needs absolute positioning */
+.fei-image__loading {
+  /* Removed absolute positioning properties */
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(--fei-color-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: fei-image-spin 1s linear infinite;
+  margin-bottom: 0.5rem; /* Adds some space between the spinner and the text */
+}
+
+/* Keyframes remain the same */
+@keyframes fei-image-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fei-image__fallback {
+  color: var(--image-text-color);
+  font-family: var(--image-text-family);
+  font-size: var(--image-text-font-size);
+  padding: 3px;
+  text-align: center;
+  font-weight: 300;
+}
+.fei-image-Teleport {
+  position: fixed;
+  top: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  z-index: 10003;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: opacity 0.3s ease-in-out;
+  flex-direction: column;
+  pointer-events: auto;
+  user-select: none;
+  color: white;
+
+  .fei-image__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    padding: 0 30px;
+  }
+  .fei-image__body img{
+    user-select: none;
+  }
+}
+.dragging {
+  cursor: move;
+  position: absolute;
+}
+
+.fei-image__title{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 50px;
+}
+.fei-image__close{
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 50px;
+  transition: all .3s;
+  &:hover{
+    color: #fff;
+    transform: scale(1.2);
+    opacity: .8;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,.5));
+    transition: all .3s;
+    -webkit-filter: drop-shadow(0 0 5px rgba(0,0,0,.5));
+    -moz-filter: drop-shadow(0 0 5px rgba(0,0,0,.5));
+    -ms-filter: drop-shadow(0 0 5px rgba(0,0,0,.5));
+    -o-filter: drop-shadow(0 0 5px rgba(0,0,0,.5));
+  }
+}
+
+.fei-image-spin-enter-active,
+.fei-image-spin-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fei-image-spin-enter-from,
+.fei-image-spin-leave-to {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+.fei-image-spin-move {
+  transition: transform 0.5s ease;
+}
+
+.fei-image-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: white;
+  text-align: center;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+/* 这里还是可以处理一下的 */

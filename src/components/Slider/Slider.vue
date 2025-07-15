@@ -1,11 +1,18 @@
 <template>
-  <Tooltip v-if="showStops">
+  <Tooltip v-if="showStops" :ColorType="type">
     <template #content>
       <div class="content-Slider">
         {{ Value }}
       </div>
     </template>
-    <div class="fei-Slider" :class="{ [`fei-Slider--${type}`]: type }">
+    <div
+      class="fei-Slider"
+      :class="{
+        [`fei-Slider--${type}`]: type,
+        'is-Progress': progress,
+        'is-vertical': vertical,
+      }"
+    >
       <input
         type="range"
         :min="min"
@@ -16,7 +23,15 @@
       />
     </div>
   </Tooltip>
-  <div class="fei-Slider" :class="{ [`fei-Slider--${type}`]: type }" v-else>
+  <div
+    class="fei-Slider"
+    :class="{
+      [`fei-Slider--${type}`]: type,
+      'is-Progress': progress,
+      'is-vertical': vertical,
+    }"
+    v-else
+  >
     <input
       type="range"
       :min="min"
@@ -45,6 +60,7 @@ const props = withDefaults(defineProps<SliderProps>(), {
   value: 0,
   showStops: false,
   type: "primary",
+  progress: false,
 });
 let SliderValue = 0;
 const Value = ref(0);

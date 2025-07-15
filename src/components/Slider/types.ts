@@ -5,6 +5,7 @@ export interface SliderProps{
   type: 'primary' | 'success' | 'info' | 'warning' | 'danger'
   step?:number
   showStops?:boolean
+  progress?:boolean
   range?:boolean
   vertical?:boolean
   ShowValue?:boolean
