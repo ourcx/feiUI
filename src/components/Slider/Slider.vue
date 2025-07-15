@@ -17,9 +17,11 @@
         type="range"
         :min="min"
         :max="max"
-        :value="value"
+        v-model="Value"
         :step="step"
         @input="updateSliderFill"
+        ref="input"
+        :disabled="progress"
       />
     </div>
   </Tooltip>
@@ -36,9 +38,11 @@
       type="range"
       :min="min"
       :max="max"
-      :value="value"
+      v-model="Value"
       :step="step"
       @input="updateSliderFill"
+      ref="input"
+      :disabled="progress"
     />
   </div>
   <div v-if="ShowValue" class="slider-value">{{ Value }}</div>
@@ -46,13 +50,14 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from "vue";
+import { nextTick } from "vue";
 import type { SliderProps, SliderEmits } from "./types";
 import Tooltip from "../Tooltip/Tooltip.vue";
 
 defineOptions({
   name: "FeiSlider",
 });
-
+const input = ref<HTMLInputElement>();
 const props = withDefaults(defineProps<SliderProps>(), {
   max: 100,
   min: 0,
@@ -66,6 +71,7 @@ let SliderValue = 0;
 const Value = ref(0);
 
 const updateSliderFill = (event: any) => {
+  if (props.progress) return;
   const slider = event.target;
   const min = slider.min || 0;
   const max = slider.max || 100;
@@ -77,6 +83,20 @@ const updateSliderFill = (event: any) => {
   Value.value = SliderValue;
   emit("input", SliderValue);
 };
+
+watch(
+  () => props.value,
+  (newValue) => {
+    if (typeof newValue === "number") {
+      // 等待 nextTick 确保 DOM 已更新
+      nextTick(() => {
+        Value.value = newValue;
+        input.value!.style.setProperty("--fei-slider-fill-percent", `${Value.value}%`);
+      });
+    }
+  },
+  { immediate: true }
+);
 
 const emit = defineEmits<SliderEmits>();
 </script>
