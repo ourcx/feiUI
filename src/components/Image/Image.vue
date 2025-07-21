@@ -9,7 +9,7 @@
         <RenderVnode :vNode="placeholder ?? ''" v-if="visible" />
         <RenderVnode :vNode="fallback ?? ''" v-if="!visible" />
       </div>
-      <img :src="src" :alt="alt" @click="openImg" />
+      <img :src="src" :alt="alt" @click="openImg" v-lazy="lazyLoad" :class="{ [`fei-image--${shape}`]: shape,[`fei-image--${mode}`]: mode }" />
     </div>
     <div class="fei-image__fallback">
       <RenderVnode :vNode="footer ?? ''" v-if="ImgDescribeFooter" />
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="fei-image__body" @mousedown="drag">
-          <img :src="src" :alt="alt" ref="img" />
+          <img :src="src" :alt="alt" ref="img" v-lazy="lazyLoad" />
         </div>
         <div class="fei-image__footer">
           <slot name="footer">
@@ -77,6 +77,7 @@ const props = withDefaults(defineProps<ImageProps>(), {
   visible: false,
   placeholder: "正在加载...",
   fallback: "",
+  lazyLoad: false
 });
 
 const ImgDescribeTitle = computed(() => {
@@ -94,6 +95,7 @@ const img = ref<HTMLImageElement | null>(null);
 //全屏显示
 const ScreenImg = ref(false);
 const openImg = () => {
+  if (!props.screen) return;
   ScreenImg.value = true;
   emits("onClick");
 };
@@ -155,4 +157,13 @@ watch(
     }
   }
 );
+
+//懒加载
+const lazyLoad = () => {
+  if (props.lazyLoad) {
+    return props.src
+  }else{
+    return ''
+  }
+}
 </script>

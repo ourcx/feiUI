@@ -24,7 +24,8 @@ import StatuesBar from "./page/bar/StatuesBar.vue";
 import Dialog from "./components/Dialog/Dialog.vue";
 import Slider from "./components/Slider/Slider.vue";
 import Image from "./components/Image/Image.vue";
-import { title } from 'process';
+import Links from "./components/Links/Links.vue";
+import List  from "./components/List/List.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -393,7 +394,22 @@ const closeStatusBar = () => {
     <br>
     <br>
     <br>
-    <Image src="https://picsum.photos/200/300" mode="aspectFill" shape="square" title="title"  footer="footer"/>
+    <Image src="https://picsum.photos/200/300" mode="aspectFill" shape="square" title="title"  footer="footer" screen />
+    <Links src="https://picsum.photos/200/300" name="name" description="description"  href="https://picsum.photos/200/300"/>
+    <br>
+    <br>
+    <br>
+<!-- 正确使用方式 -->
+<List
+  :items="Array.from({length: 10000}, (_, i) => ({
+    id: i,
+    content: `Item ${i+1}`
+  }))"
+  :itemSize="60"
+  :visibleCount="15"
+  title="List一万条数据展示"
+  type="success"
+/>
   </main>
 </template>
 

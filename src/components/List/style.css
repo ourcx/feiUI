@@ -1,0 +1,134 @@
+/* Base Container & List Styles */
+.fei-container__title {
+  padding: 10px 20px;
+  font-size: var(--fei-font-size-medium);
+  font-weight: var(--fei-font-weight-primary);
+  color: var(--fei-text-color-primary);
+  border-bottom: var(--fei-border);
+}
+
+.fei-container {
+  position: relative;
+  overflow: auto;
+  border: var(--fei-border);
+  border-radius: var(--fei-border-radius-base);
+}
+
+.fei-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Base List Item Style */
+.fei-list-item {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: var(--fei-font-size-base);
+  color: var(--fei-text-color-regular);
+  background-color: var(--fei-color-white);
+  transition: background-color var(--fei-transition-duration-fast)
+    var(--fei-transition-timing-function);
+  border-bottom: 1px solid var(--fei-border-color-lighter);
+}
+
+/* Remove border from the very last item in the list */
+.fei-list .fei-list-item:last-child {
+  border-bottom: none;
+}
+
+.fei-list-item:hover {
+  background-color: var(--fei-fill-color-light);
+}
+
+/* --- Type Styles --- */
+
+/* Primary */
+.fei-list-primary .fei-list-item {
+  background-color: var(--fei-color-primary);
+  color: var(--fei-color-white);
+  border-bottom-color: var(--fei-color-primary-light-3);
+}
+.fei-list-primary .fei-list-item:hover {
+  background-color: var(--fei-color-primary-light-3);
+}
+
+/* Success */
+.fei-list-success .fei-list-item {
+  background-color: var(--fei-color-success);
+  color: var(--fei-color-white);
+  border-bottom-color: var(--fei-color-success-light-3);
+}
+.fei-list-success .fei-list-item:hover {
+  background-color: var(--fei-color-success-light-3);
+}
+
+/* Info */
+.fei-list-info .fei-list-item {
+  background-color: var(--fei-color-info);
+  color: var(--fei-color-white);
+  border-bottom-color: var(--fei-color-info-light-3);
+}
+.fei-list-info .fei-list-item:hover {
+  background-color: var(--fei-color-info-light-3);
+}
+
+/* Warning */
+.fei-list-warning .fei-list-item {
+  background-color: var(--fei-color-warning);
+  color: var(--fei-text-color-primary); /* Darker text for better contrast */
+  border-bottom-color: var(--fei-color-warning-light-3);
+}
+.fei-list-warning .fei-list-item:hover {
+  background-color: var(--fei-color-warning-light-3);
+}
+
+/* Danger */
+.fei-list-danger .fei-list-item {
+  background-color: var(--fei-color-danger);
+  color: var(--fei-text-color-primary); /* Darker text for better contrast */
+  border-bottom-color: var(--fei-color-danger-light-3);
+}
+.fei-list-danger .fei-list-item:hover {
+  background-color: var(--fei-color-danger-light-3);
+}
+
+.fei-container__title-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fei-text-color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  gap: 10px;
+}
+.fei-container__title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: var(--fei-color-white);
+  border-bottom: var(--fei-border);
+}
+
+.fei-title--primary {
+  color: var(--fei-color-primary);
+}
+.fei-title--success {
+  color: var(--fei-color-success);
+}
+.fei-title--info {
+  color: var(--fei-color-info);
+}
+.fei-title--warning {
+  color: var(--fei-color-warning);
+}
+.fei-title--danger {
+  color: var(--fei-color-danger);
+}

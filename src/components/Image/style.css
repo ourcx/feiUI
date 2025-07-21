@@ -178,3 +178,21 @@
   transition: all 0.3s ease;
 }
 /* 这里还是可以处理一下的 */
+
+.fei-image--square {
+  border-radius: 0;
+}
+
+.fei-image--circle {
+  border-radius: 50%;
+}
+
+.fei-image--rounded {
+  border-radius: 8px;
+}
+.fei-image-scaleToFill{
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1);
+}
+

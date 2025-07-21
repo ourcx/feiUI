@@ -1,0 +1,77 @@
+/* 友链卡片容器 */
+.fei-link {
+  display: flex; /* 使用 flex 布局 */
+  align-items: center; /* 垂直居中对齐 */
+  padding: 16px;
+  text-decoration: none; /* 移除默认的下划线 */
+  background-color: var(--fei-bg-color-overlay); /* 卡片背景色 */
+  border: var(--fei-border-width) var(--fei-border-style) var(--fei-border-color-lighter); /* 边框 */
+  border-radius: var(--fei-border-radius-base); /* 圆角 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 添加细微阴影 */
+  transition: transform var(--fei-transition-duration-fast),
+    box-shadow var(--fei-transition-duration-fast); /* 添加过渡动画 */
+  font-family: var(--fei-font-family);
+}
+
+/* 鼠标悬停效果 */
+.fei-link:hover {
+  transform: translateY(-3px); /* 卡片向上移动 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 阴影加深 */
+}
+
+/* 悬停时头像旋转 */
+.fei-link:hover .fei-link__image-wrapper {
+  transform: rotate(360deg);
+}
+
+/* 头像容器 */
+.fei-link__image-wrapper {
+  margin-right: 16px; /* 头像与文字的间距 */
+  flex-shrink: 0; /* 防止头像被压缩 */
+  transition: transform 0.6s var(--fei-transition-timing-function); /* 旋转动画 */
+  /* Image 组件已设定为 50x50px 的圆形，此处无需再设置大小和形状 */
+}
+
+/* aspect 元素，如果不需要可以忽略 */
+.fei-link__image-aspect {
+  display: none;
+}
+
+/* 文字内容区域 */
+.fei-link__text {
+  display: flex;
+  flex-direction: column; /* 标题和描述垂直排列 */
+  justify-content: center; /* 垂直方向居中 */
+  overflow: hidden; /* 防止内容溢出 */
+}
+
+/* 网站标题 */
+.fei-link__title {
+  font-size: var(--fei-font-size-medium); /* 字体稍大 */
+  font-weight: var(--fei-font-weight-primary);
+  color: var(--fei-text-color-primary);
+  white-space: nowrap; /* 防止标题换行 */
+  overflow: hidden; /* 溢出部分隐藏 */
+  text-overflow: ellipsis; /* 显示省略号 */
+  transition: color var(--fei-transition-duration-fast);
+}
+
+/* 鼠标悬停时标题变色 */
+.fei-link:hover .fei-link__title {
+  color: var(--fei-color-primary);
+}
+
+/* 网站描述 */
+.fei-link__description {
+  font-size: var(--fei-font-size-small);
+  color: var(--fei-text-color-secondary); /* 使用次要文字颜色 */
+  margin-top: 4px; /* 与标题的间距 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 分隔符 - 在此设计中，标题和描述垂直排列，不再需要横向分隔符 */
+.fei-link__separator {
+  display: none;
+}

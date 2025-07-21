@@ -1,5 +1,5 @@
 import type { VNode } from 'vue'
-import { title } from 'process'
+import lazyLoad from '../../directives/lazy';
 
 export interface ImageProps {
   /**
@@ -69,6 +69,7 @@ export interface ImageProps {
   title?: string | VNode
   descriation?: boolean
   screen?: boolean
+  lazyLoad?: boolean
 }
 
 export interface ImageEmits {
