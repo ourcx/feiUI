@@ -26,6 +26,8 @@ import Slider from "./components/Slider/Slider.vue";
 import Image from "./components/Image/Image.vue";
 import Links from "./components/Links/Links.vue";
 import List  from "./components/List/List.vue";
+import DatePicker from "./components/DatePicker/DatePicker.vue";
+
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -410,6 +412,9 @@ const closeStatusBar = () => {
   title="List一万条数据展示"
   type="success"
 />
+<br>
+<br>
+<DatePicker/>
   </main>
 </template>
 

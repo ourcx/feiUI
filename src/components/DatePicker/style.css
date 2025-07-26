@@ -1,0 +1,55 @@
+.datepicker-wrapper {
+  --dp-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --dp-border-radius: 4px;
+  --dp-input-padding: 4px 30px 4px 12px;
+  --dp-font-size: 14px;
+  --dp-common-transition: all 0.2s ease-in-out;
+  --dp-background-color: var(--fei-color-white);
+  --dp-text-color: #303133;
+  --dp-border-color: #dcdfe6;
+  --dp-border-color-hover: #c0c4cc;
+}
+
+/* Primary 主题 */
+.datepicker-wrapper--primary .dp__main  .dp__instance_calendar {
+  --dp-primary-color: var(--fei-color-primary);
+  --dp-primary-text-color: var(--fei-color-white);
+  --dp-range-between-dates-background-color: var(--fei-color-primary-light-13);
+  --dp-hover-color: var(--fei-color-primary-light-13);
+}
+
+/* Success 主题 */
+.datepicker-wrapper--success .dp__main .dp__instance_calendar {
+  --dp-primary-color: var(--fei-color-success);
+  --dp-primary-text-color: var(--fei-color-white);
+  --dp-range-between-dates-background-color: var(--fei-color-success-light-13);
+  --dp-hover-color: var(--fei-color-success-light-13);
+}
+
+
+/* Warning 主题 */
+.datepicker-wrapper--warning .dp__main .dp__instance_calendar {
+  --dp-primary-color: var(--fei-color-warning);
+  --dp-primary-text-color: #333; /* Warning 颜色浅，文字用深色 */
+  --dp-range-between-dates-background-color: var(--fei-color-warning-light-13);
+  --dp-hover-color: var(--fei-color-warning-light-13);
+}
+
+
+
+/* Danger 主题 */
+.datepicker-wrapper--danger .dp__main .dp__instance_calendar {
+  --dp-primary-color: var(--fei-color-danger-dark-2);
+  --dp-primary-text-color: var(--fei-color-white);
+  --dp-range-between-dates-background-color: var(--fei-color-danger-light-13);
+  --dp-hover-color: var(--fei-color-danger-light-13);
+}
+
+/* Info 主题 */
+.datepicker-wrapper--info .dp__main .dp__instance_calendar {
+  --dp-primary-color: var(--fei-color-info);
+  --dp-primary-text-color: var(--fei-color-white);
+  --dp-range-between-dates-background-color: var(--fei-color-info-light-13);
+  --dp-hover-color: var(--fei-color-info-light-13);
+}
