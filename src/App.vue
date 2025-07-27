@@ -27,7 +27,7 @@ import Image from "./components/Image/Image.vue";
 import Links from "./components/Links/Links.vue";
 import List  from "./components/List/List.vue";
 import DatePicker from "./components/DatePicker/DatePicker.vue";
-
+import Comment from "./components/Comment/Comment.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -403,18 +403,28 @@ const closeStatusBar = () => {
     <br>
 <!-- 正确使用方式 -->
 <List
-  :items="Array.from({length: 10000}, (_, i) => ({
+  :items="Array.from({length: 100}, (_, i) => ({
     id: i,
     content: `Item ${i+1}`
   }))"
   :itemSize="60"
   :visibleCount="15"
-  title="List一万条数据展示"
+  title="List一千万条数据展示"
   type="success"
 />
 <br>
 <br>
 <DatePicker/>
+<br>
+<br>
+<br>
+<br>
+<DatePicker type="success" range />
+<br>
+<br>
+<br>
+<br>
+<Comment :reply="{content: '你在干嘛',author: '小海', datetime:'2021-01-01 00:00:00'}" content="这是评论内容" author="小海" datetime="2021-01-01 00:00:00"/>
   </main>
 </template>
 

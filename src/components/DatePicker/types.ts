@@ -10,4 +10,5 @@ export interface DatePickerEmits {
   (e: 'change', value: string | Date | Array<string | Date>): void;
   (e: 'focus', event: FocusEvent): void;
   (e: 'clear'): void;
+  (e:'value', value: string | Date | Array<string | Date>): void;
 }

@@ -1,0 +1,212 @@
+.fei-comment {
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 10px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.fei-avart{
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+}
+
+.fei-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: 10px;
+  align-items: flex-start;
+}
+
+/* 基础样式 - 注意这里取消了嵌套 */
+.fei-content .fei-content__title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+  gap: 5px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.fei-content .fei-content__title .fei-datetime {
+  color: var(--fei-text-color-secondary);
+  font-size: var(--fei-font-size-tiny);
+  transition: color 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Primary 类型 */
+.fei-content .fei-content__title--primary {
+  color: var(--fei-color-primary);
+}
+.fei-content .fei-content__title--primary:hover {
+  color: var(--fei-color-primary-light-9);
+}
+
+/* Success 类型 */
+.fei-content .fei-content__title--success {
+  color: var(--fei-color-success);
+}
+.fei-content .fei-content__title--success:hover {
+  color: var(--fei-color-success-light-9);
+}
+
+/* Warning 类型 */
+.fei-content .fei-content__title--warning {
+  color: var(--fei-color-warning);
+}
+.fei-content .fei-content__title--warning:hover {
+  color: var(--fei-color-warning-dark-9);
+}
+
+/* Danger 类型 */
+.fei-content .fei-content__title--danger {
+  color: var(--fei-color-danger);
+}
+.fei-content .fei-content__title--danger:hover {
+  color: var(--fei-color-danger-dark-9);
+}
+
+/* 作者样式 - 注意这里也取消了嵌套 */
+.fei-content__title .fei-author {
+  font-weight: bold;
+  /* 关键修改：让作者颜色继承父元素，这样 hover 才能生效 */
+  color: inherit;
+}
+
+.fei-content .fei-text {
+  color: var(--fei-color-text);
+  font-size: var(--fei-font-size-small);
+  line-height: var(--fei-line-height-small);
+  margin: 0;
+  padding: 0;
+  word-break: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.fei-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.fei-actions .fei-action__replay,
+.fei-actions .fei-action__editer,
+.fei-actions .fei-action__delete {
+  color: var(--fei-color-text-secondary);
+  font-size: var(--fei-font-size-tiny);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  &:hover {
+    color: #565656;
+    text-decoration: underline;
+  }
+}
+/* .fei-quote 的基础样式 */
+.fei-quote {
+  padding: 8px 16px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+/* Primary 类型 */
+.fei-quote--primary {
+  background-color: var(--fei-color-primary-light-13);
+  border-left: 4px solid var(--fei-color-primary);
+}
+
+/* Success 类型 */
+.fei-quote--success {
+  background-color: var(--fei-color-success-light-13, #f0f6e6);
+  border-left: 4px solid var(--fei-color-success, #96c24e);
+}
+
+/* Warning 类型 */
+.fei-quote--warning {
+  background-color: var(--fei-color-warning-light-13, #fff9de);
+  border-left: 4px solid var(--fei-color-warning, #fed71a);
+}
+
+/* Danger 类型 */
+/* 注意：这里边框使用了 dark-2 色，因为基础的 danger 色太浅，用作边框不明显 */
+.fei-quote--danger {
+  background-color: var(--fei-color-danger-light-13, #fdf4f3);
+  border-left: 4px solid var(--fei-color-danger-dark-2, #d05a5a);
+}
+
+/* Info 类型 (如果您的 type 包含 'info') */
+.fei-quote--info {
+  background-color: var(--fei-color-info-light-13, #f5f4f3);
+  border-left: 4px solid var(--fei-color-info, #bbb5ac);
+}
+/* Reply container */
+.fei-reply {
+  padding: 12px 16px;
+  margin-top: 12px;
+  border-radius: 6px;
+  /* A neutral default background color */
+  background-color: #f7f8fa;
+  width: 100%;
+}
+
+/* Reply content text */
+.fei-reply__content {
+  color: #303133;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 8px; /* Space between content and author line */
+}
+
+/* Author info row */
+.fei-reply__author {
+  display: flex;
+  justify-content: flex-end; /* Align the entire row to the right */
+  align-items: center;      /* Vertically align image and text */
+  gap: 8px;                 /* Space between image, name, and date */
+}
+
+/* Author name */
+.fei-reply__author-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #606266;
+}
+
+/* Datetime text */
+.fei-reply__datetime {
+  font-size: 12px;
+  color: #909399;
+}
+
+/* --- Type Modifiers for Background --- */
+/* These use the lightest tint from your color variables */
+
+.fei-reply--primary {
+  background-color: var(--fei-color-primary-light-13, #f4dfdf);
+}
+
+.fei-reply--success {
+  background-color: var(--fei-color-success-light-13, #f0f6e6);
+}
+
+.fei-reply--warning {
+  background-color: var(--fei-color-warning-light-13, #fff9de);
+}
+
+.fei-reply--danger {
+  background-color: var(--fei-color-danger-light-13, #fdf4f3);
+}
+
+.fei-reply--info {
+  background-color: var(--fei-color-info-light-13, #f5f4f3);
+}

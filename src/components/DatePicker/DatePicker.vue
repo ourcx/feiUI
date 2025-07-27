@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed,ref } from 'vue'
+import { computed,ref,watch } from 'vue'
 // 1. 引入外部库的组件和样式
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
@@ -15,6 +15,10 @@ const props = withDefaults(defineProps<DatePickerProps>(), {
 const emit = defineEmits<DatePickerEmits>()
 
 const model = ref('')
+//把值发射出去
+watch(model, (newValue) => {
+  emit('value', newValue)
+})
 
 const handleFocus = (event: FocusEvent) => {
   emit('focus', event)
