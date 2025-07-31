@@ -28,6 +28,8 @@ import Links from "./components/Links/Links.vue";
 import List  from "./components/List/List.vue";
 import DatePicker from "./components/DatePicker/DatePicker.vue";
 import Comment from "./components/Comment/Comment.vue";
+import Drawer from "./components/Drawer/Drawer.vue";
+
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -131,11 +133,16 @@ const closeStatusBar = () => {
   myStatusBar.value?.scrollPinch()
 }
 
-
+const visibleDrawer = ref(true);
+const handleBeforeClose = (done: () => void) => {
+  visibleDrawer.value = false;
+  done();
+}
 </script>
 
 <template>
   <main>
+  <Drawer title="测试抽屉" :visible="visibleDrawer" @close="closeStatusBar" mask :before-close="handleBeforeClose"></Drawer>
   <StatuesBar status="success" title="表单" description="feiUI" ref="myStatusBar" @click="closeStatusBar">
   <template #befor>
   <Select

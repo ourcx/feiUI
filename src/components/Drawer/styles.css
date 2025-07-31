@@ -1,0 +1,268 @@
+
+.fei-drawer-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.fei-drawer-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.fei-drawer-wrapper {
+  position: absolute;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+}
+
+
+.fei-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  flex-shrink: 0; /* 防止头部被压缩 */
+}
+
+.fei-drawer-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #303133;
+}
+
+.fei-drawer-close-btn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 22px;
+  cursor: pointer;
+  color: #909399;
+  line-height: 1;
+}
+
+.fei-drawer-body {
+  flex-grow: 1;
+  padding: 24px;
+  overflow-y: auto;
+  word-break: break-word;
+}
+
+.fei-drawer-footer {
+  padding: 10px 24px;
+  border-top: 1px solid #f0f0f0;
+  flex-shrink: 0; /* 防止尾部被压缩 */
+  text-align: right;
+}
+.fei-drawer-footer > * {
+  margin-left: 8px;
+}
+
+
+/* === 动画效果 === */
+
+/* 1. 遮罩层淡入淡出 */
+.drawer-fade-enter-active,
+.drawer-fade-leave-active {
+  transition: opacity 0.3s cubic-bezier(0.7, 0.3, 0.1, 1);
+}
+.drawer-fade-enter-from,
+.drawer-fade-leave-to {
+  opacity: 0;
+}
+
+.fei-drawer-slide-right-enter-active,
+.fei-drawer-slide-right-leave-active,
+.fei-drawer-slide-left-enter-active,
+.fei-drawer-slide-left-leave-active,
+.fei-drawer-slide-bottom-enter-active,
+.fei-drawer-slide-bottom-leave-active,
+.fei-drawer-slide-top-enter-active,
+.fei-drawer-slide-top-leave-active {
+  transition: transform var(--slide-transition-duration) var(--slide-transition-timing-function);
+  overflow: hidden;
+}
+
+.fei-drawer-slide-right-enter-from,
+.fei-drawer-slide-right-leave-to {
+  transform: translateX(100%);
+}
+
+.fei-drawer-slide-left-enter-from,
+.fei-drawer-slide-left-leave-to {
+  transform: translateX(-100%);
+}
+
+.fei-drawer-slide-bottom-enter-from,
+.fei-drawer-slide-bottom-leave-to {
+  transform: translateY(100%);
+}
+
+.fei-drawer-slide-top-enter-from,
+.fei-drawer-slide-top-leave-to {
+  transform: translateY(-100%);
+}
+
+
+.fei-drawer--right .fei-drawer-wrapper {
+  box-shadow: -6px 0 16px -8px rgba(0, 0, 0, 0.08), -9px 0 28px 0 rgba(0, 0, 0, 0.05), -12px 0 48px 16px rgba(0, 0, 0, 0.03);
+}
+.fei-drawer--left .fei-drawer-wrapper {
+  box-shadow: 6px 0 16px -8px rgba(0, 0, 0, 0.08), 9px 0 28px 0 rgba(0, 0, 0, 0.05), 12px 0 48px 16px rgba(0, 0, 0, 0.03);
+}
+.fei-drawer--top .fei-drawer-wrapper {
+  box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03);
+}
+.fei-drawer--bottom .fei-drawer-wrapper {
+  box-shadow: 0 -6px 16px -8px rgba(0, 0, 0, 0.08), 0 -9px 28px 0 rgba(0, 0, 0, 0.05), 0 -12px 48px 16px rgba(0, 0, 0, 0.03);
+}
+.fei-drawer-close-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+
+  /* 外观 */
+  background: var(--fei-color-white);
+  border: 1px solid #dcdfe6; /* 一个通用的边框颜色 */
+  color: #606266; /* 一个通用的文字颜色 */
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: .1s;
+  font-weight: 500;
+
+  /* 尺寸与圆角 */
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+/* 基础按钮的交互状态 */
+.fei-drawer-close-btn:hover,
+.fei-drawer-close-btn:focus {
+  color: var(--fei-color-primary);
+  border-color: var(--fei-color-primary-light-7);
+  background-color: var(--fei-color-primary-light-13);
+}
+
+.fei-drawer-close-btn:active {
+  color: var(--fei-color-primary);
+  border-color: var(--fei-color-primary);
+}
+
+
+
+/* --- Primary --- */
+.fei-drawer-close-btn-primary {
+  color: var(--fei-color-white);
+  background-color: var(--fei-color-primary);
+  border-color: var(--fei-color-primary);
+}
+.fei-drawer-close-btn-primary:hover,
+.fei-drawer-close-btn-primary:focus {
+  background-color: var(--fei-color-primary-light-3);
+  border-color: var(--fei-color-primary-light-3);
+  color: var(--fei-color-white);
+}
+.fei-drawer-close-btn-primary:active {
+  background-color: var(--fei-color-primary-dark-2);
+  border-color: var(--fei-color-primary-dark-2);
+}
+
+/* --- Success --- */
+.fei-drawer-close-btn-success {
+  color: var(--fei-color-white);
+  background-color: var(--fei-color-success);
+  border-color: var(--fei-color-success);
+}
+.fei-drawer-close-btn-success:hover,
+.fei-drawer-close-btn-success:focus {
+  background-color: var(--fei-color-success-light-3);
+  border-color: var(--fei-color-success-light-3);
+  color: var(--fei-color-white);
+}
+.fei-drawer-close-btn-success:active {
+  background-color: var(--fei-color-success-dark-2);
+  border-color: var(--fei-color-success-dark-2);
+}
+
+/* --- Warning --- */
+.fei-drawer-close-btn-warning {
+  /* 警告色通常搭配深色文字以保证对比度 */
+  color: var(--fei-color-primary-dark-4);
+  background-color: var(--fei-color-warning);
+  border-color: var(--fei-color-warning);
+}
+.fei-drawer-close-btn-warning:hover,
+.fei-drawer-close-btn-warning:focus {
+  background-color: var(--fei-color-warning-light-3);
+  border-color: var(--fei-color-warning-light-3);
+  color: var(--fei-color-primary-dark-4);
+}
+.fei-drawer-close-btn-warning:active {
+  background-color: var(--fei-color-warning-dark-2);
+  border-color: var(--fei-color-warning-dark-2);
+}
+
+/* --- Danger --- */
+.fei-drawer-close-btn-danger {
+  color: var(--fei-color-white);
+  /* 你的 danger 变量较浅，使用 dark-2 作为基础色更合适 */
+  background-color: var(--fei-color-danger-dark-2);
+  border-color: var(--fei-color-danger-dark-2);
+}
+.fei-drawer-close-btn-danger:hover,
+.fei-drawer-close-btn-danger:focus {
+  background-color: var(--fei-color-danger);
+  border-color: var(--fei-color-danger);
+  color: var(--fei-color-white);
+}
+.fei-drawer-close-btn-danger:active {
+  background-color: var(--fei-color-danger-dark-3);
+  border-color: var(--fei-color-danger-dark-3);
+}
+
+/* --- Info --- */
+.fei-drawer-close-btn-info {
+  color: var(--fei-color-white);
+  background-color: var(--fei-color-info);
+  border-color: var(--fei-color-info);
+}
+.fei-drawer-close-btn-info:hover,
+.fei-drawer-close-btn-info:focus {
+  background-color: var(--fei-color-info-light-3);
+  border-color: var(--fei-color-info-light-3);
+  color: var(--fei-color-white);
+}
+.fei-drawer-close-btn-info:active {
+  background-color: var(--fei-color-info-dark-2);
+  border-color: var(--fei-color-info-dark-2);
+}
+
+
+/* === 3. 不可用状态 === */
+.fei-drawer-close-btn--disabled,
+.fei-drawer-close-btn--disabled:hover,
+.fei-drawer-close-btn--disabled:focus {
+  cursor: not-allowed;
+  pointer-events: none; /* 禁用所有鼠标事件 */
+  opacity: 0.6;
+}
