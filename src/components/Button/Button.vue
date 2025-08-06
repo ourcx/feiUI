@@ -54,5 +54,3 @@ const computedWidthStyle = computed(() => {
 });
 //暴露dom
 </script>
-
-<style></style>

@@ -29,7 +29,7 @@ import List  from "./components/List/List.vue";
 import DatePicker from "./components/DatePicker/DatePicker.vue";
 import Comment from "./components/Comment/Comment.vue";
 import Drawer from "./components/Drawer/Drawer.vue";
-
+import BackTop from "./components/BackTop/BackTop.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -133,7 +133,7 @@ const closeStatusBar = () => {
   myStatusBar.value?.scrollPinch()
 }
 
-const visibleDrawer = ref(true);
+const visibleDrawer = ref(false);
 const handleBeforeClose = (done: () => void) => {
   visibleDrawer.value = false;
   done();
@@ -142,6 +142,7 @@ const handleBeforeClose = (done: () => void) => {
 
 <template>
   <main>
+  <BackTop>返回顶部</BackTop>
   <Drawer title="测试抽屉" :visible="visibleDrawer" @close="closeStatusBar" mask :before-close="handleBeforeClose"></Drawer>
   <StatuesBar status="success" title="表单" description="feiUI" ref="myStatusBar" @click="closeStatusBar">
   <template #befor>
@@ -203,7 +204,7 @@ const handleBeforeClose = (done: () => void) => {
     <Button plain @click="open">你好</Button>
     <Button type="primary" @click="close">Hello World</Button>
     <Button type="danger" disabled>Hello World</Button>
-    <Button type="danger">Hello World</Button>
+    <Button type="danger" @click="visibleDrawer=!visibleDrawer">Hello World</Button>
     <br /><br />
     <Button type="primary" loading>加载按钮</Button>
     <Button type="primary" icon="arrow-up">带图标的按钮</Button>
