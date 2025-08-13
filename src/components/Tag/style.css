@@ -1,0 +1,170 @@
+.fei-tag {
+  --tag-bg-color: var(--fei-color-primary);
+  --tag-hover-bg: var(--fei-color-primary-light-3);
+  --tag-active-bg: var(--fei-color-primary-dark-3);
+  --tag-border-color: var(--fei-color-primary-dark-2);
+  --tag-text-color: var(--fei-color-white);
+
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background-color: var(--tag-bg-color);
+  color: var(--tag-text-color);
+  font-size: 12px;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  vertical-align: middle;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+/* 尺寸样式 */
+.fei-tag--small {
+  padding: 2px 8px;
+  font-size: 10px;
+}
+
+.fei-tag--large {
+  padding: 6px 14px;
+  font-size: 14px;
+}
+
+/* 类型样式 */
+.fei-tag--primary {
+  --tag-bg-color: var(--fei-color-primary);
+}
+.fei-tag--success {
+  --tag-bg-color: var(--fei-color-success);
+}
+.fei-tag--info {
+  --tag-bg-color: var(--fei-color-info);
+}
+.fei-tag--warning {
+  --tag-bg-color: var(--fei-color-warning);
+}
+.fei-tag--danger {
+  --tag-bg-color: var(--fei-color-danger);
+}
+
+/* 状态样式 */
+.fei-tag--round {
+  border-radius: 100px;
+}
+
+.fei-tag--bordered {
+  border-color: var(--tag-border-color);
+  background-color: transparent;
+  color: var(--tag-bg-color);
+}
+
+.fei-tag--strong {
+  font-weight: 600;
+}
+
+.fei-tag--checked {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--tag-bg-color) 20%, transparent);
+}
+
+/* 禁用状态 */
+.fei-tag--disabled {
+  opacity: 0.6;
+  cursor: not-allowed !important;
+  background-color: var(--fei-text-color-disabled);
+  border: none;
+  color: var(--fei-color-white);
+}
+
+/* 交互效果 */
+.fei-tag:not(.fei-tag--disabled):hover {
+  background-color: var(--tag-hover-bg);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: var(--fei-color-white);
+}
+
+.fei-tag:not(.fei-tag--disabled):active {
+  background-color: var(--tag-active-bg);
+  transform: translateY(0);
+  color: var(--fei-color-white);
+}
+
+/* 头像样式 */
+.fei-tag__avatar {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.fei-tag--small .fei-tag__avatar {
+  width: 14px;
+  height: 14px;
+}
+
+.fei-tag--large .fei-tag__avatar {
+  width: 18px;
+  height: 18px;
+}
+
+/* 内容区域 */
+.fei-tag__content {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fei-tag__text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+/* 关闭按钮 */
+.fei-tag__close {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+  margin-left: 4px;
+  font-size: 12px;
+}
+
+.fei-tag__close:hover {
+  opacity: 0.9;
+  color: var(--fei-color-white) !important;
+}
+.fei-tag__close:active {
+  opacity: 1;
+  color: var(--fei-color-white) !important;
+}
+.fei-tag:active .fei-tag__close,
+.fei-tag__close:active {
+  opacity: 1;
+  color: var(--fei-color-white) !important;
+}
+
+.fei-tag:hover .fei-tag__close,
+.fei-tag__close:hover {
+  opacity: 0.9;
+  color: var(--fei-color-white) !important;
+}
+
+.fei-tag--small .fei-tag__close {
+  font-size: 10px;
+}
+
+.fei-tag--large .fei-tag__close {
+  font-size: 14px;
+}
+
+/* 有边框时的文字颜色处理 */
+.fei-tag--bordered .fei-tag__close {
+  color: var(--tag-bg-color);
+}

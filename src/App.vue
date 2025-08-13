@@ -30,6 +30,7 @@ import DatePicker from "./components/DatePicker/DatePicker.vue";
 import Comment from "./components/Comment/Comment.vue";
 import Drawer from "./components/Drawer/Drawer.vue";
 import BackTop from "./components/BackTop/BackTop.vue";
+import Tag from "./components/Tag/Tag.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -433,7 +434,15 @@ const handleBeforeClose = (done: () => void) => {
 <br>
 <br>
 <Comment :reply="{content: '你在干嘛',author: '小海', datetime:'2021-01-01 00:00:00'}" content="这是评论内容" author="小海" datetime="2021-01-01 00:00:00"/>
+<br>
+<br>
+<br>
+  <Tag body="这是标签内容" :visible="true" round disabled></Tag>
+  <Tag body="llm" :visible="true" round></Tag>
+  <Tag body="viest" :visible="true" checkable :bordered="false"></Tag>
+  <Tag body="css" :visible="true" checkable type="success"></Tag>
   </main>
+
 </template>
 
 <style scoped>
