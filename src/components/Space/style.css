@@ -1,0 +1,29 @@
+
+.fei-space {
+  display: inline-flex;
+  box-sizing: border-box;
+}
+
+.fei-space-dirction-horizontal {
+  flex-direction: row;
+}
+.fei-space-dirction-vertical {
+  flex-direction: column;
+}
+
+.fei-space-align-start {
+  align-items: flex-start;
+}
+.fei-space-align-center {
+  align-items: center;
+}
+.fei-space-align-end {
+  align-items: flex-end;
+}
+.fei-space-align-baseline {
+  align-items: baseline;
+}
+
+.fei-space-wrap {
+  flex-wrap: wrap;
+}
