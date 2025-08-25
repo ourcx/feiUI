@@ -32,6 +32,7 @@ import Drawer from "./components/Drawer/Drawer.vue";
 import BackTop from "./components/BackTop/BackTop.vue";
 import Tag from "./components/Tag/Tag.vue";
 import Space from "./components/Space/Space.vue";
+import QRcode from "./components/QRcode/ORcode.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -447,11 +448,18 @@ const handleBeforeClose = (done: () => void) => {
   <br>
   <br>
   <Space align="center" dirction="horizontal" size="middle" :wrap="true">
-    <Tag body="这是标签内容" :visible="true" round disabled></Tag>
+    <Tag body="是space包裹的标签内容" :visible="true" round disabled></Tag>
   <Tag body="llm" :visible="true" round></Tag>
   <Tag body="viest" :visible="true" checkable :bordered="false"></Tag>
   <Tag body="css" :visible="true" checkable type="success"></Tag>
   </Space>
+  <br>
+  <br>
+  <br>
+  <QRcode value="https://github.com"></QRcode>
+  <br>
+  <br>
+  <br>
   </main>
 
 </template>
