@@ -1,13 +1,13 @@
 <template>
   <div class="canvas-container" :style="{transform: `scale(${scaleVal})`}">
     <!-- 使用 ref 获取 canvas 元素的直接引用 -->
-    <canvas ref="canvasRef"></canvas>
+    <canvas ref="canvasRef" :style="{width: props.width, height:props.height}"></canvas>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, onMounted, onUnmounted } from "vue";
-import type { CanvasProps } from "./CanvasPoint.ts";
+import type { CanvasProps } from "./types";
 
 
 const mouse = reactive({

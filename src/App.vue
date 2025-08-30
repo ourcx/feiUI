@@ -32,7 +32,10 @@ import Drawer from "./components/Drawer/Drawer.vue";
 import BackTop from "./components/BackTop/BackTop.vue";
 import Tag from "./components/Tag/Tag.vue";
 import Space from "./components/Space/Space.vue";
+import Point from "./components/Point/Point.vue";
 import QRcode from "./components/QRcode/ORcode.vue";
+import Swiper from "./components/Swiper/Swiper.vue";
+import SwiperItem from "./components/Swiper/Swiper-item.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -460,6 +463,24 @@ const handleBeforeClose = (done: () => void) => {
   <br>
   <br>
   <br>
+  <Point text="谢靖宇" :width="600" :scale-val="0.5" :height="200"/>
+  <Point text="  _
+ | |   ___   __   __   ___
+ | |  / _ \  \ \ / /  / _ \
+ | | | (_) |  \ V /  |  __/
+ |_|  \___/    \_/    \___|" :width="600" :scale-val="0.5" :height="200"/>
+  <Point text="七夕快乐" :width="600" :scale-val="0.5" :height="200"/>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <Swiper :autoplay="false">
+  <SwiperItem color="red">1</SwiperItem>
+  <SwiperItem color="blue">2</SwiperItem>
+  <SwiperItem color="green">3</SwiperItem>
+  <SwiperItem color="pink">4</SwiperItem>
+  </Swiper>
   </main>
 
 </template>
