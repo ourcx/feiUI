@@ -45,6 +45,7 @@
     "postcss-comment": "^2.0.0",
     "shiki": "^3.7.0",
     "typescript": "~5.8.0",
+    "unplugin-vue-components": "^29.0.0",
     "vite": "^6.2.4",
     "vitest": "^3.2.4",
     "vue-tsc": "^2.2.8"

@@ -1,8 +1,9 @@
 import { fileURLToPath, URL } from 'node:url'
-
+import { Fei } from './resolvers'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import Components from 'unplugin-vue-components/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -21,7 +22,10 @@ export default defineConfig({
         }
       },
       include: [/\.vue$/, /\.md$/] // 明确包含的文件类型
-    })
+    }),
+    Components({
+      resolvers: [Fei()],
+    }),
   ],
   resolve: {
     alias: {
