@@ -36,6 +36,7 @@ import Point from "./components/Point/Point.vue";
 import QRcode from "./components/QRcode/ORcode.vue";
 import Swiper from "./components/Swiper/Swiper.vue";
 import SwiperItem from "./components/Swiper/Swiper-item.vue";
+import ColorPicker from "./components/ColorPicker/ColorPicker.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -143,6 +144,11 @@ const visibleDrawer = ref(false);
 const handleBeforeClose = (done: () => void) => {
   visibleDrawer.value = false;
   done();
+}
+
+const pureColor = ref('#71afe5');
+const handleColorUpdate = (e:any) => {
+  console.log(e);
 }
 </script>
 
@@ -481,6 +487,12 @@ const handleBeforeClose = (done: () => void) => {
   <SwiperItem color="green">3</SwiperItem>
   <SwiperItem color="pink">4</SwiperItem>
   </Swiper>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <ColorPicker   @update:pureColor="handleColorUpdate" />
   </main>
 
 </template>
