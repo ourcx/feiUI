@@ -20,8 +20,8 @@
       ></div>
     </div>
     <!-- 在transation上面添加相关的js事件 -->
-    <transition name="fade" v-on="transitionEvents" v-show="isActive">
-      <div class="fei-collapse-item__wrapper">
+    <transition name="fade" v-on="transitionEvents" >
+      <div class="fei-collapse-item__wrapper" v-show="isActive">
         <!-- 在这个组件之内的意思，就是这个组件的子组件，使用双下划线 -->
         <div class="fei-collapse-item__content" :id="`item-header-${name}`">
           <slot></slot>

@@ -123,8 +123,8 @@ const handleWheel = (event: WheelEvent) => {
 };
 //拖拽
 //持续监听鼠标的点击和松开？，可以持续记录鼠标的移动，让图片随着鼠标去运动
-const X = ref<Number>(0);
-const Y = ref<Number>(0);
+const X = ref<number>(0);
+const Y = ref<number>(0);
 const dragStart = ref<boolean>(false);
 const drag = (e: MouseEvent) => {
   if (!dragStart.value) return;

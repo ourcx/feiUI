@@ -38,7 +38,7 @@ describe("Input", () => {
 
   })
 it('model', async() => {
-  let modelValue = 'test' // 在测试作用域中管理状态
+  const modelValue = 'test' // 在测试作用域中管理状态
 
   const wrapper = mount(Input, {
     props: {
