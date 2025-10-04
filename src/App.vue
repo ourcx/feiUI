@@ -4,7 +4,7 @@ import Collapse from "./components/Collapse/Collapse.vue";
 import Item from "./components/Collapse/CollapseItem.vue";
 import Icon from "./components/Icon/Icon.vue";
 import Alert from "./components/Alert/Alert.vue";
-import { ref, onMounted, h, reactive } from "vue";
+import { ref, onMounted, h, reactive, computed } from "vue";
 import Tooltip from "./components/Tooltip/Tooltip.vue";
 import type { TooltipInstance } from "./components/Tooltip/types";
 import type { Options } from "@popperjs/core";
@@ -37,6 +37,7 @@ import QRcode from "./components/QRcode/ORcode.vue";
 import Swiper from "./components/Swiper/Swiper.vue";
 import SwiperItem from "./components/Swiper/Swiper-item.vue";
 import ColorPicker from "./components/ColorPicker/ColorPicker.vue";
+import Text from "./svg/Text/Text.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -150,6 +151,53 @@ const pureColor = ref('#71afe5');
 const handleColorUpdate = (e:any) => {
   console.log(e);
 }
+
+const wordData = ref([
+  { text: 'Vue', value: 100 },
+  { text: 'TypeScript', value: 85 },
+  { text: 'JavaScript', value: 95 },
+  { text: 'React', value: 80 },
+  { text: 'Node.js', value: 75 },
+  { text: 'Python', value: 70 },
+  { text: '数据可视化', value: 65 },
+  { text: '前端开发', value: 90 },
+  { text: 'CSS', value: 85 },
+  { text: 'HTML', value: 80 },
+  { text: 'Webpack', value: 60 },
+  { text: 'Vite', value: 55 },
+  { text: '组件库', value: 50 },
+  { text: '响应式', value: 45 },
+])
+
+// 主题颜色
+const isDarkTheme = ref(false)
+const colors = computed(() =>
+  isDarkTheme.value
+    ? ['#ff6b6b', '#ffa8a8', '#ffd8a8', '#d8f5a2', '#96f2d7', '#63e6be', '#38d9a9']
+    : ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2']
+)
+
+const selectedWord = ref<{ text: any } | null>(null)
+const wordCloudRef = ref()
+
+// 方法
+const handleWordClick = (word: { text: any; }, event: any) => {
+  selectedWord.value = word
+  console.log('点击词汇:', word.text, event)
+}
+
+const handleWordHover = (word: { text: any; }, event: any) => {
+  console.log('悬停词汇:', word.text)
+}
+
+const handleWordLeave = (word:any) => {
+  console.log('离开词汇:', word.text)
+}
+
+const handleLayoutComplete = (words: any[]) => {
+  console.log('布局完成，词汇数量:', words.length)
+}
+
 </script>
 
 <template>
@@ -493,6 +541,23 @@ const handleColorUpdate = (e:any) => {
   <br>
   <br>
   <ColorPicker   @update:pureColor="handleColorUpdate" />
+  <br>
+  <br>
+ <Text
+        :data="wordData"
+        :colors="colors"
+        :fontSizeRange="[20, 80]"
+        :rotations="[-45, 0, 45]"
+        autoFit
+        @wordClick="handleWordClick"
+        @wordHover="handleWordHover"
+        @wordLeave="handleWordLeave"
+        @layoutComplete="handleLayoutComplete"
+        ref="wordCloudRef"
+      />
+  <br>
+  <br>
+
   </main>
 
 </template>
