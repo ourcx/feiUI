@@ -11,7 +11,6 @@
   font-size: 14px;
   line-height: 1.5;
   color: var(--fei-color-info-dark-2, #60534a);
-  color: var(--fei-color-primary-dark-3, #7a3030);
   border-top: 1px solid var(--fei-color-info-light-11, #eceae7);
 }
 

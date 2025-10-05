@@ -533,8 +533,6 @@ const handleLayoutComplete = (words: any[]) => {
   <br>
   <br>
   <br>
-  <br>
-  <br>
   <ColorPicker   @update:pureColor="handleColorUpdate" />
   <br>
   <br>
