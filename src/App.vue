@@ -38,6 +38,7 @@ import Swiper from "./components/Swiper/Swiper.vue";
 import SwiperItem from "./components/Swiper/Swiper-item.vue";
 import ColorPicker from "./components/ColorPicker/ColorPicker.vue";
 import Text from "./svg/Text/Text.vue";
+import Footer from "./page/footer/footer.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -517,13 +518,7 @@ const handleLayoutComplete = (words: any[]) => {
   <br>
   <br>
   <br>
-  <Point text="谢靖宇" :width="600" :scale-val="0.5" :height="200"/>
-  <Point text="  _
- | |   ___   __   __   ___
- | |  / _ \  \ \ / /  / _ \
- | | | (_) |  \ V /  |  __/
- |_|  \___/    \_/    \___|" :width="600" :scale-val="0.5" :height="200"/>
-  <Point text="七夕快乐" :width="600" :scale-val="0.5" :height="200"/>
+  <Point text="国庆快乐" :width="600" :scale-val="0.5" :height="200"/>
 
   <br>
   <br>
@@ -557,7 +552,7 @@ const handleLayoutComplete = (words: any[]) => {
       />
   <br>
   <br>
-
+  <Footer> </Footer>
   </main>
 
 </template>
