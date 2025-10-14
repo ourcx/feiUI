@@ -47,7 +47,6 @@ import { computed } from "vue";
 
 const props = withDefaults(defineProps<FooterProps>(), {
   height: "auto",
-  background: "#fff",
   color: "#333",
   border: "1px solid #e8e8e8",
   padding: "0 20px",

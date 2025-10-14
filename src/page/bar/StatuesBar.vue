@@ -37,7 +37,6 @@ const props = withDefaults(defineProps<StatuesBarProps>(), {
   back: true,
   icon: "arrow-left",
   height: 60,
-  backgroundColor: "#fff",
   fixed: true,
 });
 const Barheight = ref(props.height);
