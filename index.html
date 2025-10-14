@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
-  </head>
-  <style>
-    #app{
-      height: 100vh;
-      width: 100vw;
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 先引入日间主题 -->
+  <link rel="stylesheet" href="./src/styles/vars.css">
+  <!-- 再引入夜晚主题 -->
+  <link rel="stylesheet" href="./src/styles/darkVars.css">
+  <title>Vite App</title>
+</head>
+<style>
+  #app {
+    height: 100vh;
+    width: 100vw;
+  }
+</style>
+
+<body>
+  <button onclick="toggleTheme()">切换主题</button>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    if (html.getAttribute('data-theme') === 'dark') {
+      html.removeAttribute('data-theme');
+    } else {
+      html.setAttribute('data-theme', 'dark');
     }
-  </style>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+  }
+</script>
+
 </html>

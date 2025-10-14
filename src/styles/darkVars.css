@@ -1,0 +1,129 @@
+:root[data-theme="dark"] {
+  /* 基础颜色 */
+  --fei-color-white: #1a1a1a;
+  --fei-color-black: #ffffff;
+
+  /* 主色调 - 在深色背景下调整饱和度和亮度 */
+  --fei-color-primary: #e86c6c;
+  --fei-color-primary-light-3: #ec8484;
+  --fei-color-primary-light-5: #f09c9c;
+  --fei-color-primary-light-7: #f4b4b4;
+  --fei-color-primary-light-9: #f8cccc;
+  --fei-color-primary-light-11: #fbe4e4;
+  --fei-color-primary-light-13: #fdf2f2;
+  --fei-color-primary-dark-2: #d45454;
+  --fei-color-primary-dark-3: #c03e3e;
+  --fei-color-primary-dark-4: #a83232;
+
+  /* 成功色 */
+  --fei-color-success: #a8d45e;
+  --fei-color-success-light-3: #b7db78;
+  --fei-color-success-light-5: #c6e292;
+  --fei-color-success-light-7: #d5e9ac;
+  --fei-color-success-light-9: #e3f0c6;
+  --fei-color-success-light-11: #f1f8e0;
+  --fei-color-success-light-13: #f8fcf0;
+  --fei-color-success-dark-2: #96c24e;
+  --fei-color-success-dark-3: #84aa44;
+  --fei-color-success-dark-4: #6d8f38;
+
+  /* 警告色 */
+  --fei-color-warning: #ffe74c;
+  --fei-color-warning-light-3: #ffec6d;
+  --fei-color-warning-light-5: #fff18d;
+  --fei-color-warning-light-7: #fff5ae;
+  --fei-color-warning-light-9: #ffface;
+  --fei-color-warning-light-11: #fffdee;
+  --fei-color-warning-light-13: #fffef6;
+  --fei-color-warning-dark-2: #fed71a;
+  --fei-color-warning-dark-3: #e6c217;
+  --fei-color-warning-dark-4: #c9a814;
+
+  /* 危险色 */
+  --fei-color-danger: #f5c2c1;
+  --fei-color-danger-light-3: #f7cecd;
+  --fei-color-danger-light-5: #f9dad9;
+  --fei-color-danger-light-7: #fbe6e5;
+  --fei-color-danger-light-9: #fdf2f1;
+  --fei-color-danger-light-11: #fef8f8;
+  --fei-color-danger-light-13: #fffcfc;
+  --fei-color-danger-dark-2: #efafad;
+  --fei-color-danger-dark-3: #d89d9b;
+  --fei-color-danger-dark-4: #b88482;
+
+  /* 信息色 */
+  --fei-color-info: #d1cbc3;
+  --fei-color-info-light-3: #dad5cf;
+  --fei-color-info-light-5: #e3dfda;
+  --fei-color-info-light-7: #ece9e6;
+  --fei-color-info-light-9: #f5f3f1;
+  --fei-color-info-light-11: #faf9f8;
+  --fei-color-info-light-13: #fcfcfb;
+  --fei-color-info-dark-2: #bbb5ac;
+  --fei-color-info-dark-3: #a59f96;
+  --fei-color-info-dark-4: #8a847c;
+
+  /* 中性色变量 - 深色主题核心调整 */
+  --fei-bg-color: #1e1e1e;
+  --fei-bg-color-page: #141414;
+  --fei-bg-color-overlay: #2d2d2d;
+  --fei-text-color-primary: #e8e8e8;
+  --fei-text-color-regular: #d0d0d0;
+  --fei-text-color-secondary: #a0a0a0;
+  --fei-text-color-placeholder: #6b6b6b;
+  --fei-text-color-disabled: #555555;
+  --fei-border-color: #444444;
+  --fei-border-color-light: #3a3a3a;
+  --fei-border-color-lighter: #303030;
+  --fei-border-color-extra-light: #262626;
+  --fei-border-color-dark: #4e4e4e;
+  --fei-border-color-darker: #585858;
+  --fei-fill-color: #2a2a2a;
+  --fei-fill-color-light: #252525;
+  --fei-fill-color-lighter: #202020;
+  --fei-fill-color-extra-light: #1b1b1b;
+  --fei-fill-color-dark: #2f2f2f;
+  --fei-fill-color-darker: #353535;
+  --fei-fill-color-blank: #1e1e1e;
+
+  /* 边框相关 */
+  --fei-border-color-hover: var(--fei-text-color-secondary);
+
+  /* 禁用状态 */
+  --fei-disabled-bg-color: var(--fei-fill-color-dark);
+  --fei-disabled-text-color: var(--fei-text-color-placeholder);
+  --fei-disabled-border-color: var(--fei-border-color-light);
+
+  /* 其他变量保持不变，确保一致性 */
+  --fei-border-width: 1px;
+  --fei-border-style: solid;
+  --fei-border: var(--fei-border-width) var(--fei-border-style) var(--fei-border-color);
+  --fei-border-radius-base: 4px;
+  --fei-border-radius-small: 2px;
+  --fei-border-radius-round: 20px;
+  --fei-border-radius-circle: 100%;
+
+  /* 字体 */
+  --fei-font-size-extra-large: 14px;
+  --fei-font-size-large: 18px;
+  --fei-font-size-medium: 16px;
+  --fei-font-size-base: 14px;
+  --fei-font-size-small: 13px;
+  --fei-font-size-extra-small: 12px;
+  --fei-font-size-tiny: 11px;
+  --fei-font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
+  --fei-font-weight-primary: 500;
+
+  /* 过渡动画 */
+  --fei-transition-duration: 0.3s;
+  --fei-transition-duration-fast: 0.2s;
+  --fei-transition-timing-function: ease-in-out;
+
+  /* 层级 */
+  --fei-z-index-bar: 1000;
+  --fei-z-index-dialog: 10001;
+
+  --slide-transition-duration: 0.35s;
+  --slide-transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
