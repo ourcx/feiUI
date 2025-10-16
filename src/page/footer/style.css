@@ -44,6 +44,7 @@
   transition: color 0.3s;
   cursor: pointer;
   text-align: left;
+  color: var(--fei-text-color-primary);
 }
 
 .fei-footer_type-primary:hover {

@@ -39,6 +39,7 @@ import SwiperItem from "./components/Swiper/Swiper-item.vue";
 import ColorPicker from "./components/ColorPicker/ColorPicker.vue";
 import Text from "./svg/Text/Text.vue";
 import Footer from "./page/footer/footer.vue";
+import Tinymce from "./components/Tinymce/Tinymce.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -551,6 +552,7 @@ const handleLayoutComplete = (words: any[]) => {
   <br>
   <br>
   <Footer> </Footer>
+  <Tinymce />
   </main>
 
 </template>
