@@ -7,7 +7,7 @@ hero:
   text: "一个轻量级的 Vue 3 组件库"
   tagline: 简洁、易用、学习实践
   image:
-    src: /logo.png  # 可以添加你的组件库 logo
+    src: /logo.svg
     alt: FeiUI
   actions:
     - theme: brand
