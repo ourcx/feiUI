@@ -21,16 +21,16 @@ import { ElMessage } from 'element-plus';
 import type { TinymceProps,TinymceEmits } from './type'
 
 const props = withDefaults(defineProps<TinymceProps & {
-  name: string;
-  editorId: string;
-  height: string | number;
-  editorConfig: Record<string, any>;
-  toolBarConfig: Record<string, any>;
-  readonly: boolean;
-  modelValue: string;
-  modelText: string;
-  maxLength: number;
-  placeholder: string;
+  name?: string;
+  editorId?: string;
+  height?: string | number;
+  editorConfig?: Record<string, any>;
+  toolBarConfig?: Record<string, any>;
+  readonly?: boolean;
+  modelValue?: string;
+  modelText?: string;
+  maxLength?: number;
+  placeholder?: string;
 }>(), {
   name: '文本编辑',
   upload: async (FormData: FormData) => {

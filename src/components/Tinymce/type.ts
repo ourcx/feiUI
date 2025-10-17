@@ -1,6 +1,6 @@
 export interface TinymceProps{
-  name: string
-  upload: (FormData: FormData) => Promise<any>
+  name?: string
+  upload?: (FormData: FormData) => Promise<any>
 }
 
 
