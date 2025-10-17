@@ -38,6 +38,7 @@ import Swiper from "./components/Swiper/Swiper.vue";
 import SwiperItem from "./components/Swiper/Swiper-item.vue";
 import ColorPicker from "./components/ColorPicker/ColorPicker.vue";
 import Text from "./svg/Text/Text.vue";
+import Math from "./svg/Math/Math.vue";
 import Footer from "./page/footer/footer.vue";
 import Tinymce from "./components/Tinymce/Tinymce.vue";
 
@@ -205,7 +206,7 @@ const handleLayoutComplete = (words: any[]) => {
 <template>
   <main>
   <BackTop>返回顶部</BackTop>
-  <Drawer title="测试抽屉" :visible="visibleDrawer.value" @close="closeStatusBar" mask :before-close="handleBeforeClose"></Drawer>
+  <Drawer title="测试抽屉" :visible="visibleDrawer" @close="closeStatusBar" mask :before-close="handleBeforeClose"></Drawer>
   <StatuesBar status="success" title="表单" description="feiUI" ref="myStatusBar" @click="closeStatusBar">
   <template #befor>
   <Select
@@ -259,7 +260,7 @@ const handleLayoutComplete = (words: any[]) => {
         :popperOptions="options"
         ref="tooltipRef"
         :openDelay="200"
-        :trigger="trigger.value"
+        :trigger="trigger"
         ColorType="success"
         manual
       >
@@ -269,12 +270,12 @@ const handleLayoutComplete = (words: any[]) => {
     <Button plain @click="open">你好</Button>
     <Button type="primary" @click="close">Hello World</Button>
     <Button type="danger" disabled>Hello World</Button>
-    <Button type="danger" @click="visibleDrawer.value = !visibleDrawer.value">Hello World</Button>
+    <Button type="danger" @click="visibleDrawer = !visibleDrawer">Hello World</Button>
     <br /><br />
     <Button type="primary" loading>加载按钮</Button>
     <Button type="primary" icon="arrow-up">带图标的按钮</Button>
 
-    <Collapse v-model="openedValue.value">
+    <Collapse v-model="openedValue">
       <Item name="a" arrow>
         <template #title>
           <h1>nice title</h1>
@@ -382,16 +383,16 @@ const handleLayoutComplete = (words: any[]) => {
     <Dropdown
       :menuOptions="optionsMenu"
       placement="bottom"
-      :trigger="trigger.value"
+      :trigger="trigger"
       @visible-change="(key:boolean) => inlineConsole('ssss', key as any)"
       @select="(key) => inlineConsole('ssss1111', key)"
     >
       <div>
-        <Button type="primary" @click="trigger.value = 'click'" width="100px">click</Button>
+        <Button type="primary" @click="trigger = 'click'" width="100px">click</Button>
       </div>
     </Dropdown>
-    <Input type="text" v-model="input.value" clearable />
-    <Input type="text" v-model="input.value" show-password @change="change($event)" />
+    <Input type="text" v-model="input" clearable />
+    <Input type="text" v-model="input" show-password @change="change($event)" />
     <br />
     <br />
     <br />
@@ -541,8 +542,8 @@ const handleLayoutComplete = (words: any[]) => {
   <br>
   <br>
  <Text
-        :data="wordData.value"
-        :colors="colors.value"
+        :data="wordData"
+        :colors="colors"
         :fontSizeRange="[20, 80]"
         :rotations="[-45, 0, 45]"
         autoFit
@@ -556,6 +557,7 @@ const handleLayoutComplete = (words: any[]) => {
   <br>
   <br>
     <Tinymce/>
+    <Math/>
   <Footer> </Footer>
   </main>
 

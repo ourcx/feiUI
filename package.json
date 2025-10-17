@@ -28,6 +28,7 @@
     "d3-cloud": "^1.2.7",
     "d3-scale-chromatic": "^3.1.0",
     "element-plus": "^2.11.4",
+    "katex": "^0.16.25",
     "lodash-es": "^4.17.21",
     "qrcode": "^1.5.4",
     "symbol-observable": "^4.0.0",

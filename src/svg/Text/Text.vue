@@ -139,7 +139,7 @@ const handleSvgClick = (event: MouseEvent) => {
 
 // 词云布局
 const generateWordCloud = async () => {
-  if (!props.data.length) return
+  if (!props.data?.length) return
 
   const fontSizeScale = scaleLinear()
     .domain([minValue.value, maxValue.value])

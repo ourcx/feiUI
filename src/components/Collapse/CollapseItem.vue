@@ -44,7 +44,7 @@ defineOptions({
 const ArrowActive = ref<boolean>(false);
 const props = defineProps<CollapseItemProps>();
 const CollapseContext = inject(collapseContextKey);
-const isActive = computed(() => CollapseContext?.activeNames.value.includes(props.name));
+const isActive = computed(() => CollapseContext?.activeNames?.value?.includes(props.name));
 watch(
   () => isActive.value,
   (val) => {
