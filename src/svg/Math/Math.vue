@@ -9,6 +9,7 @@
 import { computed, withDefaults } from "vue";
 import katex from "katex";
 import type { MathProps } from "./type";
+import { emit } from "process";
 const props = withDefaults(defineProps<MathProps>(), {
   name: "质能转化",
   format: "E = mc^2",
@@ -26,4 +27,6 @@ const html = computed(() => {
     displayMode: props.displayMod,
   });
 });
+
+
 </script>
