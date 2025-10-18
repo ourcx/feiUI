@@ -1,12 +1,12 @@
 # 安装
 #### 使用 npm
-npm install fei-ui
+`npm install fei-ui`
 
 #### 使用 yarn
-yarn add fei-ui
+`yarn add fei-ui`
 
 #### 使用 pnpm
-pnpm add fei-ui
+`pnpm add fei-ui`
 
 
 # 使用

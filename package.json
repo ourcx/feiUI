@@ -81,6 +81,7 @@
     "postcss": "^8.5.4",
     "postcss-comment": "^2.0.0",
     "prettier": "^3.6.2",
+    "sass-embedded": "^1.93.2",
     "shiki": "^3.7.0",
     "typescript": "~5.8.0",
     "typescript-eslint": "^8.45.0",

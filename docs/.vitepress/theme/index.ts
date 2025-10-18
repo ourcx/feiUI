@@ -1,55 +1,98 @@
 /* .vitepress/theme/index.ts */
 import DefaultTheme from 'vitepress/theme'
 import { h, watch } from 'vue'
+import type { App } from 'vue'
 import MyLayout from "./MyLayout.vue"
+import '../theme/style/index.scss'
+// 导入您的按钮组件
+import FeiButton from "../../../src/components/Button/Button.vue"
+
+// 导入演示组件
+import ButtonDemoBasic from "../../components/demos/ButtonDemoBasic.vue"
+import ButtonDemoType from "../../components/demos/ButtonDemoType.vue"
+import ButtonDemoSize from "../../components/demos/ButtonDemoSize.vue"
+import ButtonDemoDisabled from "../../components/demos/ButtonDemoDisabled.vue"
+import ButtonDemoLoading from "../../components/demos/ButtonDemoLoading.vue"
+import ButtonDemoOther from "../../components/demos/ButtonDemoOther.vue"
 
 // 声明 homePageStyle 变量
 let homePageStyle: HTMLStyleElement | undefined
 
 export default {
-  extends: DefaultTheme,
-  Layout() {
-    return h(MyLayout, null, {
-      // 这里是其他插槽组件
-    })
-  },
+  Layout: () => h(MyLayout),
 
-  enhanceApp({ app, router }) {
-    // 彩虹背景动画样式
+  enhanceApp({ app, router }: { app: App; router: any }) {
+    // 注册按钮组件
+    app.component('FeiButton', FeiButton)
+
+    // 注册演示组件
+    app.component('ButtonDemoBasic', ButtonDemoBasic)
+    app.component('ButtonDemoType', ButtonDemoType)
+    app.component('ButtonDemoSize', ButtonDemoSize)
+    app.component('ButtonDemoDisabled', ButtonDemoDisabled)
+    app.component('ButtonDemoLoading', ButtonDemoLoading)
+    app.component('ButtonDemoOther', ButtonDemoOther)
+
+    // 彩虹背景动画样式 - 只在客户端执行
     if (typeof window !== 'undefined') {
+      const updateHomePageStyle = (isHome: boolean) => {
+        if (isHome) {
+          if (homePageStyle) return
+
+          homePageStyle = document.createElement('style')
+          homePageStyle.innerHTML = `
+            :root {
+              --vp-home-hero-name-color: transparent;
+              --vp-home-hero-name-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            }
+
+            .VPHome {
+              animation: rainbow 12s linear infinite;
+            }
+
+            @keyframes rainbow {
+              0% {
+                --vp-home-hero-name-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              }
+              25% {
+                --vp-home-hero-name-background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+              }
+              50% {
+                --vp-home-hero-name-background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              }
+              75% {
+                --vp-home-hero-name-background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+              }
+              100% {
+                --vp-home-hero-name-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              }
+            }
+          `
+          document.head.appendChild(homePageStyle)
+        } else {
+          if (!homePageStyle) return
+          homePageStyle.remove()
+          homePageStyle = undefined
+        }
+      }
+
+      // 监听路由变化
       watch(
-        () => router.route.data.relativePath,
-        () => updateHomePageStyle(router.route.path === '/'), // 使用 router.route.path 来获取当前路径
+        () => router.route.path,
+        (newPath) => {
+          updateHomePageStyle(newPath === '/')
+        },
         { immediate: true }
       )
+
+      // 添加卸载清理
+      const originalUnmount = app.unmount
+      app.unmount = function () {
+        if (homePageStyle) {
+          homePageStyle.remove()
+        }
+        originalUnmount()
+      }
     }
   },
-}
-
-// 彩虹背景动画样式
-function updateHomePageStyle(value: boolean) {
-  if (value) {
-    if (homePageStyle) return
-
-    homePageStyle = document.createElement('style')
-    homePageStyle.innerHTML = `
-      :root {
-        animation: rainbow 12s linear infinite;
-      }
-
-      @keyframes rainbow {
-        0% { --vp-home-hero-name-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        25% { --vp-home-hero-name-background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        50% { --vp-home-hero-name-background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        75% { --vp-home-hero-name-background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-        100% { --vp-home-hero-name-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-      }
-    `
-    document.body.appendChild(homePageStyle)
-  } else {
-    if (!homePageStyle) return
-
-    homePageStyle.remove()
-    homePageStyle = undefined
-  }
 }
