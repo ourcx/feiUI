@@ -41,6 +41,8 @@ import Text from "./svg/Text/Text.vue";
 import Math from "./svg/Math/Math.vue";
 import Footer from "./page/footer/footer.vue";
 import Tinymce from "./components/Tinymce/Tinymce.vue";
+import Card from "./components/Card/Card.vue";
+
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -560,7 +562,11 @@ const handleLayoutComplete = (words: any[]) => {
     <Math/>
     <Math format="i\hbar\frac{\partial}{\partial t}\Psi(\mathbf{r},t) = \left[ -\frac{\hbar^2}{2m}\nabla^2 + V(\mathbf{r},t) \right]\Psi(\mathbf{r},t)" />
     <Math format="\frac{1}{2}\sum_{i=1}^n x_i^2" />
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <Card type="success" title="xxxxxxxxxxx"></Card>
   <Footer> </Footer>
   </main>
 
