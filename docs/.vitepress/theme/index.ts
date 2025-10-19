@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import FeiButton from "../../../src/components/Button/Button.vue"
 import FeiCode from '../../../src/components/Code/Code.vue'
 import FeiCard from '../../../src/components/Card/Card.vue'
+import FeiIcon from '../../../src/components/Icon/Icon.vue'
 // 导入演示组件
 import ButtonDemoBasic from "../../components/demos/ButtonDemoBasic.vue"
 import ButtonDemoType from "../../components/demos/ButtonDemoType.vue"
@@ -31,6 +32,13 @@ import CardDemoType from '../../components/demos/CardDemoType.vue'
 import CardDemoBorderless from '../../components/demos/CardDemoBorderless.vue'
 import CardDemoShadow from '../../components/demos/CardDemoShadow.vue'
 import CardDemoFooter from '../../components/demos/CardDemoFooter.vue'
+import IconDemoBasic from '../../components/demos/IconDemoBasic.vue'
+import IconDemoColor from '../../components/demos/IconDemoColor.vue'
+import IconDemoSize from '../../components/demos/IconDemoSize.vue'
+import IconDemoFlip from '../../components/demos/IconDemoFlip.vue'
+import IconDemoAnimation from '../../components/demos/IconDemoAnimation.vue'
+import IconDemoState from '../../components/demos/IconDemoState.vue'
+import IconDemoType from '../../components/demos/IconDemoType.vue'
 
 
 // 声明 homePageStyle 变量
@@ -67,6 +75,15 @@ export default {
     app.component('CardDemoShadow', CardDemoShadow)
     app.component('CardDemoBorderless', CardDemoBorderless)
     app.component('CardDemoFooter', CardDemoFooter)
+
+     app.component('FeiIcon', FeiIcon)
+     app.component('IconDemoBasic', IconDemoBasic)
+     app.component('IconDemoSize', IconDemoSize)
+     app.component('IconDemoSize', IconDemoSize)
+     app.component('IconDemoFlip', IconDemoFlip)
+     app.component('IconDemoAnimation', IconDemoAnimation)
+     app.component('IconDemoState', IconDemoState)
+     app.component('IconDemoType', IconDemoType)
 
 
 

@@ -37,7 +37,9 @@ export default defineConfig({
           items: [
             { text: 'FeiButton 按钮', link: '/components/button' },
             { text: 'FeiCode 代码块', link: '/components/code' },
-            { text: 'Card 卡片', link: '/components/card' }
+            { text: 'FeiCard 卡片', link: '/components/card' },
+            { text: 'FeiIcon 图标', link: '/components/icon' },
+            { text: 'Collape 下拉框', link: '/components/collape' },
           ]
         },
         {
