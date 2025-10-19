@@ -37,7 +37,7 @@ export default defineConfig({
           items: [
             { text: 'FeiButton 按钮', link: '/components/button' },
             { text: 'FeiCode 代码块', link: '/components/code' },
-            { text: 'Select 选择器', link: '/components/select' }
+            { text: 'Card 卡片', link: '/components/card' }
           ]
         },
         {

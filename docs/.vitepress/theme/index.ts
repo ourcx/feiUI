@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // 导入您的按钮组件
 import FeiButton from "../../../src/components/Button/Button.vue"
 import FeiCode from '../../../src/components/Code/Code.vue'
+import FeiCard from '../../../src/components/Card/Card.vue'
 // 导入演示组件
 import ButtonDemoBasic from "../../components/demos/ButtonDemoBasic.vue"
 import ButtonDemoType from "../../components/demos/ButtonDemoType.vue"
@@ -24,6 +25,13 @@ import CodeDemoTheme from '../../components/demos/CodeDemoTheme.vue'
 import CodeDemoCopyable from '../../components/demos/CodeDemoCopyable.vue'
 import CodeDemoEditable from '../../components/demos/CodeDemoEditable.vue'
 import CodeDemoWidth from '../../components/demos/CodeDemoWidth.vue'
+import CardDemoBasic from '../../components/demos/CardDemoBasic.vue'
+import CardDemoImage from '../../components/demos/CardDemoImage.vue'
+import CardDemoType from '../../components/demos/CardDemoType.vue'
+import CardDemoBorderless from '../../components/demos/CardDemoBorderless.vue'
+import CardDemoShadow from '../../components/demos/CardDemoShadow.vue'
+import CardDemoFooter from '../../components/demos/CardDemoFooter.vue'
+
 
 // 声明 homePageStyle 变量
 let homePageStyle: HTMLStyleElement | undefined
@@ -51,6 +59,15 @@ export default {
     app.component('CodeDemoCopyable', CodeDemoCopyable)
     app.component('CodeDemoEditable', CodeDemoEditable)
     app.component('CodeDemoWidth', CodeDemoWidth)
+
+    app.component('FeiCard', FeiCard)
+    app.component('CardDemoBasic', CardDemoBasic)
+    app.component('CardDemoType', CardDemoType)
+    app.component('CardDemoImage', CardDemoImage)
+    app.component('CardDemoShadow', CardDemoShadow)
+    app.component('CardDemoBorderless', CardDemoBorderless)
+    app.component('CardDemoFooter', CardDemoFooter)
+
 
 
     // 彩虹背景动画样式 - 只在客户端执行
