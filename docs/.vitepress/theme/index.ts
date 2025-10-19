@@ -4,9 +4,13 @@ import { h, watch } from 'vue'
 import type { App } from 'vue'
 import MyLayout from "./MyLayout.vue"
 import '../theme/style/index.scss'
+import DefaultTheme from 'vitepress/theme'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // 导入您的按钮组件
 import FeiButton from "../../../src/components/Button/Button.vue"
-
+import FeiCode from '../../../src/components/Code/Code.vue'
 // 导入演示组件
 import ButtonDemoBasic from "../../components/demos/ButtonDemoBasic.vue"
 import ButtonDemoType from "../../components/demos/ButtonDemoType.vue"
@@ -14,10 +18,16 @@ import ButtonDemoSize from "../../components/demos/ButtonDemoSize.vue"
 import ButtonDemoDisabled from "../../components/demos/ButtonDemoDisabled.vue"
 import ButtonDemoLoading from "../../components/demos/ButtonDemoLoading.vue"
 import ButtonDemoOther from "../../components/demos/ButtonDemoOther.vue"
+import CodeDemoBasic from '../../components/demos/CodeDemoBasic.vue'
+import CodeDemoType from '../../components/demos/CodeDemoType.vue'
+import CodeDemoTheme from '../../components/demos/CodeDemoTheme.vue'
+import CodeDemoCopyable from '../../components/demos/CodeDemoCopyable.vue'
+import CodeDemoEditable from '../../components/demos/CodeDemoEditable.vue'
+import CodeDemoWidth from '../../components/demos/CodeDemoWidth.vue'
 
 // 声明 homePageStyle 变量
 let homePageStyle: HTMLStyleElement | undefined
-
+library.add(fas)
 export default {
   Layout: () => h(MyLayout),
 
@@ -32,6 +42,16 @@ export default {
     app.component('ButtonDemoDisabled', ButtonDemoDisabled)
     app.component('ButtonDemoLoading', ButtonDemoLoading)
     app.component('ButtonDemoOther', ButtonDemoOther)
+
+
+    app.component('FeiCode', FeiCode)
+    app.component('CodeDemoBasic', CodeDemoBasic)
+    app.component('CodeDemoType', CodeDemoType)
+    app.component('CodeDemoTheme', CodeDemoTheme)
+    app.component('CodeDemoCopyable', CodeDemoCopyable)
+    app.component('CodeDemoEditable', CodeDemoEditable)
+    app.component('CodeDemoWidth', CodeDemoWidth)
+
 
     // 彩虹背景动画样式 - 只在客户端执行
     if (typeof window !== 'undefined') {

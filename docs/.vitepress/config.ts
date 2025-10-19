@@ -35,8 +35,8 @@ export default defineConfig({
         {
           text: '基础组件',
           items: [
-            { text: 'Button 按钮', link: '/components/button' },
-            { text: 'Input 输入框', link: '/components/input' },
+            { text: 'FeiButton 按钮', link: '/components/button' },
+            { text: 'FeiCode 代码块', link: '/components/code' },
             { text: 'Select 选择器', link: '/components/select' }
           ]
         },
