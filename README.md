@@ -41,3 +41,20 @@ export default defineConfig({
 // unplugin-vue-components会自动处理
 </script>
 ```
+
+4. FeiUI组件文档
+访问 https://feiui.com/docs/introduction.html 获取更多信息。
+本项目docs文件夹下面是本组件库的文档
+
+
+5. 贡献指南
+ 1. Fork 本仓库
+ 2. 创建一个分支
+ 3. 提交你的修改
+ 4. 创建一个 Pull Request
+ 5. 联系我们
+
+
+6. 贡献名单
+1. [ourcx](https://github.com/ourcx)
+

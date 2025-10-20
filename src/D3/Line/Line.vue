@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<LineProps>(), {
   margin: () => ({
     top: 20,
     right: 30,
-    bottom: 30,
+    bottom: 50,
     left: 40,
   }),
   colors: () => [
@@ -70,7 +70,8 @@ const props = withDefaults(defineProps<LineProps>(), {
   isShowXAxisLine: true,
   isShowYAxisLine: true,
   tooltipFormatter: (d: any) => `x: ${d.x}, y: ${d.y}`,
-  type: 'primary'
+  type: 'primary',
+  title: 'FeiUI 直线图',
 });
 
 const chartContainer = ref<HTMLElement>();
@@ -113,6 +114,11 @@ const initChart = () => {
   }
 
   drawLine(g);
+  g.append("text")
+  .attr("x", innerWidth / 2)
+  .attr("y", innerHeight + props.margin.bottom - 15)
+  .attr("text-anchor", "middle")
+  .text(props.title);
 
   if (props.isShowPoint) {
     addPoints(g);
@@ -149,6 +155,9 @@ const addGrid = (g:any) => {
     .style("stroke-dasharray", "3,3")
     .style("opacity", 0.3);
 };
+
+//加一个文本标签
+
 
 const drawLine = (g: any) => {
   g.append("path")

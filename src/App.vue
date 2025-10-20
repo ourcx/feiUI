@@ -600,6 +600,12 @@ const handleLayoutComplete = (words: any[]) => {
     <br>
     <br>
     <Line/>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <Line :isShowGrid="false" />
   <Footer> </Footer>
   </main>
 

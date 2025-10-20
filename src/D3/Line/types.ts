@@ -1,5 +1,6 @@
 //折现图的props
 export interface LineProps {
+  title?: string;
   //数据
   data?: any[]
   //宽度
