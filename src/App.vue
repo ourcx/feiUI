@@ -43,7 +43,7 @@ import Footer from "./page/footer/footer.vue";
 import Tinymce from "./components/Tinymce/Tinymce.vue";
 import Card from "./components/Card/Card.vue";
 import Split from "./components/Split/Split.vue";
-
+import Line from "./D3/Line/Line.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -595,6 +595,11 @@ const handleLayoutComplete = (words: any[]) => {
       </div>
     </template>
     </Split>
+    <br>
+    <br>
+    <br>
+    <br>
+    <Line/>
   <Footer> </Footer>
   </main>
 
