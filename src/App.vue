@@ -42,6 +42,7 @@ import Math from "./svg/Math/Math.vue";
 import Footer from "./page/footer/footer.vue";
 import Tinymce from "./components/Tinymce/Tinymce.vue";
 import Card from "./components/Card/Card.vue";
+import Split from "./components/Split/Split.vue";
 
 
 const tooltipRef = ref<TooltipInstance | null>(null);
@@ -567,6 +568,33 @@ const handleLayoutComplete = (words: any[]) => {
     <br>
     <br>
     <Card type="success" title="xxxxxxxxxxx"></Card>
+    <br>
+    <br>
+    <br>
+    <Split title="xxxxxxxxxxx" >
+    <template #left >
+      <div style="padding: 20px;">
+        这是左侧内容区域。你可以在这里放置任何你想要的内容，比如导航菜单、工具栏等。
+      </div>
+    </template>
+    <template #right >
+      <div style="padding: 20px;">
+        这是右侧内容区域。你可以在这里放置主要内容，比如文本、图片、表格等。
+      </div>
+    </template>
+    </Split>
+        <Split title="例子2"  type="primary">
+    <template #left >
+      <div style="padding: 20px;">
+        这是左侧内容区域。你可以在这里放置任何你想要的内容，比如导航菜单、工具栏等。
+      </div>
+    </template>
+    <template #right >
+      <div style="padding: 20px;">
+        这是右侧内容区域。你可以在这里放置主要内容，比如文本、图片、表格等。
+      </div>
+    </template>
+    </Split>
   <Footer> </Footer>
   </main>
 

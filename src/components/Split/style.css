@@ -1,0 +1,119 @@
+.fei-split{
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.fei-resize {
+  user-select: none;
+  position: relative;
+  width: 12px;
+  background: #f0f0f0;
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.fei-resize:hover {
+  background: #e0e0e0;
+}
+
+.fei-resize:active,
+.fei-dragging .resize {
+  background: #d0d0d0;
+}
+
+.fei-resize-handle {
+  width: 4px;
+  height: 40px;
+  background: #c0c0c0;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.fei-resize:hover .resize-handle {
+  background: #a0a0a0;
+  transform: scale(1.1);
+}
+
+.fei-dragging {
+  cursor: col-resize !important;
+}
+
+.fei-dragging * {
+  cursor: col-resize !important;
+}
+
+@media (max-width: 768px) {
+  .fei-aside {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .fei-resize {
+    display: none;
+  }
+
+  .fei-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fei-aside-header {
+    height: 50px;
+  }
+
+  .fei-title {
+    font-size: 1rem;
+  }
+
+  .fei-header {
+    padding: 0 10px;
+  }
+}
+
+#fei-right-content {
+  flex: 1;
+  min-width: 0;
+  transition: width 0.3s ease;
+}
+
+
+.fei-Split-primary .fei-resize-handle {
+  background: var(--fei-color-primary-light-11);
+  color: var(--fei-color-primary);
+}
+.fei-Split-success .fei-resize-handle {
+  background: var(--fei-color-success-light-11);
+  color: var(--fei-color-success);
+}
+
+.fei-Split-warning .fei-resize-handle {
+  background: var(--fei-color-warning-light-11);
+  color: var(--fei-color-warning);
+}
+.fei-Split-danger .fei-resize-handle {
+  background: var(--fei-color-danger-light-11);
+  color: var(--fei-color-danger);
+}
+.fei-Split-info .fei-resize-handle {
+  background: var(--fei-color-info-light-11);
+  color: var(--fei-color-info);
+}

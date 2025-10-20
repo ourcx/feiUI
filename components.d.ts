@@ -39,6 +39,7 @@ declare module 'vue' {
     Select: typeof import('./src/components/Select/Select.vue')['default']
     Slider: typeof import('./src/components/Slider/Slider.vue')['default']
     Space: typeof import('./src/components/Space/Space.vue')['default']
+    Split: typeof import('./src/components/Split/Split.vue')['default']
     Swiper: typeof import('./src/components/Swiper/Swiper.vue')['default']
     SwiperItem: typeof import('./src/components/Swiper/Swiper-item.vue')['default']
     Switch: typeof import('./src/components/Switch/Switch.vue')['default']
