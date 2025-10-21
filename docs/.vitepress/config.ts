@@ -39,7 +39,33 @@ export default defineConfig({
             { text: 'FeiCode 代码块', link: '/components/code' },
             { text: 'FeiCard 卡片', link: '/components/card' },
             { text: 'FeiIcon 图标', link: '/components/icon' },
-            { text: 'Collape 下拉框', link: '/components/collape' },
+            { text: 'Collapse 下拉框', link: '/components/collapse' },
+          ]
+        },
+        {
+          text: '表单组件',
+          items: [
+            { text: 'Input 输入框', link: '/components/input' },
+            { text: 'Select 选择器', link: '/components/select' },
+            { text: 'Checkbox 多选框', link: '/components/checkbox' },
+            { text: 'Radio 单选框', link: '/components/radio' },
+            { text: 'Switch 开关', link: '/components/switch' }
+          ]
+        },
+        {
+          text: '反馈组件',
+          items: [
+            { text: 'Modal 模态框', link: '/components/modal' },
+            { text: 'Notification 通知', link: '/components/notification' },
+            { text: 'Tooltip 文字提示', link: '/components/tooltip' }
+          ]
+        },
+        {
+          text: '图表组件',
+          items: [
+            { text: 'Line 折线图', link: '/components/line' },
+            { text: 'Pie 饼图', link: '/components/pie' },
+            { text: 'Bar 柱状图', link: '/components/bar' }
           ]
         },
         {

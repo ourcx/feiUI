@@ -2,24 +2,26 @@
 import DefaultTheme from 'vitepress/theme'
 import { h, watch } from 'vue'
 import type { App } from 'vue'
-import MyLayout from "./MyLayout.vue"
+import MyLayout from './MyLayout.vue'
 import '../theme/style/index.scss'
 import DefaultTheme from 'vitepress/theme'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // 导入您的按钮组件
-import FeiButton from "../../../src/components/Button/Button.vue"
+import FeiButton from '../../../src/components/Button/Button.vue'
 import FeiCode from '../../../src/components/Code/Code.vue'
 import FeiCard from '../../../src/components/Card/Card.vue'
 import FeiIcon from '../../../src/components/Icon/Icon.vue'
+import FeiCollapse from '../../../src/components/Collapse/Collapse.vue'
+import FeiCollapseItem from '../../../src/components/Collapse/CollapseItem.vue'
 // 导入演示组件
-import ButtonDemoBasic from "../../components/demos/ButtonDemoBasic.vue"
-import ButtonDemoType from "../../components/demos/ButtonDemoType.vue"
-import ButtonDemoSize from "../../components/demos/ButtonDemoSize.vue"
-import ButtonDemoDisabled from "../../components/demos/ButtonDemoDisabled.vue"
-import ButtonDemoLoading from "../../components/demos/ButtonDemoLoading.vue"
-import ButtonDemoOther from "../../components/demos/ButtonDemoOther.vue"
+import ButtonDemoBasic from '../../components/demos/ButtonDemoBasic.vue'
+import ButtonDemoType from '../../components/demos/ButtonDemoType.vue'
+import ButtonDemoSize from '../../components/demos/ButtonDemoSize.vue'
+import ButtonDemoDisabled from '../../components/demos/ButtonDemoDisabled.vue'
+import ButtonDemoLoading from '../../components/demos/ButtonDemoLoading.vue'
+import ButtonDemoOther from '../../components/demos/ButtonDemoOther.vue'
 import CodeDemoBasic from '../../components/demos/CodeDemoBasic.vue'
 import CodeDemoType from '../../components/demos/CodeDemoType.vue'
 import CodeDemoTheme from '../../components/demos/CodeDemoTheme.vue'
@@ -39,7 +41,12 @@ import IconDemoFlip from '../../components/demos/IconDemoFlip.vue'
 import IconDemoAnimation from '../../components/demos/IconDemoAnimation.vue'
 import IconDemoState from '../../components/demos/IconDemoState.vue'
 import IconDemoType from '../../components/demos/IconDemoType.vue'
-
+import CollapseDemoAccordion from '../../components/demos/CollapseDemoAccordion.vue'
+import CollapseDemoBasic from '../../components/demos/CollapseDemoBasic.vue'
+import CollapseDemoArrow from '../../components/demos/CollapseDemoArrow.vue'
+import CollapseDemoDisabled from '../../components/demos/CollapseDemoDisabled.vue'
+import CollapseDemoCustom from '../../components/demos/CollapseDemoCustom.vue'
+import CollapseDemoDynamic from '../../components/demos/CollapseDemoDynamic.vue'
 
 // 声明 homePageStyle 变量
 let homePageStyle: HTMLStyleElement | undefined
@@ -47,7 +54,7 @@ library.add(fas)
 export default {
   Layout: () => h(MyLayout),
 
-  enhanceApp({ app, router }: { app: App; router: any }) {
+  enhanceApp ({ app, router }: { app: App; router: any }) {
     // 注册按钮组件
     app.component('FeiButton', FeiButton)
 
@@ -58,7 +65,6 @@ export default {
     app.component('ButtonDemoDisabled', ButtonDemoDisabled)
     app.component('ButtonDemoLoading', ButtonDemoLoading)
     app.component('ButtonDemoOther', ButtonDemoOther)
-
 
     app.component('FeiCode', FeiCode)
     app.component('CodeDemoBasic', CodeDemoBasic)
@@ -76,16 +82,23 @@ export default {
     app.component('CardDemoBorderless', CardDemoBorderless)
     app.component('CardDemoFooter', CardDemoFooter)
 
-     app.component('FeiIcon', FeiIcon)
-     app.component('IconDemoBasic', IconDemoBasic)
-     app.component('IconDemoSize', IconDemoSize)
-     app.component('IconDemoSize', IconDemoSize)
-     app.component('IconDemoFlip', IconDemoFlip)
-     app.component('IconDemoAnimation', IconDemoAnimation)
-     app.component('IconDemoState', IconDemoState)
-     app.component('IconDemoType', IconDemoType)
+    app.component('FeiIcon', FeiIcon)
+    app.component('IconDemoBasic', IconDemoBasic)
+    app.component('IconDemoSize', IconDemoSize)
+    app.component('IconDemoSize', IconDemoSize)
+    app.component('IconDemoFlip', IconDemoFlip)
+    app.component('IconDemoAnimation', IconDemoAnimation)
+    app.component('IconDemoState', IconDemoState)
+    app.component('IconDemoType', IconDemoType)
 
-
+    app.component('FeiCollapse', FeiCollapse)
+    app.component('FeiCollapseItem', FeiCollapseItem)
+    app.component('CollapseDemoAccordion', CollapseDemoAccordion)
+    app.component('CollapseDemoBasic', CollapseDemoBasic)
+    app.component('CollapseDemoArrow', CollapseDemoArrow)
+    app.component('CollapseDemoDisabled', CollapseDemoDisabled)
+    app.component('CollapseDemoCustom ', CollapseDemoCustom )
+    app.component('CollapseDemoDynamic', CollapseDemoDynamic)
 
     // 彩虹背景动画样式 - 只在客户端执行
     if (typeof window !== 'undefined') {
@@ -133,7 +146,7 @@ export default {
       // 监听路由变化
       watch(
         () => router.route.path,
-        (newPath) => {
+        newPath => {
           updateHomePageStyle(newPath === '/')
         },
         { immediate: true }
@@ -148,5 +161,5 @@ export default {
         originalUnmount()
       }
     }
-  },
+  }
 }
