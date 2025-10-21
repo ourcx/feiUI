@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   overflow: hidden;
-  background: #ffffff;
+  background: var(--fei-bg-color);
   border: 1px solid #e0e0e0;
   border-radius: 4px;
 }
@@ -11,7 +11,7 @@
   user-select: none;
   position: relative;
   width: 12px;
-  background: #f0f0f0;
+  background: var(--fei-bg-color-overlay);
   cursor: col-resize;
   display: flex;
   align-items: center;
@@ -20,13 +20,10 @@
   z-index: 10;
 }
 
-.fei-resize:hover {
-  background: #e0e0e0;
-}
 
 .fei-resize:active,
 .fei-dragging .resize {
-  background: #d0d0d0;
+  background: var(--fei-bg-color);
 }
 
 .fei-resize-handle {
@@ -37,7 +34,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #888;
+  color: var(--fei-text-color-primary);
   font-size: 14px;
   font-weight: bold;
   transition: all 0.2s ease;

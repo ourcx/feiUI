@@ -20,7 +20,7 @@ import { ref, onMounted, watch, nextTick } from "vue";
 import type { LineProps } from "./types";
 import "d3-transition";
 import type { info } from "console";
-import { colors } from "@/utils/map";
+import { getColors } from "@/utils/map";
 
 defineOptions({
   name: "FeiLineChart",
@@ -115,7 +115,7 @@ const initChart = () => {
       .attr("y", -20)
       .attr("width", 15)
       .attr("height", 15)
-      .attr("fill", colors[props.type] || colors['primary']);
+      .attr("fill", getColors()[props.type] || getColors()['primary']);
   }
 
   drawLine(g);
@@ -182,7 +182,7 @@ const addPoints = (g: any) => {
     .attr("cx", (d: { x: NumberValue; }) => xScale(d.x))
     .attr("cy", (d: { y: NumberValue; }) => yScale(d.y))
     .attr("r", props.pointRadius)
-    .attr("fill",colors[props.type] || colors['primary']);
+    .attr("fill",getColors()[props.type] || getColors()['primary']);
 };
 
 const updateChart = () => {

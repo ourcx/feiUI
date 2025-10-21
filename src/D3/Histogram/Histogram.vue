@@ -18,7 +18,7 @@ import { min as d3Min, max as d3Max } from "d3-array";
 import { ref, onMounted, watch, nextTick } from "vue";
 import "d3-transition";
 import type { HistogramProps } from "./type";
-import { colors } from "@/utils/map";
+import { getColors } from "@/utils/map";
 
 
 const props = withDefaults(
@@ -123,7 +123,7 @@ const initChart = () => {
     .attr("y", d => yScale(d.value))
     .attr("width", innerWidth / props.data.length - 5)
     .attr("height", d => innerHeight - yScale(d.value))
-    .attr("fill", colors[props.type] || colors['primary']);
+    .attr("fill", getColors()[props.type] || getColors()['primary']);
   //添加标题
   g.append("text")
 
@@ -143,7 +143,7 @@ const initChart = () => {
       .attr("y", -20)
       .attr("width", 15)
       .attr("height", 15)
-      .attr("fill", colors[props.type] || colors['primary']);
+      .attr("fill", getColors()[props.type] || getColors()['primary']);
   }
   if (props.isShowXAxisLabel) {
     g.append("text")
