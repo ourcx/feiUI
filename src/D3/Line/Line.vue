@@ -104,6 +104,19 @@ const initChart = () => {
   if (props.isShowGrid) {
     addGrid(g);
   }
+    if (props.isShowLegend) {
+    g.append("text")
+      .attr("x", innerWidth - 60)
+      .attr("y", -10)
+      .attr("text-anchor", "start")
+      .text(props.type);
+      g.append("rect")
+      .attr("x", innerWidth - 80)
+      .attr("y", -20)
+      .attr("width", 15)
+      .attr("height", 15)
+      .attr("fill", colors[props.type] || colors['primary']);
+  }
 
   drawLine(g);
   g.append("text")
@@ -157,7 +170,6 @@ const drawLine = (g: any) => {
     .attr("class", "line")
     .attr("d", lineGenerator)
     .attr("fill", "none")
-    .attr("stroke", colors[props.type] || colors['primary'])
     .attr("stroke-width", 2);
 };
 
@@ -222,7 +234,6 @@ const updateChart = () => {
       .attr("cx", (d: { x: NumberValue; }) => xScale(d.x))
       .attr("cy", (d: { y: NumberValue; }) => yScale(d.y))
       .attr("r", props.pointRadius)
-      .attr("fill",colors[props.type] || colors['primary']);
 
     points.exit().remove();
   }

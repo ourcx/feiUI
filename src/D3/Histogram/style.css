@@ -1,0 +1,6 @@
+.histogram-chart-container{
+  display: inline-block;
+}
+.bar {
+  transition: all 0.3s ease;
+}

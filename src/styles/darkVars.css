@@ -95,3 +95,18 @@
   --fei-disabled-border-color: var(--fei-border-color-light);
 }
 
+.fei-D3-primary{
+  stroke: var(--fei-color-primary);
+}
+.fei-D3-success{
+  stroke: var(--fei-color-success);
+}
+.fei-D3-warning{
+  stroke: var(--fei-color-warning);
+}
+.fei-D3-danger{
+  stroke: var(--fei-color-danger);
+}
+.fei-D3-info{
+  stroke: var(--fei-color-info);
+}

@@ -44,6 +44,7 @@ import Tinymce from "./components/Tinymce/Tinymce.vue";
 import Card from "./components/Card/Card.vue";
 import Split from "./components/Split/Split.vue";
 import Line from "./D3/Line/Line.vue";
+import Histogram from "./D3/Histogram/Histogram.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -606,6 +607,13 @@ const handleLayoutComplete = (words: any[]) => {
     <br>
     <br>
     <Line :isShowGrid="false" />
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <Histogram/>
   <Footer> </Footer>
   </main>
 
