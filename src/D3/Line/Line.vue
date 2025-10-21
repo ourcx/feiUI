@@ -19,6 +19,8 @@ import { min as d3Min, max as d3Max } from "d3-array";
 import { ref, onMounted, watch, nextTick } from "vue";
 import type { LineProps } from "./types";
 import "d3-transition";
+import type { info } from "console";
+import { colors } from "@/utils/map";
 
 defineOptions({
   name: "FeiLineChart",
@@ -33,18 +35,6 @@ const props = withDefaults(defineProps<LineProps>(), {
     bottom: 50,
     left: 40,
   }),
-  colors: () => [
-    "#1f77b4",
-    "#ff7f0e",
-    "#2ca02c",
-    "#d62728",
-    "#9467bd",
-    "#8c564b",
-    "#e377c2",
-    "#7f7f7f",
-    "#bcbd22",
-    "#17becf",
-  ],
   xData: () => [],
   yData: () => [],
   data: () => [
@@ -73,6 +63,8 @@ const props = withDefaults(defineProps<LineProps>(), {
   type: 'primary',
   title: 'FeiUI 直线图',
 });
+
+
 
 const chartContainer = ref<HTMLElement>();
 const chartSvg = ref<SVGSVGElement>();
@@ -165,7 +157,7 @@ const drawLine = (g: any) => {
     .attr("class", "line")
     .attr("d", lineGenerator)
     .attr("fill", "none")
-    .attr("stroke", props.colors[0])
+    .attr("stroke", colors[props.type] || colors['primary'])
     .attr("stroke-width", 2);
 };
 
@@ -178,7 +170,7 @@ const addPoints = (g: any) => {
     .attr("cx", (d: { x: NumberValue; }) => xScale(d.x))
     .attr("cy", (d: { y: NumberValue; }) => yScale(d.y))
     .attr("r", props.pointRadius)
-    .attr("fill", props.colors[0]);
+    .attr("fill",colors[props.type] || colors['primary']);
 };
 
 const updateChart = () => {
@@ -230,7 +222,7 @@ const updateChart = () => {
       .attr("cx", (d: { x: NumberValue; }) => xScale(d.x))
       .attr("cy", (d: { y: NumberValue; }) => yScale(d.y))
       .attr("r", props.pointRadius)
-      .attr("fill", props.colors[0]);
+      .attr("fill",colors[props.type] || colors['primary']);
 
     points.exit().remove();
   }

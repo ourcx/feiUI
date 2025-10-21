@@ -1,3 +1,5 @@
+import type { Margin } from "@/utils/type";
+
 //折现图的props
 export interface LineProps {
   title?: string;
@@ -12,7 +14,6 @@ export interface LineProps {
   //y轴数据
   yData?: string[]
   //颜色
-  colors?: string[]
   //是否显示点
   isShowPoint?: boolean
   //是否显示网格线
@@ -40,10 +41,3 @@ export interface LineProps {
   type?: 'primary' | 'success' | 'warning' | 'danger' | 'info'
 }
 
-
-interface Margin{
-  top: number
-  right: number
-  bottom: number
-  left: number
-}
