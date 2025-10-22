@@ -49,12 +49,29 @@ const props = withDefaults(defineProps<HexbinProps>(), {
     left: 50,
   }),
   isShowLegend: true,
+  isShowGrid: true,
   onClick: () => {},
   onMouseOut: () => {},
   onMouseOver: () => {},
   onMouseMove: () => {},
   onMouseDown: () => {},
 });
+
+
+
+
+
+
+//基本的绘制流程
+// 1. 创建图表容器
+// 2. 创建refs，内部尺寸，比例尺
+// 3. 初始化图表函数initChart，这里还要有一些小功能的绘制
+// 4. 绘制坐标轴函数drawAxes
+// 5. 绘制图像主要内容
+// 6. 响应式更新函数updateChart
+// 7. 生命周期钩子onMounted
+// 8. 监听数据和属性变化watch
+
 
 // Refs
 const chartContainer = ref<HTMLElement>();
@@ -97,6 +114,27 @@ const initChart = () => {
       .attr("width", 15)
       .attr("height", 15)
       .attr("fill", getColors()[props.type])
+  }
+
+    if(props.isShowGrid){
+    //添加网格线
+    const xAxisGrid = axisBottom(xScale.value)
+      .tickSize(-innerHeight.value)
+      .tickFormat(() => "");
+    const yAxisGrid = axisLeft(yScale.value)
+      .tickSize(-innerWidth.value)
+      .tickFormat(() => "");
+    g.append("g")
+    .attr("class", "x-axis-grid")
+    .attr("transform", `translate(0,${innerHeight.value})`)
+    .call(xAxisGrid)
+    .style("stroke-dasharray", "3,3")
+    .style("opacity", 0.3);
+    g.append("g")
+    .attr("class", "y-axis-grid")
+    .call(yAxisGrid)
+    .style("stroke-dasharray", "3,3")
+    .style("opacity", 0.3);
   }
 
   drawAxes(g);
@@ -257,3 +295,5 @@ watch(
   display: inline-block;
 }
 </style>
+
+

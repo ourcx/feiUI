@@ -10,6 +10,7 @@ export interface HexbinProps {
   stroke?: string;
   margin?: Margin;
   isShowLegend?: boolean;
+  isShowGrid?: boolean;
   type?: 'primary' | 'success' | 'warning' | 'danger' | 'info';
   onClick?: (event:any,d: any) => void;
   onMouseOver?: (event:any,d: any)=> void;
