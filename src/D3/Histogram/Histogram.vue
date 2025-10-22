@@ -1,5 +1,5 @@
 <template>
-  <div ref="chartContainer" class="histogram-chart-container">
+  <div ref="chartContainer" class="histogram-chart-container fei-d3">
     <svg ref="chartSvg" :width="width" :height="height">
       <g
         ref="chartG"

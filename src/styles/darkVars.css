@@ -110,3 +110,7 @@
 .fei-D3-info{
   stroke: var(--fei-color-info);
 }
+
+.fei-d3{
+  user-select: none;
+}

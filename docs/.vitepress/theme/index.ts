@@ -1,5 +1,4 @@
 /* .vitepress/theme/index.ts */
-import DefaultTheme from 'vitepress/theme'
 import { h, watch } from 'vue'
 import type { App } from 'vue'
 import MyLayout from './MyLayout.vue'

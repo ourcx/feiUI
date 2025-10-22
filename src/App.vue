@@ -45,6 +45,7 @@ import Card from "./components/Card/Card.vue";
 import Split from "./components/Split/Split.vue";
 import Line from "./D3/Line/Line.vue";
 import Histogram from "./D3/Histogram/Histogram.vue";
+import Hexbin from "./D3/Hexbin/Hexbin.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -614,6 +615,11 @@ const handleLayoutComplete = (words: any[]) => {
     <br>
     <br>
     <Histogram/>
+    <br>
+    <br>
+    <br>
+    <br>
+    <Hexbin/>
   <Footer> </Footer>
   </main>
 
