@@ -46,6 +46,7 @@ import Split from "./components/Split/Split.vue";
 import Line from "./D3/Line/Line.vue";
 import Histogram from "./D3/Histogram/Histogram.vue";
 import Hexbin from "./D3/Hexbin/Hexbin.vue";
+import Treemap from "./D3/Treemap/Treemap.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -620,6 +621,13 @@ const handleLayoutComplete = (words: any[]) => {
     <br>
     <br>
     <Hexbin/>
+    <br>
+    <br>
+    <br>
+    <br>
+    <Treemap/>
+    <br>
+    <Treemap :type="'success'" :borderWidth="2"/>
   <Footer> </Footer>
   </main>
 
