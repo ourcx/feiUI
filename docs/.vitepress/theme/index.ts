@@ -14,6 +14,7 @@ import FeiCard from '../../../src/components/Card/Card.vue'
 import FeiIcon from '../../../src/components/Icon/Icon.vue'
 import FeiCollapse from '../../../src/components/Collapse/Collapse.vue'
 import FeiCollapseItem from '../../../src/components/Collapse/CollapseItem.vue'
+import FeiComment from '../../../src/components/Comment/Comment.vue'
 // 导入演示组件
 import ButtonDemoBasic from '../../components/demos/ButtonDemoBasic.vue'
 import ButtonDemoType from '../../components/demos/ButtonDemoType.vue'
@@ -46,7 +47,12 @@ import CollapseDemoArrow from '../../components/demos/CollapseDemoArrow.vue'
 import CollapseDemoDisabled from '../../components/demos/CollapseDemoDisabled.vue'
 import CollapseDemoCustom from '../../components/demos/CollapseDemoCustom.vue'
 import CollapseDemoDynamic from '../../components/demos/CollapseDemoDynamic.vue'
-
+import CommentDemoActions from '../../components/demos/CommentDemoActions.vue'
+import CommentDemoReply from '../../components/demos/CommentDemoReply.vue'
+import CommentDemoNested from '../../components/demos/CommentDemoNested.vue'
+import CommentDemoBasic from '../../components/demos/CommentDemoBasic.vue'
+import CommentDemoType from '../../components/demos/CommentDemoType.vue'
+import CommentDemoQuote from '../../components/demos/CommentDemoQuote.vue'
 // 声明 homePageStyle 变量
 let homePageStyle: HTMLStyleElement | undefined
 library.add(fas)
@@ -96,8 +102,16 @@ export default {
     app.component('CollapseDemoBasic', CollapseDemoBasic)
     app.component('CollapseDemoArrow', CollapseDemoArrow)
     app.component('CollapseDemoDisabled', CollapseDemoDisabled)
-    app.component('CollapseDemoCustom ', CollapseDemoCustom )
+    app.component('CollapseDemoCustom ', CollapseDemoCustom)
     app.component('CollapseDemoDynamic', CollapseDemoDynamic)
+
+    app.component('FeiComment', FeiComment)
+    app.component('CommentDemoActions', CommentDemoActions)
+    app.component('CommentDemoReply', CommentDemoReply)
+    app.component('CommentDemoNested', CommentDemoNested)
+    app.component('CommentDemoBasic', CommentDemoBasic)
+    app.component('CommentDemoType', CommentDemoType)
+    app.component('CommentDemoQuote', CommentDemoQuote)
 
     // 彩虹背景动画样式 - 只在客户端执行
     if (typeof window !== 'undefined') {

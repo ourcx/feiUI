@@ -9,7 +9,13 @@
         <RenderVnode :vNode="placeholder ?? ''" v-if="visible" />
         <RenderVnode :vNode="fallback ?? ''" v-if="!visible" />
       </div>
-      <img :src="src" :alt="alt" @click="openImg" v-lazy="lazyLoad" :class="{ [`fei-image--${shape}`]: shape,[`fei-image--${mode}`]: mode }" />
+      <img
+        :src="src"
+        :alt="alt"
+        @click="openImg"
+        v-lazy="lazyLoad"
+        :class="{ [`fei-image--${shape}`]: shape, [`fei-image--${mode}`]: mode }"
+      />
     </div>
     <div class="fei-image__fallback">
       <RenderVnode :vNode="footer ?? ''" v-if="ImgDescribeFooter" />
@@ -46,7 +52,7 @@
 
 <script setup lang="ts">
 import type { ImageProps, ImageEmits } from "./types";
-import RenderVnode from "@/hook/RenderVnode";
+import RenderVnode from "../../hook/RenderVnode";
 import Icon from "../Icon/Icon.vue";
 import {
   computed,
@@ -57,7 +63,7 @@ import {
   onMounted,
   onUnmounted,
 } from "vue";
-import imgStyle from "@/hook/WidthOrHeight";
+import imgStyle from "../../hook/WidthOrHeight";
 
 defineOptions({
   name: "FeiImage",
@@ -77,7 +83,7 @@ const props = withDefaults(defineProps<ImageProps>(), {
   visible: false,
   placeholder: "正在加载...",
   fallback: "",
-  lazyLoad: false
+  lazyLoad: false,
 });
 
 const ImgDescribeTitle = computed(() => {
@@ -161,9 +167,9 @@ watch(
 //懒加载
 const lazyLoad = () => {
   if (props.lazyLoad) {
-    return props.src
-  }else{
-    return ''
+    return props.src;
+  } else {
+    return "";
   }
-}
+};
 </script>

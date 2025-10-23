@@ -2,8 +2,8 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "FeiUI",
-  description: "一个基于 Vue 3 的组件库",
+  title: 'FeiUI',
+  description: '一个基于 Vue 3 的组件库',
   lang: 'zh-CN',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -20,7 +20,7 @@ export default defineConfig({
           text: '基础',
           items: [
             { text: '介绍', link: '/guide/introduction' },
-            { text: '快速开始', link: '/guide/quickstart' },
+            { text: '快速开始', link: '/guide/quickstart' }
           ]
         },
         {
@@ -40,6 +40,7 @@ export default defineConfig({
             { text: 'FeiCard 卡片', link: '/components/card' },
             { text: 'FeiIcon 图标', link: '/components/icon' },
             { text: 'Collapse 下拉框', link: '/components/collapse' },
+            { text: 'FeiComment 评论', link: '/components/comment' }
           ]
         },
         {
@@ -97,9 +98,7 @@ export default defineConfig({
       ]
     },
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/ourcx/feiUI' }
-    ],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/ourcx/feiUI' }],
 
     outline: {
       label: '本页目录',
