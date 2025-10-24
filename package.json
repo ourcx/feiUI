@@ -18,7 +18,9 @@
     "prepare": "husky install",
     "test": "echo \"No tests specified\" && exit 0",
     "Vtest": "vitest",
-    "lib": "vue-cli-service build --target lib --name zouComponent --dest zouComponent/lib src/plugins/index.js"
+    "build:lib": "vite build --config vite.lib.config.ts",
+    "prepublishOnly": "npm run type-check && npm run build:lib",
+    "pub": "npm publish --registry https://registry.npmjs.org/"
   },
   "lint-staged": {
     "*.{vue,js,jsx,ts,tsx}": [
