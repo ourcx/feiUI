@@ -17,7 +17,8 @@
     "docs:preview": "vitepress preview docs",
     "prepare": "husky install",
     "test": "echo \"No tests specified\" && exit 0",
-    "Vtest": "vitest"
+    "Vtest": "vitest",
+    "lib": "vue-cli-service build --target lib --name zouComponent --dest zouComponent/lib src/plugins/index.js"
   },
   "lint-staged": {
     "*.{vue,js,jsx,ts,tsx}": [
