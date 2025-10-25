@@ -529,7 +529,7 @@ const handleLayoutComplete = (words: any[]) => {
   <br>
   <br>
   <br>
-  <Point text="国庆快乐" :width="600" :scale-val="0.5" :height="200"/>
+  <Point text="1024节日快乐!!" :width="800" :scale-val="0.8" :height="300"/>
 
   <br>
   <br>

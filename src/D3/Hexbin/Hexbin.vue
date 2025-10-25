@@ -1,5 +1,5 @@
 <template>
-  <div ref="chartContainer" class="hexbin-chart-container fei-d3" >
+  <div ref="chartContainer" class="hexbin-chart-container fei-d3">
     <svg ref="chartSvg" :width="width" :height="height">
       <g
         ref="chartG"
@@ -14,13 +14,13 @@
 <script setup lang="ts">
 import { select } from "d3-selection";
 import { hexbin as createHexbin } from "d3-hexbin";
-import { ref, onMounted, watch, nextTick,computed } from "vue";
+import { ref, onMounted, watch, nextTick, computed } from "vue";
 import { axisBottom, axisLeft } from "d3-axis";
 import { min as d3Min, max as d3Max, extent } from "d3-array";
 import "d3-transition";
 import type { HexbinProps } from "./type";
 import { scaleLinear } from "d3-scale";
-import { getColors } from "@/utils/map";
+import { getColors } from "../../utils/map";
 
 const props = withDefaults(defineProps<HexbinProps>(), {
   width: 600,
@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<HexbinProps>(), {
     [100, 100],
   ],
   radius: 10,
-  type: 'primary',
+  type: "primary",
   opacity: 0.5,
   stroke: "none",
   margin: () => ({
@@ -57,11 +57,6 @@ const props = withDefaults(defineProps<HexbinProps>(), {
   onMouseDown: () => {},
 });
 
-
-
-
-
-
 //基本的绘制流程
 // 1. 创建图表容器
 // 2. 创建refs，内部尺寸，比例尺
@@ -71,7 +66,6 @@ const props = withDefaults(defineProps<HexbinProps>(), {
 // 6. 响应式更新函数updateChart
 // 7. 生命周期钩子onMounted
 // 8. 监听数据和属性变化watch
-
 
 // Refs
 const chartContainer = ref<HTMLElement>();
@@ -86,13 +80,13 @@ const innerHeight = computed(() => props.height - props.margin.top - props.margi
 const xScale = computed(() =>
   scaleLinear()
     .range([0, innerWidth.value])
-    .domain(extent(props.data, d => d[0]) as [number, number])
+    .domain(extent(props.data, (d) => d[0]) as [number, number])
 );
 
 const yScale = computed(() =>
   scaleLinear()
     .range([innerHeight.value, 0])
-    .domain(extent(props.data, d => d[1]) as [number, number])
+    .domain(extent(props.data, (d) => d[1]) as [number, number])
 );
 
 // 初始化图表
@@ -108,15 +102,15 @@ const initChart = () => {
       .attr("y", -10)
       .attr("text-anchor", "start")
       .text(props.type);
-      g.append("rect")
+    g.append("rect")
       .attr("x", innerWidth.value - 80)
       .attr("y", -20)
       .attr("width", 15)
       .attr("height", 15)
-      .attr("fill", getColors()[props.type])
+      .attr("fill", getColors()[props.type]);
   }
 
-    if(props.isShowGrid){
+  if (props.isShowGrid) {
     //添加网格线
     const xAxisGrid = axisBottom(xScale.value)
       .tickSize(-innerHeight.value)
@@ -125,16 +119,16 @@ const initChart = () => {
       .tickSize(-innerWidth.value)
       .tickFormat(() => "");
     g.append("g")
-    .attr("class", "x-axis-grid")
-    .attr("transform", `translate(0,${innerHeight.value})`)
-    .call(xAxisGrid)
-    .style("stroke-dasharray", "3,3")
-    .style("opacity", 0.3);
+      .attr("class", "x-axis-grid")
+      .attr("transform", `translate(0,${innerHeight.value})`)
+      .call(xAxisGrid)
+      .style("stroke-dasharray", "3,3")
+      .style("opacity", 0.3);
     g.append("g")
-    .attr("class", "y-axis-grid")
-    .call(yAxisGrid)
-    .style("stroke-dasharray", "3,3")
-    .style("opacity", 0.3);
+      .attr("class", "y-axis-grid")
+      .call(yAxisGrid)
+      .style("stroke-dasharray", "3,3")
+      .style("opacity", 0.3);
   }
 
   drawAxes(g);
@@ -152,17 +146,15 @@ const drawAxes = (g: any) => {
 
   // Y轴
   const yAxis = axisLeft(yScale.value);
-  g.append("g")
-    .attr("class", "y-axis")
-    .call(yAxis);
+  g.append("g").attr("class", "y-axis").call(yAxis);
 };
 
 // 绘制六边形
 const drawHexbins = (g: any) => {
   const hexbin = createHexbin()
     .radius(props.radius)
-    .x(d => xScale.value(d[0]))
-    .y(d => yScale.value(d[1]));
+    .x((d) => xScale.value(d[0]))
+    .y((d) => yScale.value(d[1]));
 
   const hexbinData = hexbin(props.data);
 
@@ -173,7 +165,7 @@ const drawHexbins = (g: any) => {
     .attr("class", "hexagon")
     .attr("fill", getColors()[props.type])
     .attr("d", hexbin.hexagon())
-    .attr("transform", (d:any) => `translate(${d.x},${d.y})`)
+    .attr("transform", (d: any) => `translate(${d.x},${d.y})`)
     .attr("opacity", props.opacity)
     .attr("stroke", props.stroke)
     .attr("stroke-width", 1)
@@ -210,13 +202,12 @@ const updateChart = () => {
   // 更新六边形
   const hexbin = createHexbin()
     .radius(props.radius)
-    .x(d => xScale.value(d[0]))
-    .y(d => yScale.value(d[1]));
+    .x((d) => xScale.value(d[0]))
+    .y((d) => yScale.value(d[1]));
 
   const hexbinData = hexbin(props.data);
 
-  const hexagons = g.selectAll("path.hexagon")
-    .data(hexbinData);
+  const hexagons = g.selectAll("path.hexagon").data(hexbinData);
 
   // 移除多余的元素
   hexagons.exit().remove();
@@ -224,18 +215,19 @@ const updateChart = () => {
   // 更新现有元素
   hexagons
     .attr("d", hexbin.hexagon())
-    .attr("transform", (d:any) => `translate(${d.x},${d.y})`)
+    .attr("transform", (d: any) => `translate(${d.x},${d.y})`)
     .attr("fill", getColors()[props.type])
     .attr("opacity", props.opacity)
     .attr("stroke", props.stroke);
 
   // 添加新元素
-  hexagons.enter()
+  hexagons
+    .enter()
     .append("path")
     .attr("class", "hexagon")
     .attr("d", hexbin.hexagon())
-    .attr("transform", d => `translate(${d.x},${d.y})`)
-    .attr("fill",  getColors()[props.type])
+    .attr("transform", (d) => `translate(${d.x},${d.y})`)
+    .attr("fill", getColors()[props.type])
     .attr("opacity", props.opacity)
     .attr("stroke", props.stroke)
     .on("click", (event: MouseEvent, d: any) => {
@@ -295,5 +287,3 @@ watch(
   display: inline-block;
 }
 </style>
-
-

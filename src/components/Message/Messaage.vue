@@ -29,10 +29,10 @@
 
 <script setup lang="ts">
 import type { MessageProps } from "./type";
-import RenderVnode from "@/hook/RenderVnode";
+import RenderVnode from "../../hook/RenderVnode";
 import Icon from "../Icon/Icon.vue";
 import { ref, onMounted, watch, nextTick, computed, Transition } from "vue";
-import useEventListener from "@/hook/useEventListener";
+import useEventListener from "../../hook/useEventListener";
 
 const props = withDefaults(defineProps<MessageProps>(), {
   type: "info",

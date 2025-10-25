@@ -24,10 +24,10 @@ import { watch, ref, reactive, onMounted, onUnmounted, computed, nextTick } from
 import type { Instance } from "@popperjs/core";
 import { createPopper } from "@popperjs/core";
 import { debounce } from "lodash-es";
-import useClickOutside from "@/hook/useClickOutside";
+import useClickOutside from "../../hook/useClickOutside";
 defineOptions({
   name: "FeiTooltip",
-})
+});
 
 const props = withDefaults(defineProps<TooltipProps>(), {
   placement: "right",
@@ -45,7 +45,6 @@ const poppperContainerNode = ref<HTMLElement>();
 let popperInstance: Instance | null = null;
 let event: Record<string, any> = reactive({});
 let outerEvent: Record<string, any> = reactive({});
-
 
 const open = () => {
   //延时
@@ -73,23 +72,24 @@ const popperOptions = computed(() => {
     modifiers: [
       {
         name: "offset",
-        options: {  // 修正为小写 options
+        options: {
+          // 修正为小写 options
           offset: [0, 9],
         },
       },
       {
-        name: 'preventOverflow',
+        name: "preventOverflow",
         options: {
           padding: 8,
         },
       },
       {
-        name: 'computeStyles',
+        name: "computeStyles",
         options: {
           adaptive: false,
           gpuAcceleration: false,
         },
-      }
+      },
     ],
     ...props.popperOptions,
   };
@@ -106,7 +106,7 @@ useClickOutside(poppperContainerNode, () => {
   if (props.trigger === "click" && isOpen.value && !props.manual) {
     closeFinal();
   }
-  if(isOpen.value){
+  if (isOpen.value) {
     emit("click-outside", true);
   }
 });
@@ -179,8 +179,6 @@ watch(
   { deep: true }
 );
 
-
-
 // 初始化 Popper 实例
 onMounted(() => {
   nextTick(() => {
@@ -194,11 +192,10 @@ onMounted(() => {
       // 初始隐藏
       popperInstance.update().then(() => {
         if (popperNode.value) {
-          popperNode.value.style.visibility = 'hidden';
+          popperNode.value.style.visibility = "hidden";
           //还有隐藏::before
         }
       });
-
     }
   });
 });
@@ -208,13 +205,13 @@ watch(isOpen, (val) => {
   if (val) {
     nextTick(() => {
       if (popperInstance && popperNode.value) {
-        popperNode.value.style.visibility = 'visible';
+        popperNode.value.style.visibility = "visible";
         popperInstance.update();
       }
     });
   } else {
     if (popperNode.value) {
-      popperNode.value.style.visibility = 'hidden';
+      popperNode.value.style.visibility = "hidden";
     }
   }
 });
@@ -233,7 +230,6 @@ watch(
 onUnmounted(() => {
   popperInstance?.destroy();
 });
-
 
 defineExpose<TooltipInstance>({
   show: openFinal,

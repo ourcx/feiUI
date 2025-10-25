@@ -36,7 +36,7 @@ import type { DropdownProps, DropdownEmits, DropdownInstance, MenuOption } from 
 import Tooltip from "../Tooltip/Tooltip.vue";
 import { ref, watch, toRaw, nextTick, onMounted } from "vue";
 import type { TooltipInstance } from "../Tooltip/types";
-import RenderVnode from "@/hook/RenderVnode";
+import RenderVnode from "../../hook/RenderVnode";
 import GlobalModalManager from "./GlobalModalManager";
 
 const props = withDefaults(defineProps<DropdownProps>(), { hideAfterClick: true });
@@ -58,7 +58,7 @@ defineOptions({
 // }
 
 onMounted(() => {
-   const modalManager = GlobalModalManager.getInstance();
+  const modalManager = GlobalModalManager.getInstance();
   modalManager.initialize(tooltipRef.value);
 });
 

@@ -1,8 +1,25 @@
 {
   "name": "feiui-vue",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "private": false,
   "type": "module",
+  "main": "./dist/feiui-vue.umd.js",
+  "module": "./dist/feiui-vue.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/feiui-vue.es.js",
+      "require": "./dist/feiui-vue.umd.js"
+    },
+    "./style.css": "./dist/index.css"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",

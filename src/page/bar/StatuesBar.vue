@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import Icon from "@/components/Icon/Icon.vue";
+import Icon from "../../components/Icon/Icon.vue";
 import type { StatuesBarProps, StatuesBarInstance } from "./types";
 import { ref, onMounted } from "vue";
 

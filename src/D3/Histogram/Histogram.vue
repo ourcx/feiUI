@@ -18,7 +18,7 @@ import { min as d3Min, max as d3Max } from "d3-array";
 import { ref, onMounted, watch, nextTick } from "vue";
 import "d3-transition";
 import type { HistogramProps } from "./type";
-import { getColors } from "@/utils/map";
+import { getColors } from "../../utils/map";
 
 
 const props = withDefaults(

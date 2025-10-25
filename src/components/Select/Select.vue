@@ -20,12 +20,16 @@
         v-model="states.inputValue"
         :disabled="disabled"
         :placeholder="filteredPlaceHolder"
-        :readonly="!filterable||!isDropdownShow"
+        :readonly="!filterable || !isDropdownShow"
         ref="inputRef"
         @input="onFilter"
       >
         <template #suffix>
-          <div @click="onClear" style="display: inline-flex; align-items: center"  v-if="showClearIcon">
+          <div
+            @click="onClear"
+            style="display: inline-flex; align-items: center"
+            v-if="showClearIcon"
+          >
             <Icon
               icon="circle-xmark"
               class="header-angle"
@@ -48,9 +52,10 @@
               :id="`select-item-${option.value}`"
               @click.stop="itemSelect(option)"
             >
-            <RenderVnode :v-node="renderLabel ? renderLabel(option) : option.label"></RenderVnode>
+              <RenderVnode
+                :v-node="renderLabel ? renderLabel(option) : option.label"
+              ></RenderVnode>
             </li>
-
           </template>
         </ul>
       </template>
@@ -60,7 +65,7 @@
 
 <script setup lang="ts">
 import { isFunction } from "lodash-es";
-import { ref, reactive, computed,watch } from "vue";
+import { ref, reactive, computed, watch } from "vue";
 import type { Ref } from "vue";
 import type { SelectProps, SelectionOption, SelectEmits, SelectStates } from "./types";
 import Tooltip from "../Tooltip/Tooltip.vue";
@@ -68,8 +73,7 @@ import Input from "../Input/Input.vue";
 import type { TooltipInstance } from "../Tooltip/types";
 import type { InputInstance } from "../Input/types";
 import Icon from "../Icon/Icon.vue";
-import RenderVnode from "@/hook/RenderVnode";
-
+import RenderVnode from "../../hook/RenderVnode";
 
 const NOOP = () => {};
 const iconClasses = computed(
@@ -86,7 +90,7 @@ defineOptions({
 const props = withDefaults(defineProps<SelectProps>(), {
   modelValue: "",
   filterable: false,
-  options: ()=>[],
+  options: () => [],
 });
 const initialOption = findOption(props.modelValue);
 const emit = defineEmits<SelectEmits>();
@@ -119,52 +123,59 @@ const popperOptions: any = {
     },
   ],
 };
-const filteredOptions = ref(props.options)
-watch(() => props.options,(newOptions)=>{
-  filteredOptions.value = newOptions
-})
+const filteredOptions = ref(props.options);
+watch(
+  () => props.options,
+  (newOptions) => {
+    filteredOptions.value = newOptions;
+  }
+);
 
-const generateFilterOptions = async(searchValue:string) => {
-  if(!props.filterable){
-    return
+const generateFilterOptions = async (searchValue: string) => {
+  if (!props.filterable) {
+    return;
   }
-  if(props.filterMethod&&isFunction(props.filterMethod)){
-    filteredOptions.value = props.filterMethod(searchValue)
-  }else if(props.remoteMethod&&isFunction(props.remoteMethod)&&props.remote){
-    states.loading = true
-    try{
-      filteredOptions.value = await props.remoteMethod(searchValue)
-    }catch(e){
-      console.error(e)
-      filteredOptions.value = []
-      states.loading = false
-    }finally{
-      states.loading = false
+  if (props.filterMethod && isFunction(props.filterMethod)) {
+    filteredOptions.value = props.filterMethod(searchValue);
+  } else if (props.remoteMethod && isFunction(props.remoteMethod) && props.remote) {
+    states.loading = true;
+    try {
+      filteredOptions.value = await props.remoteMethod(searchValue);
+    } catch (e) {
+      console.error(e);
+      filteredOptions.value = [];
+      states.loading = false;
+    } finally {
+      states.loading = false;
     }
-  }else{
-    filteredOptions.value = props.options.filter((option) => option.label.includes(searchValue))
+  } else {
+    filteredOptions.value = props.options.filter((option) =>
+      option.label.includes(searchValue)
+    );
   }
-}
+};
 const onFilter = () => {
-  generateFilterOptions(states.inputValue)
-}
+  generateFilterOptions(states.inputValue);
+};
 const filteredPlaceHolder = computed(() => {
-  return (props.filterable && states.selectedOption && isDropdownShow.value)?states.selectedOption.label:props.placeholder
-})
+  return props.filterable && states.selectedOption && isDropdownShow.value
+    ? states.selectedOption.label
+    : props.placeholder;
+});
 const contorlDropdown = (show: boolean) => {
   //控制打开或者关闭
   if (show) {
-    if(props.filterable&&states.selectedOption){
-      states.inputValue = '';
-      emit('update:modelValue', states.selectedOption.value);
-      emit('change', states.selectedOption.value);
+    if (props.filterable && states.selectedOption) {
+      states.inputValue = "";
+      emit("update:modelValue", states.selectedOption.value);
+      emit("change", states.selectedOption.value);
       filteredOptions.value = [...props.options];
     }
     tooltipRef.value.show();
   } else {
     tooltipRef.value.hide();
-    if(props.filterable){
-      states.inputValue = states.selectedOption? states.selectedOption.label:'';
+    if (props.filterable) {
+      states.inputValue = states.selectedOption ? states.selectedOption.label : "";
     }
   }
   isDropdownShow.value = show;
