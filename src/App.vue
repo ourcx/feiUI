@@ -47,6 +47,7 @@ import Line from "./D3/Line/Line.vue";
 import Histogram from "./D3/Histogram/Histogram.vue";
 import Hexbin from "./D3/Hexbin/Hexbin.vue";
 import Treemap from "./D3/Treemap/Treemap.vue";
+import Pie from "./D3/Pie/Pie.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -628,6 +629,10 @@ const handleLayoutComplete = (words: any[]) => {
     <Treemap/>
     <br>
     <Treemap :type="'success'" :borderWidth="2"/>
+    <br>
+    <br>
+    <br>
+    <Pie/>
   <Footer> </Footer>
   </main>
 
