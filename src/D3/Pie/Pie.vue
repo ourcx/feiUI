@@ -67,6 +67,7 @@ const props = withDefaults(defineProps<PieProps>(), {
     bottom: 20,
     left: 20,
   }),
+  dasharray: 0,
 });
 
 // Refs
@@ -132,13 +133,23 @@ const initChart = () => {
     .on("mouseover", function (event, d) {
       if (props.tooltip) {
         select(this).attr("opacity", 0.8);
+        select(this).attr("stroke", "none");
       }
     })
     .on("mouseout", function (event, d) {
       if (props.tooltip) {
         select(this).attr("opacity", 1);
+        select(this).attr("stroke", "#fff");
       }
     });
+
+  if (props.dasharray) {
+    slices
+      .attr("fill-opacity", 0.8)
+      .attr("stroke-dasharray", "2,2")
+      .attr("fill-rule", "evenodd");
+    //虚线样式
+  }
 
   // 添加标签
   if (props.label) {

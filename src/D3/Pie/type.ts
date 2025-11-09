@@ -16,6 +16,7 @@ export interface PieProps {
   width?: number;
   height?: number;
   margin?: Margin;
+  dasharray?: number;
 }
 
 export interface PieData {
