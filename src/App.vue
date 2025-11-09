@@ -49,6 +49,7 @@ import Hexbin from "./D3/Hexbin/Hexbin.vue";
 import Treemap from "./D3/Treemap/Treemap.vue";
 import Pie from "./D3/Pie/Pie.vue";
 import Shapes from "./D3/Shapes/Shapes.vue";
+import Dendrogram from "./D3/Dendrogram/Dendrogram.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -640,6 +641,10 @@ const handleLayoutComplete = (words: any[]) => {
     <br>
     <Shapes/>
     <br></br>
+    <br>
+    <br>
+    <br>
+    <Dendrogram/>
   <Footer> </Footer>
   </main>
 
