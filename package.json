@@ -68,7 +68,7 @@
     "lodash-es": "^4.17.21",
     "qrcode": "^1.5.4",
     "symbol-observable": "^4.0.0",
-    "vue": "^3.5.17",
+    "vue": "^3.0.0",
     "vue-datepicker-next": "^1.0.3",
     "vue3-colorpicker": "^2.3.0",
     "vue3-markdown-it": "^1.0.10"
@@ -83,6 +83,7 @@
     "@types/d3-cloud": "^1.2.9",
     "@types/d3-hexbin": "^0.2.5",
     "@types/d3-hierarchy": "^3.1.7",
+    "@types/d3-interpolate": "^3.0.4",
     "@types/d3-scale": "^4.0.9",
     "@types/d3-scale-chromatic": "^3.1.0",
     "@types/d3-selection": "^3.0.11",
