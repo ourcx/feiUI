@@ -206,8 +206,6 @@ watch(
   height: 100%;
   position: relative;
 }
-
-/* Tooltip 样式 */
 .tooltip {
   z-index: 1000;
 }

@@ -51,6 +51,7 @@ import Pie from "./D3/Pie/Pie.vue";
 import Shapes from "./D3/Shapes/Shapes.vue";
 import Dendrogram from "./D3/Dendrogram/Dendrogram.vue";
 import Heatmap from "./D3/Heatmap/Heatmap.vue";
+import Dhistogram from "./D3/2Dhistogram/2Dhistogram.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -651,6 +652,9 @@ const handleLayoutComplete = (words: any[]) => {
     <br>
     <br>
     <Heatmap/>
+    <br>
+    <br>
+    <Dhistogram/>
   <Footer> </Footer>
   </main>
 
