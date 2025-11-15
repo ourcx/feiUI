@@ -53,6 +53,7 @@ import Dendrogram from "./D3/Dendrogram/Dendrogram.vue";
 import Heatmap from "./D3/Heatmap/Heatmap.vue";
 import Dhistogram from "./D3/2Dhistogram/2Dhistogram.vue";
 import Filter from "./components/Filter/Filter.vue";
+import Graph from "./D3/Graph/Graph.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -554,6 +555,11 @@ const handleLayoutComplete = (words: any[]) => {
     <br>
     <br>
     <Filter />
+    <br>
+    <br>
+    <br>
+    <br>
+    <Graph />
     <Footer> </Footer>
   </main>
 
