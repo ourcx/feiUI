@@ -23,6 +23,7 @@ declare module 'vue' {
     Divider: typeof import('./src/components/Divider/Divider.vue')['default']
     Drawer: typeof import('./src/components/Drawer/Drawer.vue')['default']
     Dropdown: typeof import('./src/components/Dropdown/Dropdown.vue')['default']
+    Filter: typeof import('./src/components/Filter/Filter.vue')['default']
     Form: typeof import('./src/components/Form/Form.vue')['default']
     FormItem: typeof import('./src/components/Form/FormItem.vue')['default']
     Icon: typeof import('./src/components/Icon/Icon.vue')['default']

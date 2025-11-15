@@ -71,7 +71,8 @@
     "vue": "^3.0.0",
     "vue-datepicker-next": "^1.0.3",
     "vue3-colorpicker": "^2.3.0",
-    "vue3-markdown-it": "^1.0.10"
+    "vue3-markdown-it": "^1.0.10",
+    "xss": "^1.0.15"
   },
   "devDependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",

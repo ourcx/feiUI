@@ -186,8 +186,8 @@ watch(
 
 <style scoped>
 .fei-heatmap {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
 }
 
 .fei-heatmap-container {
@@ -206,6 +206,7 @@ watch(
   height: 100%;
   position: relative;
 }
+
 .tooltip {
   z-index: 1000;
 }

@@ -126,27 +126,6 @@ const init = () => {
   if (props.tooltip) {
   }
 
-  //添加坐标轴
-  svg
-    .append("g")
-    .attr("transform", `translate(0,${props.height})`)
-    .call(axisBottom(xScale));
-  svg.append("g").call(axisLeft(yScale));
-  svg
-    .append("text")
-    .attr("transform", "translate(" + props.width / 2 + "," + props.height + ")")
-    .attr("dy", "0.32em")
-    .attr("fill", "#000")
-    .attr("text-anchor", "middle")
-    .text("X");
-  svg
-    .append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dx", "-0.5em")
-    .attr("fill", "#000")
-    .attr("text-anchor", "middle");
-
   // 添加坐标轴（可选）
 };
 // 监听数据变化

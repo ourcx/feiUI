@@ -19,13 +19,13 @@ import Markdown from "./components/Markdown/Markdown.vue";
 import Select from "./components/Select/Select.vue";
 import Form from "./components/Form/Form.vue";
 import FormItem from "./components/Form/FormItem.vue";
-import type { FormRules,FormModel } from '@/components/Form/types';
+import type { FormRules, FormModel } from '@/components/Form/types';
 import StatuesBar from "./page/bar/StatuesBar.vue";
 import Dialog from "./components/Dialog/Dialog.vue";
 import Slider from "./components/Slider/Slider.vue";
 import Image from "./components/Image/Image.vue";
 import Links from "./components/Links/Links.vue";
-import List  from "./components/List/List.vue";
+import List from "./components/List/List.vue";
 import DatePicker from "./components/DatePicker/DatePicker.vue";
 import Comment from "./components/Comment/Comment.vue";
 import Drawer from "./components/Drawer/Drawer.vue";
@@ -52,6 +52,7 @@ import Shapes from "./D3/Shapes/Shapes.vue";
 import Dendrogram from "./D3/Dendrogram/Dendrogram.vue";
 import Heatmap from "./D3/Heatmap/Heatmap.vue";
 import Dhistogram from "./D3/2Dhistogram/2Dhistogram.vue";
+import Filter from "./components/Filter/Filter.vue";
 
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
@@ -141,7 +142,7 @@ const submit = async () => {
     await formRef.value.validate();
     //那到表单的整体校验
     console.log('提交成功');
-  }catch (e: any) {
+  } catch (e: any) {
     console.log(e);
   }
 }
@@ -162,7 +163,7 @@ const handleBeforeClose = (done: () => void) => {
 }
 
 const pureColor = ref('#71afe5');
-const handleColorUpdate = (e:any) => {
+const handleColorUpdate = (e: any) => {
   console.log(e);
 }
 
@@ -204,7 +205,7 @@ const handleWordHover = (word: { text: any; }, event: any) => {
   console.log('悬停词汇:', word.text)
 }
 
-const handleWordLeave = (word:any) => {
+const handleWordLeave = (word: any) => {
   console.log('离开词汇:', word.text)
 }
 
@@ -216,12 +217,12 @@ const handleLayoutComplete = (words: any[]) => {
 
 <template>
   <main>
-  <BackTop>返回顶部</BackTop>
-  <Drawer title="测试抽屉" :visible="visibleDrawer" @close="closeStatusBar" mask :before-close="handleBeforeClose"></Drawer>
-  <StatuesBar status="success" title="表单" description="feiUI" ref="myStatusBar" @click="closeStatusBar">
-  <template #befor>
-  <Select
-        :options="[
+    <BackTop>返回顶部</BackTop>
+    <Drawer title="测试抽屉" :visible="visibleDrawer" @close="closeStatusBar" mask :before-close="handleBeforeClose">
+    </Drawer>
+    <StatuesBar status="success" title="表单" description="feiUI" ref="myStatusBar" @click="closeStatusBar">
+      <template #befor>
+        <Select :options="[
           { label: '选项一', value: '1' },
           { label: '选项二', value: '2' },
           {
@@ -229,52 +230,34 @@ const handleLayoutComplete = (words: any[]) => {
             value: '3',
             disabled: true,
           },
-        ]"
-        clearable
-        filterable
-      /></template>
-  </StatuesBar>
-  <Dialog title="测试-你好世界" type="success" :exist="false">
-  <template #body>
-  <p>你好世界</p>
-  </template>
-  </Dialog>
+        ]" clearable filterable /></template>
+    </StatuesBar>
+    <Dialog title="测试-你好世界" type="success" :exist="false">
+      <template #body>
+        <p>你好世界</p>
+      </template>
+    </Dialog>
     <header>
-      <Select
-        :options="[
-          { label: '选项一', value: '1' },
-          { label: '选项二', value: '2' },
-          { label: '选项三', value: '3', disabled: true },
-        ]"
-        model-value="1"
-        placeholder="请选择"
-      >
+      <Select :options="[
+        { label: '选项一', value: '1' },
+        { label: '选项二', value: '2' },
+        { label: '选项三', value: '3', disabled: true },
+      ]" model-value="1" placeholder="请选择">
         <template #label="{ option }">
           <span>{{ option.label }}</span>
         </template>
       </Select>
-      <Select
-        :options="[
-          { label: '选项一', value: '1' },
-          { label: '选项二', value: '2' },
-          {
-            label: '选项三',
-            value: '3',
-            disabled: true,
-          },
-        ]"
-        clearable
-        filterable
-      />
-      <Tooltip
-        content="动态提示"
-        :popperOptions="options"
-        ref="tooltipRef"
-        :openDelay="200"
-        :trigger="trigger"
-        ColorType="success"
-        manual
-      >
+      <Select :options="[
+        { label: '选项一', value: '1' },
+        { label: '选项二', value: '2' },
+        {
+          label: '选项三',
+          value: '3',
+          disabled: true,
+        },
+      ]" clearable filterable />
+      <Tooltip content="动态提示" :popperOptions="options" ref="tooltipRef" :openDelay="200" :trigger="trigger"
+        ColorType="success" manual>
         <div style="height: 200px">xxxxxxx</div>
       </Tooltip>
     </header>
@@ -309,95 +292,28 @@ const handleLayoutComplete = (words: any[]) => {
     <Icon icon="arrow-up" size="2xl" spin type="success" />
 
     <br />
-    <Alert
-      type="info"
-      title="成功提示"
-      description="这是一个成功提示的 Alert"
-      :duration="800"
-      animation
-    />
-    <Alert
-      type="warning"
-      title="警告提示"
-      description="这是一个警告提示的 Alert"
-      :duration="1600"
-      animation
-    />
+    <Alert type="info" title="成功提示" description="这是一个成功提示的 Alert" :duration="800" animation />
+    <Alert type="warning" title="警告提示" description="这是一个警告提示的 Alert" :duration="1600" animation />
     <Alert type="error" title="错误提示" description="这是一个错误提示的 Alert" />
     <Alert type="success" title="成功提示" description="这是一个成功提示的 Alert" />
     <Alert type="primary" title="信息提示" description="这是一个信息提示的 Alert" />
     <Alert title="信息提示" description="这是一个信息提示的 Alert" />
-    <Alert
-      type="error"
-      title="错误提示"
-      description="这是一个错误提示的 Alert"
-      effect="light"
-    />
-    <Alert
-      type="success"
-      title="成功提示"
-      description="这是一个成功提示的 Alert"
-      effect="dark"
-    />
-    <Alert
-      type="info"
-      title="信息提示"
-      description="这是一个信息提示的 Alert"
-      effect="dark"
-    />
-    <Alert
-      type="warning"
-      title="警告提示"
-      description="这是一个警告提示的 Alert"
-      effect="light"
-    />
-    <Alert
-      type="primary"
-      title="信息提示"
-      description="这是一个信息提示的 Alert"
-      effect="dark"
-    />
-    <Alert
-      type="primary"
-      title="信息提示"
-      description="这是一个信息提示的 Alert"
-      effect="light"
-    />
+    <Alert type="error" title="错误提示" description="这是一个错误提示的 Alert" effect="light" />
+    <Alert type="success" title="成功提示" description="这是一个成功提示的 Alert" effect="dark" />
+    <Alert type="info" title="信息提示" description="这是一个信息提示的 Alert" effect="dark" />
+    <Alert type="warning" title="警告提示" description="这是一个警告提示的 Alert" effect="light" />
+    <Alert type="primary" title="信息提示" description="这是一个信息提示的 Alert" effect="dark" />
+    <Alert type="primary" title="信息提示" description="这是一个信息提示的 Alert" effect="light" />
     <br />
     <Alert type="info" title="成功提示" description="这是一个成功提示的 Alert" disIcon />
-    <Alert
-      type="warning"
-      title="警告提示"
-      description="这是一个警告提示的 Alert"
-      disIcon
-    />
+    <Alert type="warning" title="警告提示" description="这是一个警告提示的 Alert" disIcon />
     <Alert type="error" title="错误提示" description="这是一个错误提示的 Alert" disIcon />
-    <Alert
-      type="primary"
-      title="信息提示"
-      description="这是一个信息提示的 Alert"
-      disIcon
-    />
-    <Alert
-      type="success"
-      title="成功提示"
-      description="这是一个成功提示的 Alert"
-      disIcon
-    />
-    <Alert
-      type="primary"
-      title="信息提示"
-      description="这是一个信息提示的 Alert"
-      disIcon
-      effect="dark"
-    />
-    <Dropdown
-      :menuOptions="optionsMenu"
-      placement="bottom"
-      :trigger="trigger"
-      @visible-change="(key:boolean) => inlineConsole('ssss', key as any)"
-      @select="(key) => inlineConsole('ssss1111', key)"
-    >
+    <Alert type="primary" title="信息提示" description="这是一个信息提示的 Alert" disIcon />
+    <Alert type="success" title="成功提示" description="这是一个成功提示的 Alert" disIcon />
+    <Alert type="primary" title="信息提示" description="这是一个信息提示的 Alert" disIcon effect="dark" />
+    <Dropdown :menuOptions="optionsMenu" placement="bottom" :trigger="trigger"
+      @visible-change="(key: boolean) => inlineConsole('ssss', key as any)"
+      @select="(key) => inlineConsole('ssss1111', key)">
       <div>
         <Button type="primary" @click="trigger = 'click'" width="100px">click</Button>
       </div>
@@ -417,24 +333,14 @@ const handleLayoutComplete = (words: any[]) => {
     <br />
     <br />
     <br />
-    <Code
-      code="javascript"
-      initialCode="const = 1;"
-      editable
-      theme="github-light"
-      type="primary"
-    />
+    <Code code="javascript" initialCode="const = 1;" editable theme="github-light" type="primary" />
     <br />
     <br />
-    <Switch
-      @change="
-        (value) => {
-          console.log(value);
-        }
-      "
-      active-text="ON"
-      inactive-text="OFF"
-    />
+    <Switch @change="
+      (value) => {
+        console.log(value);
+      }
+    " active-text="ON" inactive-text="OFF" />
     <br />
     <br />
     <br />
@@ -473,103 +379,91 @@ const handleLayoutComplete = (words: any[]) => {
       </FormItem>
     </Form>
     <p>
-    form:
+      form:
     <pre>{{ model }}</pre>
     </p>
-    <Slider type="success" show-stops ShowValue/>
-    <Slider type="success" show-stops ShowValue progress :value="12"/>
+    <Slider type="success" show-stops ShowValue />
+    <Slider type="success" show-stops ShowValue progress :value="12" />
     <br>
     <br>
     <br>
-    <Image src="https://picsum.photos/200/300" mode="aspectFill" shape="square" title="title"  footer="footer" screen />
-    <Links src="https://picsum.photos/200/300" name="name" description="description"  href="https://picsum.photos/200/300"/>
+    <Image src="https://picsum.photos/200/300" mode="aspectFill" shape="square" title="title" footer="footer" screen />
+    <Links src="https://picsum.photos/200/300" name="name" description="description"
+      href="https://picsum.photos/200/300" />
     <br>
     <br>
     <br>
-<!-- 正确使用方式 -->
-<List
-  :items="Array.from({length: 100}, (_, i) => ({
-    id: i,
-    content: `Item ${i+1}`
-  }))"
-  :itemSize="60"
-  :visibleCount="15"
-  title="List一千万条数据展示"
-  type="success"
-/>
-<br>
-<br>
-<DatePicker/>
-<br>
-<br>
-<br>
-<br>
-<DatePicker type="success" range />
-<br>
-<br>
-<br>
-<br>
-<Comment :reply="{content: '你在干嘛',author: '小海', datetime:'2021-01-01 00:00:00'}" content="这是评论内容" author="小海" datetime="2021-01-01 00:00:00"/>
-<br>
-<br>
-<br>
-  <Tag body="这是标签内容" :visible="true" round disabled></Tag>
-  <Tag body="llm" :visible="true" round></Tag>
-  <Tag body="viest" :visible="true" checkable :bordered="false"></Tag>
-  <Tag body="css" :visible="true" checkable type="success"></Tag>
+    <!-- 正确使用方式 -->
+    <List :items="Array.from({ length: 100 }, (_, i) => ({
+      id: i,
+      content: `Item ${i + 1}`
+    }))" :itemSize="60" :visibleCount="15" title="List一千万条数据展示" type="success" />
+    <br>
+    <br>
+    <DatePicker />
+    <br>
+    <br>
+    <br>
+    <br>
+    <DatePicker type="success" range />
+    <br>
+    <br>
+    <br>
+    <br>
+    <Comment :reply="{ content: '你在干嘛', author: '小海', datetime: '2021-01-01 00:00:00' }" content="这是评论内容" author="小海"
+      datetime="2021-01-01 00:00:00" />
+    <br>
+    <br>
+    <br>
+    <Tag body="这是标签内容" :visible="true" round disabled></Tag>
+    <Tag body="llm" :visible="true" round></Tag>
+    <Tag body="viest" :visible="true" checkable :bordered="false"></Tag>
+    <Tag body="css" :visible="true" checkable type="success"></Tag>
 
 
-  <br>
-  <br>
-  <Space align="center" dirction="horizontal" size="middle" :wrap="true">
-    <Tag body="是space包裹的标签内容" :visible="true" round disabled></Tag>
-  <Tag body="llm" :visible="true" round></Tag>
-  <Tag body="viest" :visible="true" checkable :bordered="false"></Tag>
-  <Tag body="css" :visible="true" checkable type="success"></Tag>
-  </Space>
-  <br>
-  <br>
-  <br>
-  <QRcode value="https://github.com"></QRcode>
-  <br>
-  <br>
-  <br>
-  <Point text="1024节日快乐!!" :width="800" :scale-val="0.8" :height="300"/>
+    <br>
+    <br>
+    <Space align="center" dirction="horizontal" size="middle" :wrap="true">
+      <Tag body="是space包裹的标签内容" :visible="true" round disabled></Tag>
+      <Tag body="llm" :visible="true" round></Tag>
+      <Tag body="viest" :visible="true" checkable :bordered="false"></Tag>
+      <Tag body="css" :visible="true" checkable type="success"></Tag>
+    </Space>
+    <br>
+    <br>
+    <br>
+    <QRcode value="https://github.com"></QRcode>
+    <br>
+    <br>
+    <br>
+    <Point text="1024节日快乐!!" :width="800" :scale-val="0.8" :height="300" />
 
-  <br>
-  <br>
-  <br>
-  <br>
-  <Swiper :autoplay="false">
-  <SwiperItem color="red">1</SwiperItem>
-  <SwiperItem color="blue">2</SwiperItem>
-  <SwiperItem color="green">3</SwiperItem>
-  <SwiperItem color="pink">4</SwiperItem>
-  </Swiper>
-  <br>
-  <br>
-  <br>
-  <ColorPicker   @update:pureColor="handleColorUpdate" />
-  <br>
-  <br>
- <Text
-        :data="wordData"
-        :colors="colors"
-        :fontSizeRange="[20, 80]"
-        :rotations="[-45, 0, 45]"
-        autoFit
-        @wordClick="handleWordClick"
-        @wordHover="handleWordHover"
-        @wordLeave="handleWordLeave"
-        @layoutComplete="handleLayoutComplete"
-        ref="wordCloudRef"
-      ></Text>
+    <br>
+    <br>
+    <br>
+    <br>
+    <Swiper :autoplay="false">
+      <SwiperItem color="red">1</SwiperItem>
+      <SwiperItem color="blue">2</SwiperItem>
+      <SwiperItem color="green">3</SwiperItem>
+      <SwiperItem color="pink">4</SwiperItem>
+    </Swiper>
+    <br>
+    <br>
+    <br>
+    <ColorPicker @update:pureColor="handleColorUpdate" />
+    <br>
+    <br>
+    <Text :data="wordData" :colors="colors" :fontSizeRange="[20, 80]" :rotations="[-45, 0, 45]" autoFit
+      @wordClick="handleWordClick" @wordHover="handleWordHover" @wordLeave="handleWordLeave"
+      @layoutComplete="handleLayoutComplete" ref="wordCloudRef"></Text>
 
-  <br>
-  <br>
-    <Tinymce/>
-    <Math/>
-    <Math format="i\hbar\frac{\partial}{\partial t}\Psi(\mathbf{r},t) = \left[ -\frac{\hbar^2}{2m}\nabla^2 + V(\mathbf{r},t) \right]\Psi(\mathbf{r},t)" />
+    <br>
+    <br>
+    <Tinymce />
+    <Math />
+    <Math
+      format="i\hbar\frac{\partial}{\partial t}\Psi(\mathbf{r},t) = \left[ -\frac{\hbar^2}{2m}\nabla^2 + V(\mathbf{r},t) \right]\Psi(\mathbf{r},t)" />
     <Math format="\frac{1}{2}\sum_{i=1}^n x_i^2" />
     <br>
     <br>
@@ -579,35 +473,35 @@ const handleLayoutComplete = (words: any[]) => {
     <br>
     <br>
     <br>
-    <Split title="xxxxxxxxxxx" >
-    <template #left >
-      <div style="padding: 20px;">
-        这是左侧内容区域。你可以在这里放置任何你想要的内容，比如导航菜单、工具栏等。
-      </div>
-    </template>
-    <template #right >
-      <div style="padding: 20px;">
-        这是右侧内容区域。你可以在这里放置主要内容，比如文本、图片、表格等。
-      </div>
-    </template>
+    <Split title="xxxxxxxxxxx">
+      <template #left>
+        <div style="padding: 20px;">
+          这是左侧内容区域。你可以在这里放置任何你想要的内容，比如导航菜单、工具栏等。
+        </div>
+      </template>
+      <template #right>
+        <div style="padding: 20px;">
+          这是右侧内容区域。你可以在这里放置主要内容，比如文本、图片、表格等。
+        </div>
+      </template>
     </Split>
-        <Split title="例子2"  type="primary">
-    <template #left >
-      <div style="padding: 20px;">
-        这是左侧内容区域。你可以在这里放置任何你想要的内容，比如导航菜单、工具栏等。
-      </div>
-    </template>
-    <template #right >
-      <div style="padding: 20px;">
-        这是右侧内容区域。你可以在这里放置主要内容，比如文本、图片、表格等。
-      </div>
-    </template>
+    <Split title="例子2" type="primary">
+      <template #left>
+        <div style="padding: 20px;">
+          这是左侧内容区域。你可以在这里放置任何你想要的内容，比如导航菜单、工具栏等。
+        </div>
+      </template>
+      <template #right>
+        <div style="padding: 20px;">
+          这是右侧内容区域。你可以在这里放置主要内容，比如文本、图片、表格等。
+        </div>
+      </template>
     </Split>
     <br>
     <br>
     <br>
     <br>
-    <Line/>
+    <Line />
     <br>
     <br>
     <br>
@@ -620,42 +514,47 @@ const handleLayoutComplete = (words: any[]) => {
     <br>
     <br>
     <br>
-    <Histogram/>
+    <Histogram />
     <br>
     <br>
     <br>
     <br>
-    <Hexbin/>
+    <Hexbin />
     <br>
     <br>
     <br>
     <br>
-    <Treemap/>
+    <Treemap />
     <br>
-    <Treemap :type="'success'" :borderWidth="2"/>
-    <br>
-    <br>
-    <br>
-    <Pie/>
+    <Treemap :type="'success'" :borderWidth="2" />
     <br>
     <br>
     <br>
+    <Pie />
     <br>
-    <Shapes/>
+    <br>
+    <br>
+    <br>
+    <Shapes />
     <br></br>
     <br>
     <br>
     <br>
-    <Dendrogram/>
+    <Dendrogram />
     <br>
     <br>
     <br>
     <br>
-    <Heatmap/>
+    <Heatmap />
     <br>
     <br>
-    <Dhistogram/>
-  <Footer> </Footer>
+    <Dhistogram />
+    <br>
+    <br>
+    <br>
+    <br>
+    <Filter />
+    <Footer> </Footer>
   </main>
 
 </template>
