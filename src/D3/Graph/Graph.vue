@@ -82,7 +82,7 @@ const init = () => {
     .style("pointer-events", "none") // 防止文本干扰节点点击
     .text((d: any) => d.name);
 
-  const simulation = forceSimulation(props.nodes as SimNode[])
+  forceSimulation(props.nodes as SimNode[])
     .force(
       "link",
       forceLink(props.links as SimLink[])
@@ -112,11 +112,6 @@ const init = () => {
 
   // 节点点击事件
   nodeSel.on("click", (e: any, d: any) => {
-    emits("nodeClick", d);
-  });
-
-  // 文本也可以添加点击事件（如果需要）
-  textSel.on("click", (e: any, d: any) => {
     emits("nodeClick", d);
   });
 };
