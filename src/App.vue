@@ -55,6 +55,7 @@ import Dhistogram from "./D3/2Dhistogram/2Dhistogram.vue";
 import Filter from "./components/Filter/Filter.vue";
 import Graph from "./D3/Graph/Graph.vue";
 import Dot from "./D3/Dot/Dot.vue";
+import TimeCountDown from "./components/TimeCountDown/TimeCountDown.vue";
 const tooltipRef = ref<TooltipInstance | null>(null);
 const openedValue = ref(["a"]);
 const trigger = ref<"click" | "focus" | "hover">("click");
@@ -564,6 +565,16 @@ const handleLayoutComplete = (words: any[]) => {
     <br>
     <br>
     <Dot />
+    <br>
+    <br>
+    <br>
+    <br>
+    <TimeCountDown :record="{
+      local_leftSeconds: 100000,
+      local_isExpired: false,
+      local_leftDay: 10,
+      local_leftHMS: '00:00:00'
+    }" />
     <Footer> </Footer>
   </main>
 

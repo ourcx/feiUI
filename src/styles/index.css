@@ -34,4 +34,5 @@
 @import "../page/bar/style.css";
 @import "../svg/Text/style.css";
 @import "../svg/Math/style.css";
+@import "../components/TimeCountDown/style.css";
 @import "../page/footer/style.css";

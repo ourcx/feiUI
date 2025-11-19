@@ -45,6 +45,7 @@ declare module 'vue' {
     SwiperItem: typeof import('./src/components/Swiper/Swiper-item.vue')['default']
     Switch: typeof import('./src/components/Switch/Switch.vue')['default']
     Tag: typeof import('./src/components/Tag/Tag.vue')['default']
+    TimeCountDown: typeof import('./src/components/TimeCountDown/TimeCountDown.vue')['default']
     Tinymce: typeof import('./src/components/Tinymce/Tinymce.vue')['default']
     Tooltip: typeof import('./src/components/Tooltip/Tooltip.vue')['default']
   }
